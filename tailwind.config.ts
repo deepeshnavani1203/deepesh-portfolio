@@ -14,8 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
+        sans: ["General Sans", "Inter", "sans-serif"],
         serif: ["Playfair Display", "serif"],
+        display: ["Clash Display", "General Sans", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
