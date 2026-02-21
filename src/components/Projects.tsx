@@ -49,47 +49,53 @@ const Projects = () => {
   const { ref, isVisible } = useScrollReveal();
 
   return (
-    <section id="projects" className="section-padding">
+    <section id="projects" className="section-padding bg-secondary/30">
       <div className="max-w-5xl mx-auto" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.6 }}
         >
-          <h2 className="section-title font-display">Projects</h2>
+          <h2 className="section-title">Projects</h2>
           <p className="section-subtitle">A selection of things I've built.</p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6 mt-14">
+        <div className="grid md:grid-cols-2 gap-8 mt-12">
           {projects.map((proj, i) => (
             <motion.div
               key={proj.name}
               initial={{ opacity: 0, y: 25 }}
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="glass-card p-6 flex flex-col group hover:border-primary/20 hover:shadow-lg hover:shadow-primary/5 transition-all duration-500"
+              className="glass-card p-6 flex flex-col hover:shadow-lg transition-shadow duration-300"
             >
-              <h3 className="text-base font-display font-medium text-foreground mb-1">{proj.name}</h3>
+              <h3 className="text-lg font-semibold text-foreground font-sans mb-1">{proj.name}</h3>
               <p className="text-sm text-muted-foreground mb-4">{proj.description}</p>
 
               <div className="space-y-2 text-sm mb-5 flex-1">
-                <p><span className="font-medium text-foreground/80">Problem:</span> <span className="text-muted-foreground">{proj.problem}</span></p>
-                <p><span className="font-medium text-foreground/80">Solution:</span> <span className="text-muted-foreground">{proj.solution}</span></p>
-                <p><span className="font-medium text-foreground/80">Result:</span> <span className="text-muted-foreground">{proj.result}</span></p>
+                <p><span className="font-medium text-foreground">Problem:</span> <span className="text-muted-foreground">{proj.problem}</span></p>
+                <p><span className="font-medium text-foreground">Solution:</span> <span className="text-muted-foreground">{proj.solution}</span></p>
+                <p><span className="font-medium text-foreground">Result:</span> <span className="text-muted-foreground">{proj.result}</span></p>
               </div>
 
               <div className="flex flex-wrap gap-1.5 mb-5">
                 {proj.tech.map((t) => (
-                  <span key={t} className="px-2 py-1 text-[11px] rounded-md bg-secondary/80 text-muted-foreground">{t}</span>
+                  <span key={t} className="px-2 py-1 text-xs rounded bg-secondary text-secondary-foreground">{t}</span>
                 ))}
               </div>
 
               <div className="flex items-center gap-4">
-                <a href={proj.live} className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline underline-offset-4">
-                  <ExternalLink size={13} /> Live
+                <a
+                  href={proj.live}
+                  className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline"
+                >
+                  <ExternalLink size={14} /> Live Demo
                 </a>
-                <a href={proj.github} className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  <Github size={13} /> Code
+                <a
+                  href={proj.github}
+                  className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <Github size={14} /> GitHub
                 </a>
               </div>
             </motion.div>

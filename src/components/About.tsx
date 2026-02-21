@@ -1,47 +1,47 @@
 import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { Sparkles, Target, Rocket } from "lucide-react";
-
-const values = [
-  { icon: Sparkles, title: "Craftsmanship", desc: "Every line of code is intentional. I care deeply about quality and maintainability." },
-  { icon: Target, title: "Continuous Growth", desc: "Always exploring new tools, patterns, and ideas to stay ahead." },
-  { icon: Rocket, title: "Impact", desc: "Building products that solve real problems for real people." },
-];
 
 const About = () => {
   const { ref, isVisible } = useScrollReveal();
 
   return (
     <section id="about" className="section-padding">
-      <div className="max-w-4xl mx-auto" ref={ref}>
+      <div className="max-w-3xl mx-auto" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <h2 className="section-title font-display">About Me</h2>
-          <p className="text-muted-foreground leading-relaxed text-base md:text-lg mt-6 max-w-2xl">
+          <h2 className="section-title">About Me</h2>
+          <p className="text-muted-foreground leading-relaxed text-base md:text-lg mt-6">
             I'm a Full Stack Developer passionate about building clean, performant, and user-centric 
-            digital products. I thrive at the intersection of design and engineering — where thoughtful 
-            architecture meets delightful user experience.
+            digital products. With experience spanning frontend frameworks, backend services, and cloud 
+            infrastructure, I enjoy turning complex problems into simple, elegant solutions. I thrive at 
+            the intersection of design and engineering — where thoughtful architecture meets delightful 
+            user experience.
           </p>
         </motion.div>
 
-        <div className="mt-14 grid sm:grid-cols-3 gap-5">
-          {values.map((v, i) => (
-            <motion.div
-              key={v.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.2 + i * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="glass-card p-6 group hover:border-primary/20 transition-colors duration-500"
-            >
-              <v.icon size={20} className="text-primary mb-3" />
-              <h4 className="font-display font-medium text-foreground mb-2 text-sm">{v.title}</h4>
-              <p className="text-muted-foreground text-sm leading-relaxed">{v.desc}</p>
-            </motion.div>
-          ))}
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+          className="mt-12"
+        >
+          <h3 className="text-xl font-serif font-semibold text-foreground mb-4">What Drives Me</h3>
+          <div className="grid sm:grid-cols-3 gap-6">
+            {[
+              { title: "Craftsmanship", desc: "Every line of code is intentional. I care deeply about quality and maintainability." },
+              { title: "Continuous Growth", desc: "I'm always exploring new tools, patterns, and ideas to stay ahead of the curve." },
+              { title: "Impact", desc: "I build products that matter — solving real problems for real people." },
+            ].map((v) => (
+              <div key={v.title} className="glass-card p-5">
+                <h4 className="font-semibold text-foreground mb-2 font-sans text-sm uppercase tracking-wider">{v.title}</h4>
+                <p className="text-muted-foreground text-sm leading-relaxed">{v.desc}</p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

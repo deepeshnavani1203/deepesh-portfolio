@@ -2,28 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
 @layer base {
   :root {
-    --background: 0 0% 98%;
+    --background: 40 20% 97%;
     --foreground: 225 20% 12%;
+
     --card: 0 0% 100%;
     --card-foreground: 225 20% 12%;
+
     --popover: 0 0% 100%;
     --popover-foreground: 225 20% 12%;
-    --primary: 230 80% 60%;
+
+    --primary: 35 90% 50%;
     --primary-foreground: 0 0% 100%;
+
     --secondary: 225 15% 93%;
     --secondary-foreground: 225 20% 12%;
+
     --muted: 225 12% 94%;
     --muted-foreground: 225 10% 46%;
-    --accent: 230 80% 60%;
+
+    --accent: 35 90% 50%;
     --accent-foreground: 0 0% 100%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
     --border: 225 15% 90%;
     --input: 225 15% 90%;
-    --ring: 230 80% 60%;
+    --ring: 35 90% 50%;
+
     --radius: 0.75rem;
+
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -31,37 +43,46 @@
     --sidebar-accent: 240 4.8% 95.9%;
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217 91% 60%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
-    --background: 228 14% 8%;
-    --foreground: 220 15% 85%;
-    --card: 228 14% 11%;
-    --card-foreground: 220 15% 85%;
-    --popover: 228 14% 11%;
-    --popover-foreground: 220 15% 85%;
-    --primary: 230 80% 65%;
-    --primary-foreground: 228 14% 8%;
-    --secondary: 228 12% 15%;
-    --secondary-foreground: 220 15% 85%;
-    --muted: 228 12% 15%;
-    --muted-foreground: 220 10% 50%;
-    --accent: 230 80% 65%;
-    --accent-foreground: 228 14% 8%;
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 228 12% 16%;
-    --input: 228 12% 16%;
-    --ring: 230 80% 65%;
-    --sidebar-background: 228 14% 8%;
+    --background: 225 15% 10%;
+    --foreground: 210 20% 90%;
+
+    --card: 225 14% 14%;
+    --card-foreground: 210 20% 90%;
+
+    --popover: 225 14% 14%;
+    --popover-foreground: 210 20% 90%;
+
+    --primary: 35 90% 55%;
+    --primary-foreground: 225 20% 8%;
+
+    --secondary: 225 12% 18%;
+    --secondary-foreground: 210 20% 90%;
+
+    --muted: 225 12% 18%;
+    --muted-foreground: 220 10% 55%;
+
+    --accent: 35 90% 55%;
+    --accent-foreground: 225 20% 8%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 225 12% 20%;
+    --input: 225 12% 20%;
+    --ring: 35 90% 55%;
+
+    --sidebar-background: 225 15% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224 76% 48%;
+    --sidebar-primary: 224.3 76.3% 48%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 240 3.7% 15.9%;
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217 91% 60%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 
@@ -75,14 +96,15 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
-    font-family: 'General Sans', sans-serif;
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
   }
 
   h1, h2, h3, h4 {
-    font-family: 'Clash Display', sans-serif;
+    font-family: 'Playfair Display', serif;
   }
 
+  /* Reduced motion support */
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
       animation-duration: 0.01ms !important;
@@ -97,11 +119,11 @@
 
 @layer utilities {
   .section-padding {
-    @apply px-6 py-24 md:px-12 lg:px-24;
+    @apply px-6 py-20 md:px-12 lg:px-24 xl:px-32;
   }
 
   .section-title {
-    @apply text-3xl md:text-4xl font-semibold mb-4;
+    @apply text-3xl md:text-4xl font-bold mb-4 font-serif;
   }
 
   .section-subtitle {
@@ -109,20 +131,6 @@
   }
 
   .glass-card {
-    @apply bg-card/60 backdrop-blur-xl border border-border/50 rounded-2xl;
-  }
-
-  .glow-border {
-    position: relative;
-  }
-  .glow-border::before {
-    content: '';
-    position: absolute;
-    inset: -1px;
-    border-radius: inherit;
-    background: linear-gradient(135deg, hsl(230 80% 65% / 0.3), hsl(280 70% 60% / 0.1), hsl(230 80% 65% / 0.3));
-    z-index: -1;
-    opacity: 0.6;
-    filter: blur(8px);
+    @apply bg-card/80 backdrop-blur-sm border border-border rounded-xl;
   }
 }

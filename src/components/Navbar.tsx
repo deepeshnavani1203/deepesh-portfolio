@@ -1,6 +1,5 @@
-import { Moon, Sun, Menu, X, Github, Linkedin } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { Moon, Sun, Menu, X } from "lucide-react";
+import { useState } from "react";
 
 interface NavbarProps {
   theme: "light" | "dark";
@@ -10,39 +9,23 @@ interface NavbarProps {
 const navLinks = [
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
   { label: "Experience", href: "#experience" },
+  { label: "Projects", href: "#projects" },
   { label: "Contact", href: "#contact" },
 ];
 
 const Navbar = ({ theme, toggleTheme }: NavbarProps) => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [visible, setVisible] = useState(true);
-  const lastScroll = useRef(0);
-
-  useEffect(() => {
-    const onScroll = () => {
-      const y = window.scrollY;
-      setVisible(y < 50 || y < lastScroll.current);
-      lastScroll.current = y;
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   return (
-    <motion.nav
-      initial={{ y: 0 }}
-      animate={{ y: visible ? 0 : -100 }}
-      transition={{ duration: 0.3, ease: "easeInOut" }}
-      className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-4xl"
-    >
-      <div className="bg-background/60 backdrop-blur-2xl border border-border/50 rounded-2xl px-5 py-3 flex items-center justify-between shadow-lg shadow-background/20">
-        <a href="#" className="text-lg font-display font-semibold text-foreground tracking-tight">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+      <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+        <a href="#" className="text-xl font-serif font-bold text-foreground">
           Deepesh<span className="text-primary">.</span>
         </a>
 
-        <div className="hidden md:flex items-center gap-6">
+        {/* Desktop nav */}
+        <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -52,55 +35,50 @@ const Navbar = ({ theme, toggleTheme }: NavbarProps) => {
               {link.label}
             </a>
           ))}
-          <div className="flex items-center gap-2 ml-2 pl-2 border-l border-border/50">
-            <a href="https://github.com/deepesh" target="_blank" rel="noopener noreferrer" className="p-1.5 text-muted-foreground hover:text-foreground transition-colors" aria-label="GitHub">
-              <Github size={16} />
-            </a>
-            <a href="https://linkedin.com/in/deepesh" target="_blank" rel="noopener noreferrer" className="p-1.5 text-muted-foreground hover:text-foreground transition-colors" aria-label="LinkedIn">
-              <Linkedin size={16} />
-            </a>
-            <button
-              onClick={toggleTheme}
-              className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground transition-colors"
-              aria-label="Toggle theme"
-            >
-              {theme === "light" ? <Moon size={16} /> : <Sun size={16} />}
-            </button>
-          </div>
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-lg bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
+            aria-label="Toggle theme"
+          >
+            {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
+          </button>
         </div>
 
-        <div className="flex md:hidden items-center gap-2">
-          <button onClick={toggleTheme} className="p-2 text-muted-foreground" aria-label="Toggle theme">
-            {theme === "light" ? <Moon size={16} /> : <Sun size={16} />}
+        {/* Mobile controls */}
+        <div className="flex md:hidden items-center gap-3">
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-lg bg-secondary text-secondary-foreground"
+            aria-label="Toggle theme"
+          >
+            {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
           </button>
-          <button onClick={() => setMobileOpen(!mobileOpen)} className="p-2 text-foreground" aria-label="Toggle menu">
-            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="p-2 text-foreground"
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </div>
 
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2 }}
-            className="md:hidden mt-2 bg-background/80 backdrop-blur-2xl border border-border/50 rounded-2xl px-5 py-4 space-y-3"
-          >
-            {navLinks.map((link) => (
-              <a key={link.href} href={link.href} onClick={() => setMobileOpen(false)} className="block text-sm text-muted-foreground hover:text-foreground transition-colors">
-                {link.label}
-              </a>
-            ))}
-            <div className="flex items-center gap-3 pt-2 border-t border-border/50">
-              <a href="https://github.com/deepesh" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="GitHub"><Github size={16} /></a>
-              <a href="https://linkedin.com/in/deepesh" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="LinkedIn"><Linkedin size={16} /></a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.nav>
+      {/* Mobile menu */}
+      {mobileOpen && (
+        <div className="md:hidden bg-background border-b border-border px-6 py-4 space-y-3">
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={() => setMobileOpen(false)}
+              className="block text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+      )}
+    </nav>
   );
 };
 
