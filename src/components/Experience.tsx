@@ -37,34 +37,32 @@ const Experience = () => {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7 }}
         >
-          <h2 className="section-title">Experience</h2>
+          <h2 className="section-title font-display">Experience</h2>
           <p className="section-subtitle">My professional journey so far.</p>
         </motion.div>
 
-        <div className="mt-12 relative">
-          {/* Timeline line */}
-          <div className="absolute left-4 top-2 bottom-2 w-px bg-border" />
+        <div className="mt-14 relative">
+          <div className="absolute left-4 top-2 bottom-2 w-px bg-border/60" />
 
-          <div className="space-y-10">
+          <div className="space-y-8">
             {experiences.map((exp, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, x: -20 }}
-                animate={isVisible ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.5, delay: i * 0.15 }}
+                initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
+                animate={isVisible ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
+                transition={{ duration: 0.6, delay: i * 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
                 className="relative pl-12"
               >
-                {/* Dot */}
-                <div className="absolute left-2.5 top-1.5 w-3 h-3 rounded-full bg-primary border-2 border-background" />
+                <div className="absolute left-2.5 top-2 w-3 h-3 rounded-full bg-primary/80 border-2 border-background shadow-sm shadow-primary/20" />
 
-                <div className="glass-card p-5">
+                <div className="glass-card p-5 hover:border-primary/15 transition-colors duration-500">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-1">
-                    <h3 className="font-semibold text-foreground font-sans">{exp.role}</h3>
-                    <span className="text-xs text-muted-foreground mt-1 sm:mt-0">{exp.duration}</span>
+                    <h3 className="font-display font-medium text-foreground text-sm">{exp.role}</h3>
+                    <span className="text-xs text-muted-foreground/60 mt-1 sm:mt-0">{exp.duration}</span>
                   </div>
-                  <p className="text-sm text-primary font-medium mb-2">{exp.company}</p>
+                  <p className="text-xs text-primary/70 font-medium mb-2">{exp.company}</p>
                   <p className="text-sm text-muted-foreground leading-relaxed">{exp.description}</p>
                 </div>
               </motion.div>
