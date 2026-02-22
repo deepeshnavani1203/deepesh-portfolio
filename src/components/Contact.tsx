@@ -19,7 +19,6 @@ const Contact = () => {
       return;
     }
     setSending(true);
-    // Simulate sending — replace with EmailJS or backend API
     await new Promise((r) => setTimeout(r, 1200));
     setSending(false);
     toast.success("Message sent! I'll get back to you soon.");
@@ -27,7 +26,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="section-padding bg-secondary/30">
+    <section id="contact" className="section-padding">
       <div className="max-w-xl mx-auto" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -53,7 +52,7 @@ const Contact = () => {
               maxLength={100}
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
-              className="w-full px-4 py-3 rounded-lg bg-background border border-border text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 transition-shadow"
+              className="w-full px-4 py-3 rounded-xl bg-secondary/40 border border-border text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/30 transition-all"
               placeholder="Your name"
             />
           </div>
@@ -65,7 +64,7 @@ const Contact = () => {
               maxLength={255}
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
-              className="w-full px-4 py-3 rounded-lg bg-background border border-border text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 transition-shadow"
+              className="w-full px-4 py-3 rounded-xl bg-secondary/40 border border-border text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/30 transition-all"
               placeholder="you@example.com"
             />
           </div>
@@ -77,14 +76,14 @@ const Contact = () => {
               maxLength={1000}
               value={form.message}
               onChange={(e) => setForm({ ...form, message: e.target.value })}
-              className="w-full px-4 py-3 rounded-lg bg-background border border-border text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 transition-shadow resize-none"
+              className="w-full px-4 py-3 rounded-xl bg-secondary/40 border border-border text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/30 transition-all resize-none"
               placeholder="Tell me about your project..."
             />
           </div>
           <button
             type="submit"
             disabled={sending}
-            className="w-full py-3 rounded-lg bg-primary text-primary-foreground font-medium text-sm hover:opacity-90 transition-opacity duration-300 disabled:opacity-50"
+            className="w-full py-3 rounded-xl bg-primary text-primary-foreground font-medium text-sm hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 disabled:opacity-50"
           >
             {sending ? "Sending..." : "Send Message"}
           </button>
