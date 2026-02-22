@@ -44,25 +44,25 @@ const Experience = () => {
         </motion.div>
 
         <div className="mt-12 relative">
-          {/* Timeline line */}
-          <div className="absolute left-4 top-2 bottom-2 w-px bg-border" />
+          {/* Glowing timeline line */}
+          <div className="absolute left-4 top-2 bottom-2 w-px bg-gradient-to-b from-primary/40 via-primary/20 to-transparent" />
 
-          <div className="space-y-10">
+          <div className="space-y-8">
             {experiences.map((exp, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, x: -20 }}
                 animate={isVisible ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.5, delay: i * 0.15 }}
-                className="relative pl-12"
+                transition={{ duration: 0.5, delay: i * 0.12 }}
+                className="relative pl-12 group"
               >
-                {/* Dot */}
-                <div className="absolute left-2.5 top-1.5 w-3 h-3 rounded-full bg-primary border-2 border-background" />
+                {/* Glowing dot */}
+                <div className="absolute left-2.5 top-1.5 w-3 h-3 rounded-full bg-primary shadow-[0_0_8px_hsl(250_85%_65%/0.4)] border-2 border-background" />
 
-                <div className="glass-card p-5">
+                <div className="glass-card glow-border p-5 group-hover:shadow-lg group-hover:shadow-primary/5 transition-shadow duration-300">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-1">
-                    <h3 className="font-semibold text-foreground font-sans">{exp.role}</h3>
-                    <span className="text-xs text-muted-foreground mt-1 sm:mt-0">{exp.duration}</span>
+                    <h3 className="font-semibold text-foreground font-display text-base">{exp.role}</h3>
+                    <span className="text-xs text-muted-foreground mt-1 sm:mt-0 font-mono">{exp.duration}</span>
                   </div>
                   <p className="text-sm text-primary font-medium mb-2">{exp.company}</p>
                   <p className="text-sm text-muted-foreground leading-relaxed">{exp.description}</p>
