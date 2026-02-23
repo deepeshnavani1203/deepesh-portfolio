@@ -1,4 +1,4 @@
-import Navbar from "@/components/Navbar";
+import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
@@ -7,26 +7,28 @@ import Education from "@/components/Education";
 import Projects from "@/components/Projects";
 import Awards from "@/components/Awards";
 import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
+import Community from "@/components/Community";
 import { useTheme } from "@/hooks/useTheme";
 
 const Index = () => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
 
   return (
-    <div className="min-h-screen bg-background text-foreground transition-colors duration-500 grid-bg">
-      <Navbar theme={theme} toggleTheme={toggleTheme} />
+    <div
+      className={`pt-16 bg-background text-foreground transition-colors duration-500 grid-bg`}
+    >
+      <Header />
       <main>
         <Hero />
         <About />
         <Skills />
-        <Projects />
         <Experience />
         <Education />
+        <Projects />
         <Awards />
+        <Community />
         <Contact />
       </main>
-      <Footer />
     </div>
   );
 };

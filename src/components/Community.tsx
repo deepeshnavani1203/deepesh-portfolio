@@ -4,8 +4,6 @@ import { Mic, Users } from "lucide-react";
 
 const activities = [
   { icon: Mic, title: "React Performance Workshop", desc: "Delivered a workshop on optimizing React apps at DevConf 2024." },
-  { icon: Users, title: "Open Source Maintainer", desc: "Core contributor to several popular open-source libraries with 500+ GitHub stars." },
-  { icon: Mic, title: "Tech Talk: Scaling Supabase", desc: "Spoke at a local meetup about real-time database patterns with Supabase." },
 ];
 
 const Community = () => {

@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
 @import url('https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=general-sans@300,400,500,600,700&display=swap');
 
 @layer base {
@@ -48,7 +48,7 @@
   }
 
   .dark {
-    --background: 0 0% 4%;
+    --background: 0 0% 0%;
     --foreground: 0 0% 93%;
 
     --card: 0 0% 7%;
@@ -98,19 +98,26 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'General Sans', 'Inter', sans-serif;
+    font-family: 'Outfit', 'Inter', 'General Sans', sans-serif;
   }
 
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     font-family: 'Clash Display', 'General Sans', sans-serif;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
+
+    *,
+    *::before,
+    *::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
+
     html {
       scroll-behavior: auto;
     }
@@ -119,15 +126,15 @@
 
 @layer utilities {
   .section-padding {
-    @apply px-6 py-24 md:px-12 lg:px-24 xl:px-32;
+    @apply px-6 py-14 md:py-16 md:px-12 lg:px-24 xl:px-32;
   }
 
   .section-title {
-    @apply text-3xl md:text-4xl font-semibold mb-4;
+    @apply text-3xl md:text-4xl font-semibold mb-2;
   }
 
   .section-subtitle {
-    @apply text-muted-foreground text-lg max-w-2xl;
+    @apply text-muted-foreground text-sm max-w-2xl;
   }
 
   .glass-card {
@@ -158,7 +165,7 @@
   }
 
   .grid-bg {
-    background-image: 
+    background-image:
       radial-gradient(ellipse 80% 60% at 50% 0%, hsl(270 80% 60% / 0.06), transparent),
       linear-gradient(hsl(var(--border) / 0.3) 1px, transparent 1px),
       linear-gradient(90deg, hsl(var(--border) / 0.3) 1px, transparent 1px);
@@ -174,11 +181,9 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(
-      400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-      hsl(270 80% 60% / 0.06),
-      transparent 60%
-    );
+    background: radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        hsl(270 80% 60% / 0.06),
+        transparent 60%);
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.3s ease-out;

@@ -1,63 +1,67 @@
 import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import {
-  Code2, FileCode, Braces, Database, Brain, Cloud,
-  Palette, Server, Globe, Terminal, Cpu, Layers,
-  GitBranch, Container, Flame, Zap, Box,
-  LayoutGrid, Cable, Workflow, Hash, Binary
-} from "lucide-react";
+import { 
+  SiReact, SiNextdotjs, SiNodedotjs, SiExpress, SiPython, 
+  SiMongodb, SiPostgresql, SiSupabase, SiMysql, SiOracle, SiFirebase, 
+  SiGit, SiGithub, SiPostman, SiFigma, SiTailwindcss, SiHtml5, SiCss3,
+  SiAmazonwebservices, SiVercel, SiNetlify, SiHuggingface, SiOpencv
+} from "react-icons/si";
+import { Brain, Volume2, Cpu, Globe, Layout, Palette, Terminal, Binary, Box, FileEdit, Database, Layers, Smartphone, Eye, Send, MousePointer2 } from "lucide-react";
 
 const categories = [
   {
-    title: "Frontend",
+    title: "Frontend / Mobile",
     skills: [
-      { name: "React", icon: Layers },
-      { name: "Next.js", icon: Globe },
-      { name: "TypeScript", icon: FileCode },
-      { name: "Tailwind CSS", icon: Palette },
-      { name: "HTML5", icon: Code2 },
-      { name: "Redux", icon: Workflow },
+      { name: "React", icon: SiReact },
+      { name: "Next.js", icon: SiNextdotjs },
+      { name: "React Native", icon: SiReact },
+      { name: "HTML5", icon: SiHtml5 },
+      { name: "CSS3", icon: SiCss3 },
+      { name: "Tailwind CSS", icon: SiTailwindcss },
     ],
   },
   {
     title: "Backend",
     skills: [
-      { name: "Node.js", icon: Server },
-      { name: "Express", icon: Zap },
-      { name: "REST APIs", icon: Cable },
-      { name: "GraphQL", icon: Braces },
-      { name: "Python", icon: Terminal },
+      { name: "Node.js", icon: SiNodedotjs },
+      { name: "Express.js", icon: SiExpress },
+      { name: "REST APIs", icon: Terminal },
+      { name: "Python", icon: SiPython },
       { name: "Java", icon: Binary },
     ],
   },
   {
     title: "AI / ML",
     skills: [
-      { name: "TensorFlow", icon: Brain },
-      { name: "OpenAI API", icon: Cpu },
-      { name: "LangChain", icon: Flame },
-      { name: "NLP", icon: Brain },
+      { name: "Gemini API", icon: Brain },
+      { name: "Hugging Face", icon: SiHuggingface },
+      { name: "Edge tts", icon: Volume2 },
+      { name: "g-tts", icon: Volume2 },
+      { name: "Open CV", icon: SiOpencv },
     ],
   },
   {
     title: "Databases",
     skills: [
-      { name: "PostgreSQL", icon: Database },
-      { name: "MongoDB", icon: Database },
-      { name: "Redis", icon: Flame },
-      { name: "Supabase", icon: Box },
-      { name: "Firebase", icon: Flame },
+      { name: "PostgreSQL", icon: SiPostgresql },
+      { name: "MongoDB", icon: SiMongodb },
+      { name: "Supabase", icon: SiSupabase },
+      { name: "MySQL", icon: SiMysql },
+      { name: "Oracle DB", icon: SiOracle },
     ],
   },
   {
-    title: "Tools",
+    title: "Tools & Platforms",
     skills: [
-      { name: "Git", icon: GitBranch },
-      { name: "Docker", icon: Container },
-      { name: "AWS", icon: Cloud },
-      { name: "Vercel", icon: Globe },
-      { name: "CI/CD", icon: Workflow },
-      { name: "Microservices", icon: LayoutGrid },
+      { name: "Git", icon: SiGit },
+      { name: "GitHub", icon: SiGithub },
+      { name: "Postman", icon: SiPostman },
+      { name: "Figma", icon: SiFigma },
+      { name: "draw.io", icon: FileEdit },
+      { name: "AWS", icon: SiAmazonwebservices },
+      { name: "Vercel", icon: SiVercel },
+      { name: "Render", icon: Cpu },
+      { name: "Netlify", icon: SiNetlify },
     ],
   },
 ];
@@ -77,7 +81,7 @@ const Skills = () => {
           <p className="section-subtitle">Technologies I work with daily.</p>
         </motion.div>
 
-        <div className="mt-12 space-y-10">
+        <div className="mt-8 space-y-6">
           {categories.map((cat, ci) => (
             <motion.div
               key={cat.title}
@@ -85,8 +89,8 @@ const Skills = () => {
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: ci * 0.1 }}
             >
-              <h3 className="text-xs font-semibold uppercase tracking-widest text-primary mb-4">{cat.title}</h3>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+              <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/80 mb-3">{cat.title}</h3>
+              <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
                 {cat.skills.map((skill, i) => {
                   const Icon = skill.icon;
                   return (
@@ -95,10 +99,10 @@ const Skills = () => {
                       initial={{ opacity: 0, y: 15 }}
                       animate={isVisible ? { opacity: 1, y: 0 } : {}}
                       transition={{ duration: 0.3, delay: ci * 0.1 + i * 0.03 }}
-                      className="flex flex-col items-center gap-2.5 p-5 rounded-xl bg-card/60 backdrop-blur-md border border-border hover:border-primary/30 hover:shadow-[0_0_20px_hsl(270_80%_60%/0.15)] hover:scale-105 transition-all duration-300 cursor-default"
+                      className="flex flex-col items-center justify-center gap-2 p-3 rounded-lg bg-white/5 border border-white/10 hover:border-purple-500/30 hover:shadow-[0_0_20px_rgba(139,92,246,0.3)] hover:scale-105 transition-all duration-300 cursor-default group"
                     >
-                      <Icon size={22} className="text-muted-foreground" />
-                      <span className="text-xs font-medium text-foreground">{skill.name}</span>
+                      <Icon size={18} className="text-muted-foreground group-hover:text-primary transition-colors" />
+                      <span className="text-[10px] font-medium text-foreground tracking-tight">{skill.name}</span>
                     </motion.div>
                   );
                 })}

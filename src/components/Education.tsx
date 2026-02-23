@@ -4,14 +4,14 @@ import { GraduationCap } from "lucide-react";
 
 const education = [
   {
-    degree: "Bachelor of Engineering in Information Technology",
+    degree: "B.Tech in Computer Engineering",
     institution: "VES Institute of Technology",
-    duration: "2022 – 2026",
+    duration: "2024 - 2027",
   },
   {
-    degree: "Higher Secondary Certificate (HSC)",
-    institution: "XYZ Junior College",
-    duration: "2020 – 2022",
+    degree: "Diploma in Computer Engineering",
+    institution: "VES Polytechnic",
+    duration: "2021 - 2024",
   },
 ];
 
@@ -46,8 +46,12 @@ const Education = () => {
 
                 <div className="glass-card glow-border p-5 group-hover:shadow-lg group-hover:shadow-primary/5 transition-shadow duration-300">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-1">
-                    <h3 className="font-semibold text-foreground font-display text-base">{edu.degree}</h3>
-                    <span className="text-xs text-muted-foreground mt-1 sm:mt-0 font-mono">{edu.duration}</span>
+                    <h3 className="font-semibold text-foreground font-display text-base">
+                      {edu.degree}
+                    </h3>
+                    <span className="text-xs text-muted-foreground mt-1 sm:mt-0 font-mono">
+                      {edu.duration}
+                    </span>
                   </div>
                   <p className="text-sm text-primary font-medium flex items-center gap-1.5">
                     <GraduationCap size={14} />

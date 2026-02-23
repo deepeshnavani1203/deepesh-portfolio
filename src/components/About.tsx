@@ -13,7 +13,7 @@ const About = () => {
   const { onMouseMove } = useSpotlight();
 
   return (
-    <section id="about" className="section-padding pt-10">
+    <section id="about" className="section-padding">
       <div className="max-w-3xl mx-auto" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -30,29 +30,6 @@ const About = () => {
           </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-          className="mt-12"
-        >
-          <h3 className="text-xs font-semibold uppercase tracking-widest text-primary mb-6">Principles I Build By</h3>
-          <div className="grid sm:grid-cols-3 gap-5">
-            {values.map((v, i) => (
-              <motion.div
-                key={v.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isVisible ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.4, delay: 0.3 + i * 0.1 }}
-                onMouseMove={onMouseMove}
-                className="spotlight-card glass-card glow-border p-5"
-              >
-                <h4 className="font-semibold text-foreground mb-2 text-sm">{v.title}</h4>
-                <p className="text-muted-foreground text-sm leading-relaxed">{v.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   );
