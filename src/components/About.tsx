@@ -36,7 +36,7 @@ const About = () => {
           transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           className="mt-12"
         >
-          <h3 className="text-xs font-semibold uppercase tracking-widest text-primary mb-6">What Drives Me</h3>
+          <h3 className="text-xs font-semibold uppercase tracking-widest text-primary mb-6">Principles I Build By</h3>
           <div className="grid sm:grid-cols-3 gap-5">
             {values.map((v, i) => (
               <motion.div

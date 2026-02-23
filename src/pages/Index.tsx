@@ -17,11 +17,11 @@ const Index = () => {
       <Navbar theme={theme} toggleTheme={toggleTheme} />
       <main>
         <Hero />
+        <About />
         <Projects />
         <Skills />
         <Experience />
         <Awards />
-        <About />
         <Contact />
       </main>
       <Footer />

@@ -1,7 +1,27 @@
 import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useSpotlight } from "@/hooks/useSpotlight";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, Layers, Server, Database, Cloud, Brain, Globe, Zap, Flame, Box, Terminal } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+
+const techIconMap: Record<string, LucideIcon> = {
+  React: Layers,
+  "Node.js": Server,
+  PostgreSQL: Database,
+  WebSocket: Zap,
+  AWS: Cloud,
+  "Next.js": Globe,
+  Supabase: Box,
+  Tailwind: Layers,
+  OpenAI: Brain,
+  Python: Terminal,
+  TensorFlow: Brain,
+  MongoDB: Database,
+  TypeScript: Layers,
+  Express: Server,
+  Redis: Flame,
+  Docker: Box,
+};
 
 const projects = [
   {
@@ -56,7 +76,7 @@ const ProjectCard = ({ proj, i, isVisible }: { proj: typeof projects[0]; i: numb
       animate={isVisible ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: i * 0.1 }}
       onMouseMove={onMouseMove}
-      className={`spotlight-card glass-card glow-border p-6 flex flex-col group ${
+      className={`spotlight-card glass-card glow-border p-6 flex flex-col group hover:shadow-[0_0_30px_hsl(270_80%_60%/0.08)] transition-shadow duration-300 ${
         proj.featured ? "md:col-span-2 md:row-span-2" : ""
       }`}
     >
@@ -69,23 +89,27 @@ const ProjectCard = ({ proj, i, isVisible }: { proj: typeof projects[0]; i: numb
         <p><span className="font-medium text-foreground">Result:</span> <span className="text-muted-foreground">{proj.result}</span></p>
       </div>
 
-      <div className="flex flex-wrap gap-1.5 mb-5">
-        {proj.tech.map((t) => (
-          <span key={t} className="px-2.5 py-1 text-xs rounded-lg bg-secondary/80 text-muted-foreground">{t}</span>
-        ))}
+      <div className="flex flex-wrap gap-2 mb-5">
+        {proj.tech.map((t) => {
+          const Icon = techIconMap[t] || Layers;
+          return (
+            <motion.span
+              key={t}
+              className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs rounded-lg bg-secondary/80 text-muted-foreground group-hover:text-foreground transition-colors"
+              whileHover={{ y: -2 }}
+            >
+              <Icon size={12} />
+              {t}
+            </motion.span>
+          );
+        })}
       </div>
 
-      <div className="flex items-center gap-4 opacity-80 group-hover:opacity-100 transition-opacity">
-        <a
-          href={proj.live}
-          className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline"
-        >
+      <div className="flex items-center gap-4 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+        <a href={proj.live} className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline">
           <ExternalLink size={14} /> Live Demo
         </a>
-        <a
-          href={proj.github}
-          className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
-        >
+        <a href={proj.github} className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors">
           <Github size={14} /> GitHub
         </a>
       </div>

@@ -57,7 +57,7 @@ const Experience = () => {
                 className="relative pl-12 group"
               >
                 {/* Glowing dot */}
-                <div className="absolute left-2.5 top-1.5 w-3 h-3 rounded-full bg-primary shadow-[0_0_8px_hsl(250_85%_65%/0.4)] border-2 border-background" />
+                <div className="absolute left-2.5 top-1.5 w-3 h-3 rounded-full bg-primary shadow-[0_0_8px_hsl(270_80%_60%/0.4)] border-2 border-background" />
 
                 <div className="glass-card glow-border p-5 group-hover:shadow-lg group-hover:shadow-primary/5 transition-shadow duration-300">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-1">
