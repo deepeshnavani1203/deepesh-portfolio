@@ -5,22 +5,10 @@ import { ExternalLink, Github, Layers, Server, Database, Cloud, Brain, Globe, Za
 import type { LucideIcon } from "lucide-react";
 
 const techIconMap: Record<string, LucideIcon> = {
-  React: Layers,
-  "Node.js": Server,
-  PostgreSQL: Database,
-  WebSocket: Zap,
-  AWS: Cloud,
-  "Next.js": Globe,
-  Supabase: Box,
-  Tailwind: Layers,
-  OpenAI: Brain,
-  Python: Terminal,
-  TensorFlow: Brain,
-  MongoDB: Database,
-  TypeScript: Layers,
-  Express: Server,
-  Redis: Flame,
-  Docker: Box,
+  React: Layers, "Node.js": Server, PostgreSQL: Database, WebSocket: Zap,
+  AWS: Cloud, "Next.js": Globe, Supabase: Box, Tailwind: Layers,
+  OpenAI: Brain, Python: Terminal, TensorFlow: Brain, MongoDB: Database,
+  TypeScript: Layers, Express: Server, Redis: Flame, Docker: Box,
 };
 
 const projects = [
@@ -33,7 +21,6 @@ const projects = [
     tech: ["React", "Node.js", "PostgreSQL", "WebSocket", "AWS"],
     live: "#",
     github: "#",
-    featured: true,
   },
   {
     name: "DevConnect",
@@ -76,9 +63,7 @@ const ProjectCard = ({ proj, i, isVisible }: { proj: typeof projects[0]; i: numb
       animate={isVisible ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: i * 0.1 }}
       onMouseMove={onMouseMove}
-      className={`spotlight-card glass-card glow-border p-6 flex flex-col group hover:shadow-[0_0_30px_hsl(270_80%_60%/0.08)] transition-shadow duration-300 ${
-        proj.featured ? "md:col-span-2 md:row-span-2" : ""
-      }`}
+      className="spotlight-card glass-card glow-border p-6 flex flex-col group hover:shadow-[0_0_30px_hsl(270_80%_60%/0.08)] transition-shadow duration-300"
     >
       <h3 className="text-lg font-semibold text-foreground font-display mb-1">{proj.name}</h3>
       <p className="text-sm text-muted-foreground mb-4">{proj.description}</p>
@@ -132,7 +117,7 @@ const Projects = () => {
           <p className="section-subtitle">A selection of things I've built.</p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6 mt-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
           {projects.map((proj, i) => (
             <ProjectCard key={proj.name} proj={proj} i={i} isVisible={isVisible} />
           ))}

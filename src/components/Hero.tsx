@@ -2,14 +2,12 @@ import { Github, Linkedin, ArrowRight } from "lucide-react";
 import { useTypewriter } from "@/hooks/useTypewriter";
 import { motion } from "framer-motion";
 import profileImg from "@/assets/profile.jpg";
-import { useSpotlight } from "@/hooks/useSpotlight";
 
 const Hero = () => {
   const { displayed, done } = useTypewriter("Hi, I'm Deepesh", 90, 300);
-  const { onMouseMove } = useSpotlight();
 
   return (
-    <section className="min-h-screen flex items-center section-padding pt-28 relative overflow-hidden">
+    <section className="min-h-[80vh] flex items-center section-padding pt-24 relative overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-6xl mx-auto w-full grid lg:grid-cols-2 gap-12 lg:gap-16 items-center relative z-10">
@@ -65,30 +63,23 @@ const Hero = () => {
           </motion.div>
         </div>
 
-        {/* Right — floating card with image + about preview */}
+        {/* Right — profile image with glow */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 0.8, ease: "easeOut" }}
-          className="flex justify-center lg:justify-end"
+          className="flex flex-col items-center lg:items-end"
         >
-          <div
-            onMouseMove={onMouseMove}
-            className="spotlight-card glass-card glow-border p-8 w-full max-w-sm"
-          >
-            <div className="flex flex-col items-center text-center">
-              <div className="w-28 h-28 rounded-2xl overflow-hidden border-2 border-primary/20 shadow-lg shadow-primary/10 mb-6">
-                <img
-                  src={profileImg}
-                  alt="Deepesh - Full Stack Developer"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Passionate about building clean, performant, and user-centric digital products at the intersection of design and engineering.
-              </p>
-            </div>
+          <div className="w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden shadow-[0_0_40px_rgba(139,92,246,0.3)] ring-2 ring-primary/20">
+            <img
+              src={profileImg}
+              alt="Deepesh - Full Stack Developer"
+              className="w-full h-full object-cover"
+            />
           </div>
+          <p className="mt-6 text-sm text-muted-foreground leading-relaxed max-w-xs text-center lg:text-right">
+            Passionate about building clean, performant, and user-centric digital products at the intersection of design and engineering.
+          </p>
         </motion.div>
       </div>
     </section>
