@@ -10,10 +10,10 @@ interface NavbarProps {
 
 const navLinks = [
   { label: "About", href: "#about" },
-  { label: "Projects", href: "#projects" },
   { label: "Skills", href: "#skills" },
+  { label: "Projects", href: "#projects" },
   { label: "Experience", href: "#experience" },
-  { label: "Awards", href: "#awards" },
+  { label: "Education", href: "#education" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -43,77 +43,57 @@ const Navbar = ({ theme, toggleTheme }: NavbarProps) => {
 
   return (
     <motion.nav
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : -100 }}
-      transition={{ duration: 0.35, ease: "easeInOut" }}
-      className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-3xl"
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : -60 }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? "bg-background/60 backdrop-blur-sm" : "bg-transparent"
+      }`}
     >
-      <div
-        className={`rounded-full transition-all duration-500 ${
-          scrolled ? "shadow-lg shadow-primary/5" : ""
-        }`}
-        style={{
-          background: scrolled
-            ? theme === "dark"
-              ? "rgba(10, 10, 10, 0.8)"
-              : "rgba(255, 255, 255, 0.6)"
-            : theme === "dark"
-              ? "rgba(10, 10, 10, 0.5)"
-              : "rgba(255, 255, 255, 0.3)",
-          backdropFilter: "blur(20px)",
-          WebkitBackdropFilter: "blur(20px)",
-          border: theme === "dark"
-            ? "1px solid rgba(255, 255, 255, 0.08)"
-            : "1px solid rgba(0, 0, 0, 0.06)",
-        }}
-      >
-        <div className="flex items-center justify-between px-6 py-3">
-          <a href="#" className="text-lg font-bold text-foreground font-display">
-            D<span className="text-primary">.</span>
-          </a>
+      <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+        <a href="#" className="text-lg font-bold text-foreground font-display">
+          Deepesh
+        </a>
 
-          <div className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => {
-              const isActive = active === link.href.slice(1);
-              return (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className={`relative px-3 py-1.5 text-sm font-medium transition-colors duration-300 rounded-full ${
-                    isActive
-                      ? "text-primary"
-                      : "text-muted-foreground hover:text-foreground"
+        <div className="hidden md:flex items-center gap-6">
+          {navLinks.map((link) => {
+            const isActive = active === link.href.slice(1);
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                className={`relative text-sm font-medium transition-colors duration-300 ${
+                  isActive
+                    ? "text-primary"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {link.label}
+                <span
+                  className={`absolute -bottom-1 left-0 h-px bg-primary transition-all duration-300 ${
+                    isActive ? "w-full" : "w-0"
                   }`}
-                >
-                  {isActive && (
-                    <motion.span
-                      layoutId="nav-active"
-                      className="absolute inset-0 bg-primary/10 rounded-full"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                    />
-                  )}
-                  <span className="relative z-10">{link.label}</span>
-                </a>
-              );
-            })}
-          </div>
+                />
+              </a>
+            );
+          })}
+        </div>
 
-          <div className="flex items-center gap-2">
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-full text-muted-foreground hover:text-foreground hover:bg-secondary/60 transition-colors duration-300"
-              aria-label="Toggle theme"
-            >
-              {theme === "light" ? <Moon size={16} /> : <Sun size={16} />}
-            </button>
-            <button
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden p-2 text-foreground"
-              aria-label="Toggle menu"
-            >
-              {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
-          </div>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-full text-muted-foreground hover:text-foreground transition-colors duration-300"
+            aria-label="Toggle theme"
+          >
+            {theme === "light" ? <Moon size={16} /> : <Sun size={16} />}
+          </button>
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="md:hidden p-2 text-foreground"
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
         </div>
       </div>
 
@@ -124,12 +104,12 @@ const Navbar = ({ theme, toggleTheme }: NavbarProps) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden mt-2 rounded-2xl p-4 space-y-1 border border-border"
+            className="md:hidden px-6 pb-4 space-y-1"
             style={{
               background: theme === "dark"
-              ? "rgba(10, 10, 10, 0.9)"
-              : "rgba(255, 255, 255, 0.85)",
-              backdropFilter: "blur(20px)",
+                ? "rgba(10, 10, 10, 0.95)"
+                : "rgba(255, 255, 255, 0.95)",
+              backdropFilter: "blur(12px)",
             }}
           >
             {navLinks.map((link) => (

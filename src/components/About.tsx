@@ -13,7 +13,7 @@ const About = () => {
   const { onMouseMove } = useSpotlight();
 
   return (
-    <section id="about" className="section-padding">
+    <section id="about" className="section-padding pt-10">
       <div className="max-w-3xl mx-auto" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
