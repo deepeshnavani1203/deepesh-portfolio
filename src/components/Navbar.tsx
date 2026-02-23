@@ -9,11 +9,11 @@ interface NavbarProps {
 }
 
 const navLinks = [
+  { label: "About", href: "#about" },
   { label: "Projects", href: "#projects" },
   { label: "Skills", href: "#skills" },
   { label: "Experience", href: "#experience" },
   { label: "Awards", href: "#awards" },
-  { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -55,10 +55,10 @@ const Navbar = ({ theme, toggleTheme }: NavbarProps) => {
         style={{
           background: scrolled
             ? theme === "dark"
-              ? "rgba(18, 20, 30, 0.7)"
+              ? "rgba(10, 10, 10, 0.8)"
               : "rgba(255, 255, 255, 0.6)"
             : theme === "dark"
-              ? "rgba(18, 20, 30, 0.4)"
+              ? "rgba(10, 10, 10, 0.5)"
               : "rgba(255, 255, 255, 0.3)",
           backdropFilter: "blur(20px)",
           WebkitBackdropFilter: "blur(20px)",
@@ -127,8 +127,8 @@ const Navbar = ({ theme, toggleTheme }: NavbarProps) => {
             className="md:hidden mt-2 rounded-2xl p-4 space-y-1 border border-border"
             style={{
               background: theme === "dark"
-                ? "rgba(18, 20, 30, 0.85)"
-                : "rgba(255, 255, 255, 0.85)",
+              ? "rgba(10, 10, 10, 0.9)"
+              : "rgba(255, 255, 255, 0.85)",
               backdropFilter: "blur(20px)",
             }}
           >

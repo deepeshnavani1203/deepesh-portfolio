@@ -1,64 +1,44 @@
 import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { useSpotlight } from "@/hooks/useSpotlight";
+import {
+  Code2, FileCode, Braces, Database, Brain, Cloud,
+  Palette, Server, Globe, Terminal, Cpu, Layers,
+  GitBranch, Container, Figma, Flame, Zap, Box,
+  LayoutGrid, Cable, Workflow, MonitorSmartphone, Hash, Binary
+} from "lucide-react";
 
-const skillCategories = [
-  {
-    title: "Frontend",
-    skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "HTML5", "Redux"],
-  },
-  {
-    title: "Backend",
-    skills: ["Node.js", "Express", "REST APIs", "GraphQL", "Microservices"],
-  },
-  {
-    title: "AI / ML",
-    skills: ["TensorFlow", "OpenAI API", "LangChain", "NLP", "Data Pipelines"],
-  },
-  {
-    title: "Databases",
-    skills: ["PostgreSQL", "MongoDB", "Redis", "Supabase", "Firebase"],
-  },
-  {
-    title: "Languages",
-    skills: ["JavaScript", "TypeScript", "Python", "Java", "C++"],
-  },
-  {
-    title: "Tools",
-    skills: ["Git", "Docker", "AWS", "Vercel", "CI/CD", "Figma"],
-  },
+const skills = [
+  { name: "React", icon: Layers },
+  { name: "Next.js", icon: Globe },
+  { name: "TypeScript", icon: FileCode },
+  { name: "Tailwind CSS", icon: Palette },
+  { name: "HTML5", icon: Code2 },
+  { name: "Redux", icon: Workflow },
+  { name: "Node.js", icon: Server },
+  { name: "Express", icon: Zap },
+  { name: "REST APIs", icon: Cable },
+  { name: "GraphQL", icon: Braces },
+  { name: "TensorFlow", icon: Brain },
+  { name: "OpenAI API", icon: Cpu },
+  { name: "LangChain", icon: Flame },
+  { name: "PostgreSQL", icon: Database },
+  { name: "MongoDB", icon: Database },
+  { name: "Redis", icon: Flame },
+  { name: "Supabase", icon: Box },
+  { name: "Firebase", icon: Flame },
+  { name: "JavaScript", icon: Hash },
+  { name: "Python", icon: Terminal },
+  { name: "Java", icon: Binary },
+  { name: "C++", icon: Binary },
+  { name: "Git", icon: GitBranch },
+  { name: "Docker", icon: Container },
+  { name: "AWS", icon: Cloud },
+  { name: "Vercel", icon: Globe },
+  { name: "CI/CD", icon: Workflow },
+  { name: "Figma", icon: MonitorSmartphone },
+  { name: "Microservices", icon: LayoutGrid },
+  { name: "NLP", icon: Brain },
 ];
-
-const SkillCard = ({ cat, i, isVisible }: { cat: typeof skillCategories[0]; i: number; isVisible: boolean }) => {
-  const { onMouseMove } = useSpotlight();
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 25 }}
-      animate={isVisible ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay: i * 0.08 }}
-      onMouseMove={onMouseMove}
-      className="spotlight-card glass-card glow-border p-6 group"
-    >
-      <h3 className="text-xs font-semibold uppercase tracking-widest text-primary mb-4">
-        {cat.title}
-      </h3>
-      <div className="flex flex-wrap gap-2">
-        {cat.skills.map((skill, si) => (
-          <motion.span
-            key={skill}
-            initial={{ opacity: 0, y: 6 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.3, delay: i * 0.08 + si * 0.04 }}
-            className="px-3 py-1.5 text-xs rounded-lg bg-secondary/60 text-muted-foreground font-medium group-hover:text-foreground transition-colors duration-300"
-          >
-            {skill}
-          </motion.span>
-        ))}
-      </div>
-    </motion.div>
-  );
-};
 
 const Skills = () => {
   const { ref, isVisible } = useScrollReveal();
@@ -75,10 +55,22 @@ const Skills = () => {
           <p className="section-subtitle">Technologies I work with daily.</p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-          {skillCategories.map((cat, i) => (
-            <SkillCard key={cat.title} cat={cat} i={i} isVisible={isVisible} />
-          ))}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mt-12">
+          {skills.map((skill, i) => {
+            const Icon = skill.icon;
+            return (
+              <motion.div
+                key={skill.name}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isVisible ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.4, delay: i * 0.03 }}
+                className="flex flex-col items-center gap-2.5 p-5 rounded-xl bg-card/60 backdrop-blur-md border border-border hover:border-primary/30 hover:shadow-[0_0_20px_hsl(270_80%_60%/0.15)] hover:scale-105 transition-all duration-300 cursor-default"
+              >
+                <Icon size={22} className="text-muted-foreground" />
+                <span className="text-xs font-medium text-foreground">{skill.name}</span>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
