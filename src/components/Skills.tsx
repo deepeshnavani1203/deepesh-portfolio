@@ -89,8 +89,8 @@ const categories = [
     skills: [
       { name: "Gemini API", icon: Brain },
       { name: "Hugging Face", icon: SiHuggingface },
-      { name: "Edge tts", icon: Volume2 },
-      { name: "g-tts", icon: Volume2 },
+      { name: "edgeTTS", icon: Volume2 },
+      { name: "gTTS", icon: Volume2 },
     ],
   },
   {
