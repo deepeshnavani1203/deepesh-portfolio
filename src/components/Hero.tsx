@@ -14,11 +14,11 @@ const Hero = () => {
         {/* Profile Image */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1.5 }}
+          animate={{ opacity: 1, scale: 1.2 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="mb-14"
         >
-          <div className="w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden shadow-[0_0_50px_rgba(139,92,246,0.35)] ring-2 ring-primary/20">
+          <div className="w-32 h-32 md:w-36 md:h-36 rounded-full overflow-hidden shadow-[0_0_50px_rgba(139,92,246,0.3)] ring-2 ring-primary/20">
             <img
               src={profileImg}
               alt="Deepesh - Full Stack Developer"

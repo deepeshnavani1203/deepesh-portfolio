@@ -3,7 +3,7 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Mic, Users } from "lucide-react";
 
 const activities = [
-  { icon: Mic, title: "React Performance Workshop", desc: "Delivered a workshop on optimizing React apps at DevConf 2024." },
+  { icon: Mic, title: "4-Day Workshop on React & Next.js at VES Polytechnic", desc: "Conducted a 4-day hands-on workshop on React and Next.js, covering modern frontend development and scalable web application design." },
 ];
 
 const Community = () => {

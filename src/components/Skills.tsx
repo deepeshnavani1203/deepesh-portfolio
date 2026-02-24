@@ -32,6 +32,7 @@ import {
   SiC,
   SiCplusplus,
   SiJavascript,
+  SiCloudinary,
 } from "react-icons/si";
 import {
   Brain,
@@ -116,6 +117,7 @@ const categories = [
       { name: "Render", icon: Cpu },
       { name: "Android Studio", icon: SiAndroid },
       { name: "Google Colab", icon: SiGooglecolab },
+      { name: "Cloudinary", icon: SiCloudinary },
     ],
   },
 ];

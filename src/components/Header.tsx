@@ -22,46 +22,44 @@ const Header = () => {
   }, []);
 
   const navIcons = [
-    { 
-      icon: FileText, 
-      label: "Download Resume", 
-      href: "/resume.pdf", 
-      download: "Deepesh_Navani_Resume.pdf",
-      glow: "hover:shadow-[0_0_15px_rgba(59,130,246,0.5)]" 
+    {
+      icon: FileText,
+      label: "View Resume",
+      href: "/docs/Deepesh_Resume.pdf",
+      glow: "hover:shadow-[0_0_15px_rgba(59,130,246,0.5)]"
     },
-    { 
-      icon: Github, 
-      label: "GitHub", 
-      href: "https://github.com/deepeshnavani1203", 
-      glow: "hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]" 
+    {
+      icon: Github,
+      label: "GitHub",
+      href: "https://github.com/deepeshnavani1203",
+      glow: "hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]"
     },
-    { 
-      icon: Mail, 
-      label: "Gmail", 
+    {
+      icon: Mail,
+      label: "Gmail",
       href: "mailto:deepeshnavani@gmail.com",
-      glow: "hover:shadow-[0_0_15px_rgba(239,68,68,0.4)]" 
+      glow: "hover:shadow-[0_0_15px_rgba(239,68,68,0.4)]"
     },
-    { 
-      icon: Code2, 
-      label: "LeetCode", 
-      href: "https://leetcode.com/u/deepeshnavani123", 
-      glow: "hover:shadow-[0_0_15px_rgba(245,158,11,0.4)]" 
+    {
+      icon: Code2,
+      label: "LeetCode",
+      href: "https://leetcode.com/u/deepeshnavani123",
+      glow: "hover:shadow-[0_0_15px_rgba(245,158,11,0.4)]"
     },
-    { 
-      icon: Linkedin, 
-      label: "LinkedIn", 
-      href: "https://linkedin.com/in/deepeshnavani1203", 
-      glow: "hover:shadow-[0_0_15px_rgba(14,165,233,0.4)]" 
+    {
+      icon: Linkedin,
+      label: "LinkedIn",
+      href: "https://linkedin.com/in/deepeshnavani1203",
+      glow: "hover:shadow-[0_0_15px_rgba(14,165,233,0.4)]"
     },
   ];
 
   return (
     <header
-      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-transparent backdrop-blur-md border border-white/10 shadow-lg px-4 py-2 rounded-full" // bg-black/50
-          : "bg-transparent scale-105"
-      }`}
+      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 ${isScrolled
+        ? "bg-transparent backdrop-blur-md border border-white/10 shadow-lg px-4 py-2 rounded-full" // bg-black/50
+        : "bg-transparent scale-105"
+        }`}
     >
       <div className="flex justify-center items-center gap-2">
         <TooltipProvider delayDuration={0}>
@@ -71,9 +69,8 @@ const Header = () => {
                 <TooltipTrigger asChild>
                   <a
                     href={item.href}
-                    target={item.href.startsWith("http") ? "_blank" : undefined}
-                    rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                    download={item.download}
+                    target={item.href.startsWith("http") || item.href.endsWith(".pdf") ? "_blank" : undefined}
+                    rel={(item.href.startsWith("http") || item.href.endsWith(".pdf")) ? "noopener noreferrer" : undefined}
                     className={`p-2 rounded-full text-muted-foreground hover:text-white hover:scale-125 transition-all duration-200 ${item.glow}`}
                   >
                     <item.icon size={18} />

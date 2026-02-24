@@ -10,7 +10,7 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.name.trim() || !form.email.trim(  ) || !form.message.trim()) {
+    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
       toast.error("Please fill in all fields.");
       return;
     }
@@ -35,7 +35,7 @@ const Contact = () => {
         >
           <h2 className="section-title">Get In Touch</h2>
           <p className="section-subtitle">
-            Have a project in mind? Let's talk.
+            Want to connect? Let's talk.
           </p>
         </motion.div>
 
@@ -43,9 +43,16 @@ const Contact = () => {
           initial={{ opacity: 0, y: 25 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.2 }}
+          action="https://formsubmit.co/deepeshnavani@gmail.com"
+          method="POST"
           onSubmit={handleSubmit}
           className="mt-10 space-y-5"
         >
+          {/* FormSubmit configuration */}
+          <input type="hidden" name="_subject" value="New Portfolio Message!" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
+
           <div>
             <label
               htmlFor="name"
@@ -55,12 +62,14 @@ const Contact = () => {
             </label>
             <input
               id="name"
+              name="name"
               type="text"
               maxLength={100}
+              required
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
-              className="w-full px-4 py-3 rounded-xl bg-secondary/40 border border-border text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/30 transition-all"
-              placeholder="Your name"
+              className="w-full px-4 py-3 rounded-xl bg-secondary/40 border border-border text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/30 transition-all font-sans"
+              placeholder="E.g. Deepesh Navani"
             />
           </div>
           <div>
@@ -72,11 +81,13 @@ const Contact = () => {
             </label>
             <input
               id="email"
+              name="email"
               type="email"
               maxLength={255}
+              required
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
-              className="w-full px-4 py-3 rounded-xl bg-secondary/40 border border-border text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/30 transition-all"
+              className="w-full px-4 py-3 rounded-xl bg-secondary/40 border border-border text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/30 transition-all font-sans"
               placeholder="you@example.com"
             />
           </div>
@@ -89,12 +100,14 @@ const Contact = () => {
             </label>
             <textarea
               id="message"
+              name="message"
               rows={5}
               maxLength={1000}
+              required
               value={form.message}
               onChange={(e) => setForm({ ...form, message: e.target.value })}
-              className="w-full px-4 py-3 rounded-xl bg-secondary/40 border border-border text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/30 transition-all resize-none"
-              placeholder="Tell me about your project..."
+              className="w-full px-4 py-3 rounded-xl bg-secondary/40 border border-border text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/30 transition-all resize-none font-sans"
+              placeholder="How can I help you? Feel free to share your ideas or queries..."
             />
           </div>
           <button

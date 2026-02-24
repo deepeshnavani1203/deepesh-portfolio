@@ -8,6 +8,7 @@ import Projects from "@/components/Projects";
 import Awards from "@/components/Awards";
 import Contact from "@/components/Contact";
 import Community from "@/components/Community";
+import Publication from "@/components/Publication";
 import { useTheme } from "@/hooks/useTheme";
 
 const Index = () => {
@@ -27,6 +28,7 @@ const Index = () => {
         <Projects />
         <Awards />
         <Community />
+        <Publication />
         <Contact />
       </main>
     </div>
