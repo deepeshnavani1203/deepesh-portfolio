@@ -3,13 +3,6 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const experiences = [
   {
-    role: "Full Stack Developer",
-    company: "AIBI, Airoli",
-    duration: "2024 - 2025",
-    description: "Worked on the development of mobile and web-based applications by implementing scalable frontend interfaces and backend services. Contributed to building React Native-based mobile solutions and supported web platform development by integrating APIs and optimizing application performance across user workflows.",
-    tech: ["React Native", "React", "Supabase", "Express JS", "Cloudinary"]
-  },
-  {
     role: "Web Developer",
     company: "Odyssey",
     duration: "2024 - Present",
@@ -18,8 +11,15 @@ const experiences = [
   },
   {
     role: "Full Stack Developer",
+    company: "AIBI, Airoli",
+    duration: "June 2024- September 2025",
+    description: "Worked on the development of mobile and web-based applications by implementing scalable frontend interfaces and backend services. Contributed to building React Native-based mobile solutions and supported web platform development by integrating APIs and optimizing application performance across user workflows.",
+    tech: ["React Native", "React", "Supabase", "Express JS", "Cloudinary"]
+  },
+  {
+    role: "Full Stack Developer",
     company: "Sinjan Solutions Private Ltd., Vikhroli",
-    duration: "2023 - 2024",
+    duration: "December 2023 -May 2024",
     description: "Developed and maintained a mobile-based attendance management system for internal organizational use. Implemented authentication, real-time attendance tracking, and user communication features while ensuring smooth application performance.",
     tech: ["React Native", "Firebase"]
   },
