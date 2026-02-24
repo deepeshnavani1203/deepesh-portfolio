@@ -1,14 +1,69 @@
 import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { 
-  SiReact, SiNextdotjs, SiNodedotjs, SiExpress, SiPython, 
-  SiMongodb, SiPostgresql, SiSupabase, SiMysql, SiOracle, SiFirebase, 
-  SiGit, SiGithub, SiPostman, SiFigma, SiTailwindcss, SiHtml5, SiCss3,
-  SiAmazonwebservices, SiVercel, SiNetlify, SiHuggingface, SiOpencv
+import {
+  SiReact,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiExpress,
+  SiPython,
+  SiMongodb,
+  SiPostgresql,
+  SiSupabase,
+  SiMysql,
+  SiOracle,
+  SiFirebase,
+  SiGit,
+  SiGithub,
+  SiPostman,
+  SiFigma,
+  SiTailwindcss,
+  SiHtml5,
+  SiCss3,
+  SiAmazonwebservices,
+  SiVercel,
+  SiNetlify,
+  SiHuggingface,
+  SiOpencv,
+  SiFastapi,
+  SiVscodium,
+  SiAndroidstudio,
+  SiAndroid,
+  SiGooglecolab,
+  SiC,
+  SiCplusplus,
+  SiJavascript,
 } from "react-icons/si";
-import { Brain, Volume2, Cpu, Globe, Layout, Palette, Terminal, Binary, Box, FileEdit, Database, Layers, Smartphone, Eye, Send, MousePointer2 } from "lucide-react";
+import {
+  Brain,
+  Volume2,
+  Cpu,
+  Globe,
+  Layout,
+  Palette,
+  Terminal,
+  Binary,
+  Box,
+  FileEdit,
+  Database,
+  Layers,
+  Smartphone,
+  Eye,
+  Send,
+  MousePointer2,
+  Coffee,
+} from "lucide-react";
 
 const categories = [
+  {
+    title: "Programming Languages",
+    skills: [
+      { name: "C", icon: SiC },
+      { name: "C++", icon: SiCplusplus },
+      { name: "Python", icon: SiPython },
+      { name: "Java", icon: Coffee },
+      { name: "Java Script", icon: SiJavascript },
+    ],
+  },
   {
     title: "Frontend / Mobile",
     skills: [
@@ -26,8 +81,7 @@ const categories = [
       { name: "Node.js", icon: SiNodedotjs },
       { name: "Express.js", icon: SiExpress },
       { name: "REST APIs", icon: Terminal },
-      { name: "Python", icon: SiPython },
-      { name: "Java", icon: Binary },
+      { name: "Fastapi", icon: SiFastapi },
     ],
   },
   {
@@ -37,7 +91,6 @@ const categories = [
       { name: "Hugging Face", icon: SiHuggingface },
       { name: "Edge tts", icon: Volume2 },
       { name: "g-tts", icon: Volume2 },
-      { name: "Open CV", icon: SiOpencv },
     ],
   },
   {
@@ -61,7 +114,8 @@ const categories = [
       { name: "AWS", icon: SiAmazonwebservices },
       { name: "Vercel", icon: SiVercel },
       { name: "Render", icon: Cpu },
-      { name: "Netlify", icon: SiNetlify },
+      { name: "Android Studio", icon: SiAndroid },
+      { name: "Google Colab", icon: SiGooglecolab },
     ],
   },
 ];
@@ -89,7 +143,9 @@ const Skills = () => {
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: ci * 0.1 }}
             >
-              <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/80 mb-3">{cat.title}</h3>
+              <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/80 mb-3">
+                {cat.title}
+              </h3>
               <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
                 {cat.skills.map((skill, i) => {
                   const Icon = skill.icon;
@@ -101,8 +157,13 @@ const Skills = () => {
                       transition={{ duration: 0.3, delay: ci * 0.1 + i * 0.03 }}
                       className="flex flex-col items-center justify-center gap-2 p-3 rounded-lg bg-white/5 border border-white/10 hover:border-purple-500/30 hover:shadow-[0_0_20px_rgba(139,92,246,0.3)] hover:scale-105 transition-all duration-300 cursor-default group"
                     >
-                      <Icon size={18} className="text-muted-foreground group-hover:text-primary transition-colors" />
-                      <span className="text-[10px] font-medium text-foreground tracking-tight">{skill.name}</span>
+                      <Icon
+                        size={18}
+                        className="text-muted-foreground group-hover:text-primary transition-colors"
+                      />
+                      <span className="text-[10px] font-medium text-foreground tracking-tight">
+                        {skill.name}
+                      </span>
                     </motion.div>
                   );
                 })}

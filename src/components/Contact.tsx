@@ -10,7 +10,7 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
+    if (!form.name.trim() || !form.email.trim(  ) || !form.message.trim()) {
       toast.error("Please fill in all fields.");
       return;
     }
@@ -34,7 +34,9 @@ const Contact = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="section-title">Get In Touch</h2>
-          <p className="section-subtitle">Have a project in mind? Let's talk.</p>
+          <p className="section-subtitle">
+            Have a project in mind? Let's talk.
+          </p>
         </motion.div>
 
         <motion.form
@@ -45,7 +47,12 @@ const Contact = () => {
           className="mt-10 space-y-5"
         >
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-foreground mb-1.5">Name</label>
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium text-foreground mb-1.5"
+            >
+              Name
+            </label>
             <input
               id="name"
               type="text"
@@ -57,7 +64,12 @@ const Contact = () => {
             />
           </div>
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-foreground mb-1.5">Email</label>
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-foreground mb-1.5"
+            >
+              Email
+            </label>
             <input
               id="email"
               type="email"
@@ -69,7 +81,12 @@ const Contact = () => {
             />
           </div>
           <div>
-            <label htmlFor="message" className="block text-sm font-medium text-foreground mb-1.5">Message</label>
+            <label
+              htmlFor="message"
+              className="block text-sm font-medium text-foreground mb-1.5"
+            >
+              Message
+            </label>
             <textarea
               id="message"
               rows={5}

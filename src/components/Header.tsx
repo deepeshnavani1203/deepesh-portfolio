@@ -32,25 +32,25 @@ const Header = () => {
     { 
       icon: Github, 
       label: "GitHub", 
-      href: "https://github.com/deepesh", 
+      href: "https://github.com/deepeshnavani1203", 
       glow: "hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]" 
     },
     { 
       icon: Mail, 
       label: "Gmail", 
-      href: "mailto:deepesh@example.com", 
+      href: "mailto:deepeshnavani@gmail.com",
       glow: "hover:shadow-[0_0_15px_rgba(239,68,68,0.4)]" 
     },
     { 
       icon: Code2, 
       label: "LeetCode", 
-      href: "https://leetcode.com/deepesh", 
+      href: "https://leetcode.com/u/deepeshnavani123", 
       glow: "hover:shadow-[0_0_15px_rgba(245,158,11,0.4)]" 
     },
     { 
       icon: Linkedin, 
       label: "LinkedIn", 
-      href: "https://linkedin.com/in/deepesh", 
+      href: "https://linkedin.com/in/deepeshnavani1203", 
       glow: "hover:shadow-[0_0_15px_rgba(14,165,233,0.4)]" 
     },
   ];

@@ -1,22 +1,49 @@
 import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useSpotlight } from "@/hooks/useSpotlight";
-import { ExternalLink, Github, Layers, Server, Database, Cloud, Brain, Globe, Zap, Flame, Box, Terminal } from "lucide-react";
+import {
+  ExternalLink,
+  Github,
+  Layers,
+  Server,
+  Database,
+  Cloud,
+  Brain,
+  Globe,
+  Zap,
+  Flame,
+  Box,
+  Terminal,
+} from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 const techIconMap: Record<string, LucideIcon> = {
-  React: Layers, "Node.js": Server, PostgreSQL: Database, WebSocket: Zap,
-  AWS: Cloud, "Next.js": Globe, Supabase: Box, Tailwind: Layers,
-  OpenAI: Brain, Python: Terminal, TensorFlow: Brain, MongoDB: Database,
-  TypeScript: Layers, Express: Server, Redis: Flame, Docker: Box,
+  React: Layers,
+  "Node.js": Server,
+  PostgreSQL: Database,
+  WebSocket: Zap,
+  AWS: Cloud,
+  "Next.js": Globe,
+  Supabase: Box,
+  Tailwind: Layers,
+  OpenAI: Brain,
+  Python: Terminal,
+  TensorFlow: Brain,
+  MongoDB: Database,
+  TypeScript: Layers,
+  Express: Server,
+  Redis: Flame,
+  Docker: Box,
 };
 
 const projects = [
   {
     name: "CloudSync Dashboard",
-    description: "Real-time analytics dashboard for cloud infrastructure monitoring.",
+    description:
+      "Real-time analytics dashboard for cloud infrastructure monitoring.",
     problem: "Teams lacked visibility into multi-cloud resource usage.",
-    solution: "Built a unified dashboard with real-time data streaming and alerting.",
+    solution:
+      "Built a unified dashboard with real-time data streaming and alerting.",
     result: "Reduced incident response time by 35% across 200+ servers.",
     tech: ["React", "Node.js", "PostgreSQL", "WebSocket", "AWS"],
     live: "#",
@@ -36,7 +63,8 @@ const projects = [
     name: "FinTrack",
     description: "Personal finance tracker with AI-powered insights.",
     problem: "Existing finance apps lacked actionable insights.",
-    solution: "Integrated ML models to predict spending patterns and suggest savings.",
+    solution:
+      "Integrated ML models to predict spending patterns and suggest savings.",
     result: "Users saved an average of 15% more per month.",
     tech: ["React", "Python", "TensorFlow", "MongoDB"],
     live: "#",
@@ -46,7 +74,8 @@ const projects = [
     name: "EduFlow",
     description: "Learning management system for coding bootcamps.",
     problem: "Bootcamps needed a lightweight, customizable LMS.",
-    solution: "Built a modular LMS with live code execution and progress tracking.",
+    solution:
+      "Built a modular LMS with live code execution and progress tracking.",
     result: "Adopted by 5 bootcamps, serving 2000+ students.",
     tech: ["TypeScript", "Express", "Redis", "Docker"],
     live: "#",
@@ -54,7 +83,15 @@ const projects = [
   },
 ];
 
-const ProjectCard = ({ proj, i, isVisible }: { proj: typeof projects[0]; i: number; isVisible: boolean }) => {
+const ProjectCard = ({
+  proj,
+  i,
+  isVisible,
+}: {
+  proj: (typeof projects)[0];
+  i: number;
+  isVisible: boolean;
+}) => {
   const { onMouseMove } = useSpotlight();
 
   return (
@@ -65,13 +102,24 @@ const ProjectCard = ({ proj, i, isVisible }: { proj: typeof projects[0]; i: numb
       onMouseMove={onMouseMove}
       className="spotlight-card glass-card glow-border p-6 flex flex-col group hover:shadow-[0_0_30px_hsl(270_80%_60%/0.08)] transition-shadow duration-300"
     >
-      <h3 className="text-lg font-semibold text-foreground font-display mb-1">{proj.name}</h3>
+      <h3 className="text-lg font-semibold text-foreground font-display mb-1">
+        {proj.name}
+      </h3>
       <p className="text-sm text-muted-foreground mb-4">{proj.description}</p>
 
       <div className="space-y-2 text-sm mb-5 flex-1">
-        <p><span className="font-medium text-foreground">Problem:</span> <span className="text-muted-foreground">{proj.problem}</span></p>
-        <p><span className="font-medium text-foreground">Solution:</span> <span className="text-muted-foreground">{proj.solution}</span></p>
-        <p><span className="font-medium text-foreground">Result:</span> <span className="text-muted-foreground">{proj.result}</span></p>
+        <p>
+          <span className="font-medium text-foreground">Problem:</span>{" "}
+          <span className="text-muted-foreground">{proj.problem}</span>
+        </p>
+        <p>
+          <span className="font-medium text-foreground">Solution:</span>{" "}
+          <span className="text-muted-foreground">{proj.solution}</span>
+        </p>
+        <p>
+          <span className="font-medium text-foreground">Result:</span>{" "}
+          <span className="text-muted-foreground">{proj.result}</span>
+        </p>
       </div>
 
       <div className="flex flex-wrap gap-2 mb-5">
@@ -91,10 +139,16 @@ const ProjectCard = ({ proj, i, isVisible }: { proj: typeof projects[0]; i: numb
       </div>
 
       <div className="flex items-center gap-4 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
-        <a href={proj.live} className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline">
+        <a
+          href={proj.live}
+          className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline"
+        >
           <ExternalLink size={14} /> Live Demo
         </a>
-        <a href={proj.github} className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors">
+        <a
+          href={proj.github}
+          className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
+        >
           <Github size={14} /> GitHub
         </a>
       </div>
@@ -119,7 +173,12 @@ const Projects = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
           {projects.map((proj, i) => (
-            <ProjectCard key={proj.name} proj={proj} i={i} isVisible={isVisible} />
+            <ProjectCard
+              key={proj.name}
+              proj={proj}
+              i={i}
+              isVisible={isVisible}
+            />
           ))}
         </div>
       </div>

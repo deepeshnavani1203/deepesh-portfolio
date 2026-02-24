@@ -44,8 +44,8 @@ const Hero = () => {
               className="flex flex-col items-center"
             >
               <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-lg">
-                AI Engineer & Full Stack Developer crafting scalable,
-                high-quality products that last
+                Full Stack & Mobile Developer building intelligent, scalable
+                AI-powered products
               </p>
 
               {/* Buttons */}
@@ -65,37 +65,6 @@ const Hero = () => {
                   className="px-7 py-3.5 rounded-xl border border-divider text-foreground font-medium text-sm hover:bg-secondary/60 transition-colors duration-300 backdrop-blur-sm"
                 >
                   Contact Me
-                </a>
-              </div>
-
-              {/* Social Icons */}
-              <div className="mt-8 flex items-center justify-center gap-6">
-                <a
-                  href="https://github.com/deepesh"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:scale-110"
-                  aria-label="GitHub"
-                >
-                  <Github size={22} />
-                </a>
-                <a
-                  href="https://linkedin.com/in/deepesh"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:scale-110"
-                  aria-label="LinkedIn"
-                >
-                  <Linkedin size={22} />
-                </a>
-                <a
-                  href="https://leetcode.com/deepesh"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:scale-110"
-                  aria-label="LeetCode"
-                >
-                  <Code size={22} />
                 </a>
               </div>
             </motion.div>
