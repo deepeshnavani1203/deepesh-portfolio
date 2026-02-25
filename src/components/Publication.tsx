@@ -44,15 +44,6 @@ const Publication = () => {
                   href="https://ijrpr.com/uploads/V5ISSUE3/IJRPR23651.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/10 text-primary text-sm font-medium hover:bg-primary/20 transition-colors"
-                >
-                  <ExternalLink size={16} />
-                  View Paper
-                </a>
-                <a
-                  href="https://ijrpr.com/uploads/V5ISSUE3/IJRPR23651.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary text-foreground text-sm font-medium hover:bg-secondary/80 transition-colors border border-divider"
                 >
                   <Download size={16} />

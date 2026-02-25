@@ -155,9 +155,11 @@ const Skills = () => {
                     <motion.div
                       key={skill.name}
                       initial={{ opacity: 0, y: 15 }}
-                      animate={isVisible ? { opacity: 1, y: 0 } : {}}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
                       transition={{ duration: 0.3, delay: ci * 0.1 + i * 0.03 }}
-                      className="flex flex-col items-center justify-center gap-2 p-3 rounded-lg bg-white/5 border border-white/10 hover:border-purple-500/30 hover:shadow-[0_0_20px_rgba(139,92,246,0.3)] hover:scale-105 transition-all duration-300 cursor-default group"
+                      whileHover={{ scale: 1.05 }}
+                      className="flex flex-col items-center justify-center gap-2 p-3 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md hover:border-primary/40 hover:shadow-[0_0_20px_rgba(139,92,246,0.2)] transition-all duration-300 cursor-default group"
                     >
                       <Icon
                         size={18}

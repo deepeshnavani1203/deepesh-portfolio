@@ -122,7 +122,7 @@ const ProjectCard = ({
             className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline transition-all"
             target="_blank"
           >
-            <ExternalLink size={14} /> Live Demo
+            <ExternalLink size={14} /> View Project
           </a>
         )}
       </div>
