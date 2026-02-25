@@ -22,10 +22,10 @@ const Index = () => {
       <main>
         <Hero />
         <About />
-        <Skills />
-        <Experience />
         <Education />
         <Projects />
+        <Experience />
+        <Skills />
         <Awards />
         <Community />
         <Publication />

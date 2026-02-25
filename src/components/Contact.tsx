@@ -8,21 +8,45 @@ const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [sending, setSending] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
       toast.error("Please fill in all fields.");
       return;
     }
+
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
       toast.error("Please enter a valid email.");
       return;
     }
+
     setSending(true);
-    await new Promise((r) => setTimeout(r, 1200));
+
+    const formData = new FormData(e.currentTarget);
+
+    try {
+      const response = await fetch(
+        "https://formsubmit.co/ajax/deepeshnavani@gmail.com",
+        {
+          method: "POST",
+          body: formData,
+        },
+      );
+
+      const data = await response.json();
+
+      if (data.success === "true") {
+        toast.success("Message sent! I'll get back to you soon.");
+        setForm({ name: "", email: "", message: "" });
+      } else {
+        toast.error("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      toast.error("Failed to send message.");
+    }
+
     setSending(false);
-    toast.success("Message sent! I'll get back to you soon.");
-    setForm({ name: "", email: "", message: "" });
   };
 
   return (
@@ -34,9 +58,7 @@ const Contact = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="section-title">Get In Touch</h2>
-          <p className="section-subtitle">
-            Want to connect? Let's talk.
-          </p>
+          <p className="section-subtitle">Want to connect? Let's talk.</p>
         </motion.div>
 
         <motion.form
@@ -49,7 +71,7 @@ const Contact = () => {
           className="mt-10 space-y-5"
         >
           {/* FormSubmit configuration */}
-          <input type="hidden" name="_subject" value="New Portfolio Message!" />
+          <input type="hidden" name="_subject" value="New Message!" />
           <input type="hidden" name="_template" value="table" />
           <input type="hidden" name="_captcha" value="false" />
 

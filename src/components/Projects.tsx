@@ -21,43 +21,57 @@ const projects = [
   {
     name: "AI Multiverse",
     description:
-      "An AI-driven narrative generation platform that enables users to create multi-character conversational storylines through dynamic dialogue inputs and voice synthesis. The system integrates advanced speech generation models to transform scripted interactions into immersive audio-based storytelling experiences. Designed to simulate character-driven conversations, it leverages large language model APIs and real-time text-to-speech processing for enhanced user engagement.",
-    tech: ["React", "Python", "Gemini API", "gTTS", "Edge TTS", "NLP", "Tailwind CSS"],
+      "AI Multiverse is a web platform that integrates multiple AI-powered tools into a single interface, enabling users to perform diverse intelligent tasks such as text generation, analysis, or automation workflows. The application focuses on providing a seamless and responsive UI for interacting with different AI capabilities efficiently.",
+    tech: [
+      "React",
+      "Python",
+      "Gemini API",
+      "gTTS",
+      "Edge TTS",
+      "NLP",
+      "Tailwind CSS",
+    ],
     live: null,
   },
   {
     name: "Crickifyy - v1",
     description:
-      "A real-time multiplayer Hand Cricket engine built to deliver interactive gameplay using socket-based communication for live score synchronization and event-driven match logic. The platform ensures seamless turn-based interactions between players by utilizing asynchronous backend processing and low-latency WebSocket connections for consistent match state updates.",
+      "A cricket-focused web platform that provides users with an engaging interface to explore match-related information and cricket insights. Built with a modern UI approach, the application ensures smooth navigation and an interactive user experience for cricket enthusiasts.",
     tech: ["React", "Tailwind CSS", "Python", "FastAPI", "WebSockets"],
     live: "https://crickifyy.vercel.app",
   },
   {
     name: "QR Attend",
     description:
-      "A secure Android-based attendance management system that utilizes QR authentication mechanisms to streamline employee presence tracking. The application incorporates role-based access control and in-app communication features to facilitate efficient coordination between administrators and registered users within an organizational environment.",
+      "A smart attendance management system that utilizes QR code technology to automate student or employee attendance tracking. Users can scan dynamically generated QR codes to mark their presence, ensuring a contactless, efficient, and real-time attendance recording process with reduced chances of manual errors.",
     tech: ["React Native", "CSS - Style Sheet", "Firebase"],
     live: null,
   },
   {
     name: "Loan App",
     description:
-      "A mobile-based digital loan processing system developed to automate application workflows through identity verification using Aadhaar and PAN credentials. The platform evaluates user eligibility and dynamically manages approval or rejection pipelines based on document validation and predefined lending parameters.",
+      "A machine learning-based web application designed to predict loan approval eligibility based on user-provided financial and personal data. The system analyzes parameters such as income, credit history, employment status, and loan amount to determine approval likelihood, enabling data-driven decision-making through an intuitive user interface.",
     tech: ["React Native", "CSS - Style Sheet", "Firebase"],
     live: null,
   },
   {
     name: "TermiTalk",
     description:
-      "A terminal-based multi-user communication server developed in Python that facilitates real-time messaging across multiple chat rooms over local network infrastructure. The system supports peer-level file sharing and administrative moderation commands such as user muting, removal, and access control to maintain structured communication within active sessions. Designed to operate without internet connectivity, it enables secure and efficient intra-network communication through socket-based message routing.",
+      "A real-time LAN-based chat application developed using Python socket programming that enables multiple computers to communicate seamlessly over a local network without requiring internet connectivity. The system allows users to connect using IP addresses, join or create private chat rooms, exchange messages, share files, and manage participants with administrative controls such as muting or removing users from ongoing conversations.",
     tech: ["Python", "Socket Programming"],
     live: null,
   },
   {
     name: "StrideX",
     description:
-      "A full-stack e-commerce platform engineered to facilitate online footwear retail with integrated user authentication and secure payment processing. The system supports Google OAuth-based login and Razorpay-enabled checkout workflows to ensure seamless transaction handling and order lifecycle management.",
-    tech: ["React", "Tailwind CSS", "Node.js", "MongoDB", "Razorpay", "Google Auth"],
+      "A responsive e-commerce footwear website developed to showcase and manage a collection of shoes with an intuitive browsing experience. The platform features structured product listings, modern UI components, and seamless navigation to enhance product discovery across different devices.",
+    tech: [
+      "React",
+      "Tailwind CSS",
+      "Node.js",
+      "MongoDB",
+      "Razorpay",
+    ],
     live: null,
   },
 ];
@@ -128,7 +142,9 @@ const Projects = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="section-title">Featured Projects</h2>
-          <p className="section-subtitle">Real-world applications and experiments.</p>
+          <p className="section-subtitle">
+            Real-world applications and experiments.
+          </p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
