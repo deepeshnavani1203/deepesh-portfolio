@@ -66,7 +66,7 @@ const categories = [
     ],
   },
   {
-    title: "Frontend / Mobile",
+    title: "Frameworks / Technologies",
     skills: [
       { name: "React", icon: SiReact },
       { name: "Next.js", icon: SiNextdotjs },
@@ -74,11 +74,6 @@ const categories = [
       { name: "HTML5", icon: SiHtml5 },
       { name: "CSS3", icon: SiCss3 },
       { name: "Tailwind CSS", icon: SiTailwindcss },
-    ],
-  },
-  {
-    title: "Backend",
-    skills: [
       { name: "Node.js", icon: SiNodedotjs },
       { name: "Express.js", icon: SiExpress },
       { name: "REST APIs", icon: Terminal },
@@ -100,8 +95,6 @@ const categories = [
       { name: "PostgreSQL", icon: SiPostgresql },
       { name: "MongoDB", icon: SiMongodb },
       { name: "Supabase", icon: SiSupabase },
-      { name: "MySQL", icon: SiMysql },
-      { name: "Oracle DB", icon: SiOracle },
     ],
   },
   {
@@ -111,13 +104,9 @@ const categories = [
       { name: "GitHub", icon: SiGithub },
       { name: "Postman", icon: SiPostman },
       { name: "Figma", icon: SiFigma },
-      { name: "draw.io", icon: FileEdit },
       { name: "AWS", icon: SiAmazonwebservices },
       { name: "Vercel", icon: SiVercel },
-      { name: "Render", icon: Cpu },
       { name: "Android Studio", icon: SiAndroid },
-      { name: "Google Colab", icon: SiGooglecolab },
-      { name: "Cloudinary", icon: SiCloudinary },
     ],
   },
 ];
