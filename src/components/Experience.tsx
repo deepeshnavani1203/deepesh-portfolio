@@ -6,28 +6,28 @@ const experiences = [
     role: "Web Developer",
     company: "Odyssey",
     duration: "2024 - Present",
-    description: "Designed and developed a static website for vacation home listings with focus on user experience, navigation flow, and responsive layout across devices.",
+    description: "Web Developer Developed and maintained a responsive vacation home listing website using HTML, CSS, and JavaScript, reducing average page load time by 40% through asset optimization and efficient layout structuring. Enhanced on-page SEO via semantic HTML and structured metadata, improving search engine indexing and organic visibility.",
     tech: ["React", "Tailwind CSS", "JavaScript", "Node.js", "Express.js", "MongoDB"]
   },
   {
     role: "Full Stack Developer",
     company: "AIBI, Airoli",
     duration: "June 2024- September 2025",
-    description: "Worked on the development of mobile and web-based applications by implementing scalable frontend interfaces and backend services. Contributed to building React Native-based mobile solutions and supported web platform development by integrating APIs and optimizing application performance across user workflows.",
+    description: "Full Stack Developer Built and deployed scalable full-stack web and mobile applications using React.js, React Native, Node.js, and Supabase, managing datasets of 1,000+ records and reducing manual workflow effort by 30%. Integrated Gemini API and text-to-speech tools for AI-driven features while implementing JWT-based authentication with role-based access control. Optimized backend API performance and database queries, improving scalability and reducing response time by 35%.",
     tech: ["React Native", "React", "Supabase", "Express JS", "Cloudinary"]
   },
   {
     role: "Full Stack Developer",
     company: "Sinjan Solutions Private Ltd., Vikhroli",
     duration: "December 2023 -May 2024",
-    description: "Developed and maintained a mobile-based attendance management system for internal organizational use. Implemented authentication, real-time attendance tracking, and user communication features while ensuring smooth application performance.",
+    description: "Mobile Application Developer Built a QR-code-based attendance management system using React Native and Firebase with real-time data synchronization, reducing manual processing effort by 40%. Strengthened authentication workflows and improved application stability through optimized API communication.",
     tech: ["React Native", "Firebase"]
   },
   {
     role: "Web Developer Intern",
     company: "Insys Technologies",
     duration: "7 June 2023 - 22 July 2023",
-    description: "Developed a static e-commerce platform enabling users to browse products and manage cart operations. Implemented AJAX-based asynchronous updates to improve user interaction and reduce page reloads.",
+    description: "Mobile Application Developer Built a QR-code-based attendance management system using React Native and Firebase with real-time data synchronization, reducing manual processing effort by 40%. Strengthened authentication workflows and improved application stability through optimized API communication.",
     tech: ["HTML", "CSS", "JavaScript", "PHP", "MySQL", "AJAX"]
   },
 ];

@@ -21,7 +21,7 @@ const projects = [
   {
     name: "AI Multiverse",
     description:
-      "AI Multiverse is a web platform that integrates multiple AI-powered tools into a single interface, enabling users to perform diverse intelligent tasks such as text generation, analysis, or automation workflows. The application focuses on providing a seamless and responsive UI for interacting with different AI capabilities efficiently.",
+      "A collaborative AI storytelling platform supporting 5+ concurrent users with voice-based narrative generation powered by Gemini API and Edge TTS in under 3 seconds. Built to handle 20+ concurrent API requests with optimized React state management delivering under 100ms UI response time.",
     tech: [
       "React",
       "Python",
@@ -36,35 +36,35 @@ const projects = [
   {
     name: "Crickifyy - v1",
     description:
-      "A cricket-focused web platform that provides users with an engaging interface to explore match-related information and cricket insights. Built with a modern UI approach, the application ensures smooth navigation and an interactive user experience for cricket enthusiasts.",
+      "A real-time multiplayer Hand Cricket game with single-player AI mode and live matches under 50ms latency using WebSocket-based room generation with unique match codes. Features custom scoring algorithms and turn-based game logic with zero game-state desync issues.",
     tech: ["React", "Tailwind CSS", "Python", "FastAPI", "WebSockets"],
     live: "https://crickifyy.vercel.app",
   },
   {
     name: "QR Attend",
     description:
-      "A smart attendance management system that utilizes QR code technology to automate student or employee attendance tracking. Users can scan dynamically generated QR codes to mark their presence, ensuring a contactless, efficient, and real-time attendance recording process with reduced chances of manual errors.",
+      "An Android-based attendance management system using real-time QR authentication to automate attendance verification, reducing manual processing effort by 40%. The system features secure QR validation workflows with backend processing and database integration — formally published as a peer-reviewed research paper.",
     tech: ["React Native", "CSS - Style Sheet", "Firebase"],
     live: null,
   },
   {
     name: "Loan App",
     description:
-      "A machine learning-based web application designed to predict loan approval eligibility based on user-provided financial and personal data. The system analyzes parameters such as income, credit history, employment status, and loan amount to determine approval likelihood, enabling data-driven decision-making through an intuitive user interface.",
+      "An Android-based loan app with PAN and Aadhaar-based KYC verification and automated eligibility workflows, reducing manual review time by 50%. Built with secure backend services for EMI calculation, approval processing, and repayment tracking with industry-standard encryption.",
     tech: ["React Native", "CSS - Style Sheet", "Firebase"],
     live: null,
   },
   {
     name: "TermiTalk",
     description:
-      "A real-time LAN-based chat application developed using Python socket programming that enables multiple computers to communicate seamlessly over a local network without requiring internet connectivity. The system allows users to connect using IP addresses, join or create private chat rooms, exchange messages, share files, and manage participants with administrative controls such as muting or removing users from ongoing conversations.",
+      "A secure LAN-based chat application supporting 10+ concurrent users with private rooms, admin controls, and peer-to-peer file sharing — all without internet connectivity. Optimized multi-threaded server architecture delivers under 20ms message delivery time with zero unauthorized file transfers.",
     tech: ["Python", "Socket Programming"],
     live: null,
   },
   {
     name: "StrideX",
     description:
-      "A responsive e-commerce footwear website developed to showcase and manage a collection of shoes with an intuitive browsing experience. The platform features structured product listings, modern UI components, and seamless navigation to enhance product discovery across different devices.",
+      "A full-stack e-commerce platform with product catalog, cart management, and secure checkout supporting 10+ product categories and 15+ REST API endpoints. Features Razorpay payment integration, MongoDB data storage, and JWT-based authentication with sub-second response time.",
     tech: [
       "React",
       "Tailwind CSS",
