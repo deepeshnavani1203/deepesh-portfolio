@@ -8,7 +8,7 @@ const Hero = () => {
 
   return (
     <section className="min-h-[75vh] flex flex-col items-center justify-start section-padding pt-24 pb-10 relative overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-black rounded-full blur-3xl pointer-events-none opacity-50" />
 
       <div className="max-w-4xl mx-auto w-full flex flex-col items-center text-center relative z-10 min-h-[320px]">
         {/* Profile Image */}
