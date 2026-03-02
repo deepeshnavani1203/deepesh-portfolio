@@ -40,7 +40,7 @@ const Publication = () => {
                   href="https://ijrpr.com/uploads/V5ISSUE3/IJRPR23651.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-secondary text-foreground text-[12px] font-medium hover:bg-secondary/80 transition-colors border border-divider"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary text-foreground text-sm font-medium hover:bg-secondary/80 transition-colors border border-border w-fit"
                 >
                   <Download size={14} />
                   Download

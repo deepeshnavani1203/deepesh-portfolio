@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -13,6 +15,7 @@ import { useTheme } from "@/hooks/useTheme";
 
 const Index = () => {
   const { theme } = useTheme();
+  const [heroDone, setHeroDone] = useState(false);
 
   return (
     <div
@@ -20,16 +23,24 @@ const Index = () => {
     >
       <Header />
       <main>
-        <Hero />
-        <About />
-        <Education />
-        <Experience />
-        <Projects />
-        <Skills />
-        <Awards />
-        <Community />
-        <Publication />
-        <Contact />
+        <Hero onComplete={() => setHeroDone(true)} />
+        {heroDone && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+          >
+            <About />
+            <Education />
+            <Experience />
+            <Projects />
+            <Skills />
+            <Awards />
+            <Community />
+            <Publication />
+            <Contact />
+          </motion.div>
+        )}
       </main>
     </div>
   );
