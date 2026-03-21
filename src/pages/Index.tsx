@@ -31,9 +31,9 @@ const Index = () => {
             transition={{ duration: 0.8 }}
           >
             <About />
-            <Education />
-            <Experience />
             <Projects />
+            <Experience />
+            <Education />
             <Skills />
             <Awards />
             <Community />
