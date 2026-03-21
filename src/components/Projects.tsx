@@ -1,122 +1,154 @@
 import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { useSpotlight } from "@/hooks/useSpotlight";
-import {
-  ExternalLink,
-  Github,
-  Layers,
-  Server,
-  Database,
-  Cloud,
-  Brain,
-  Globe,
-  Zap,
-  Flame,
-  Box,
-  Terminal,
-} from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import { ExternalLink, Github, FileText } from "lucide-react";
 
 const projects = [
   {
     name: "AI Multiverse",
     description:
-      "A collaborative AI storytelling platform supporting 5+ concurrent users with voice-based narrative generation powered by Gemini API and Edge TTS in under 3 seconds. Built to handle 20+ concurrent API requests with optimized React state management delivering under 100ms UI response time.",
-    tech: [
-      "React",
-      "Python",
-      "Gemini API",
-      "gTTS",
-      "Edge TTS",
-      "NLP",
-      "Tailwind CSS",
-    ],
+      "AI Multiverse is a collaborative AI storytelling platform that enables real-time multi-user interaction with voice-based narrative generation. It supports 5+ concurrent users, processes 20+ asynchronous API requests, and delivers AI-generated stories in under 3 seconds with optimized frontend performance achieving under 100ms UI response time.",
+    tech: ["React", "Python", "Gemini API", "gTTS", "Edge TTS", "Tailwind CSS"],
     live: null,
+    github: null,
+    paper: null,
+    image:
+      "/docs/ai-multiverse.jpg",
   },
   {
-    name: "Crickifyy - v1",
+    name: "Crickify",
     description:
-      "A real-time multiplayer Hand Cricket game with single-player AI mode and live matches under 50ms latency using WebSocket-based room generation with unique match codes. Features custom scoring algorithms and turn-based game logic with zero game-state desync issues.",
-    tech: ["React", "Tailwind CSS", "Python", "FastAPI", "WebSockets"],
+      "Crickify is a real-time multiplayer Hand Cricket game built using WebSockets, supporting both single-player and live multiplayer modes. It achieves under 50ms latency with unique room-based matchmaking and ensures zero game-state desynchronization through robust turn-based game logic.",
+    tech: ["React", "Tailwind CSS", "Python", "FastAPI", "Sockets"],
     live: "https://crickifyy.vercel.app",
+    github: "https://github.com/deepeshnavani1203/Crickify.git",
+    paper: null,
+    image:
+      "/docs/crickify-logo.png",
   },
   {
     name: "QR Attend",
     description:
-      "An Android-based attendance management system using real-time QR authentication to automate attendance verification, reducing manual processing effort by 40%. The system features secure QR validation workflows with backend processing and database integration — formally published as a peer-reviewed research paper.",
-    tech: ["React Native", "CSS - Style Sheet", "Firebase"],
+      "QR Attend is an Android-based attendance management system that automates attendance verification using real-time QR authentication. The system supports 100+ daily entries, reduces manual effort by 40%, and was published as a peer-reviewed research paper with secure backend validation and Firebase integration.",
+    tech: ["React Native", "Firebase"],
     live: null,
+    github: null,
+    paper: "https://ijrpr.com/uploads/V5ISSUE3/IJRPR23651.pdf",
+    image:
+      "/docs/qrattend-logo.jpeg",
   },
   {
     name: "TermiTalk",
     description:
-      "A secure LAN-based chat application supporting 10+ concurrent users with private rooms, admin controls, and peer-to-peer file sharing — all without internet connectivity. Optimized multi-threaded server architecture delivers under 20ms message delivery time with zero unauthorized file transfers.",
+      "TermiTalk is a secure LAN-based chat application enabling real-time messaging without internet connectivity. It supports 10+ concurrent users with private rooms, admin controls, and file sharing, while maintaining under 20ms message delivery latency through an optimized multi-threaded server architecture.",
     tech: ["Python", "Socket Programming"],
     live: null,
+    github: "https://github.com/deepeshnavani1203/TermiTalk.git",
+    paper: null,
+    image:
+      "/docs/termitalk-logo.jpg",
   },
   {
     name: "StrideX",
     description:
-      "A full-stack e-commerce platform with product catalog, cart management, and secure checkout supporting 10+ product categories and 15+ REST API endpoints. Features Razorpay payment integration, MongoDB data storage, and JWT-based authentication with sub-second response time.",
-    tech: [
-      "React",
-      "Tailwind CSS",
-      "Node.js",
-      "MongoDB",
-      "Razorpay",
-    ],
-    live: null,
+      "StrideX is a full-stack e-commerce platform supporting 10+ product categories with a secure checkout system powered by Razorpay. I built and integrated 15+ RESTful APIs for authentication, product management, and order processing, achieving sub-second response times using MongoDB and optimized backend architecture with JWT-based authentication.",
+    tech: ["React", "Tailwind CSS", "Node.js", "MongoDB"],
+    live: "https://stride-x-flax.vercel.app/",
+    github: "https://github.com/deepeshnavani1203/StrideX.git",
+    paper: null,
+    image:
+      "/docs/stridex-logo.png",
   },
 ];
 
-const ProjectCard = ({
-  proj,
-  i,
-  isVisible,
-}: {
-  proj: (typeof projects)[0];
-  i: number;
-  isVisible: boolean;
-}) => {
-  const { onMouseMove } = useSpotlight();
+const ProjectCard = ({ proj, i, isVisible }) => {
+  const links = [
+    proj.live && {
+      href: proj.live,
+      label: "View",
+      icon: ExternalLink,
+      primary: true,
+    },
+    proj.github && {
+      href: proj.github,
+      label: "Source",
+      icon: Github,
+    },
+    proj.paper && {
+      href: proj.paper,
+      label: "Paper",
+      icon: FileText,
+    },
+  ].filter(Boolean);
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 25 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      whileHover={{ y: -5, rotateX: 2, rotateY: 2 }}
+      initial={{ opacity: 0, y: 30 }}
+      animate={isVisible ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: i * 0.1 }}
-      onMouseMove={onMouseMove}
-      className="spotlight-card glass-card glow-border p-6 flex flex-col group hover:shadow-[0_0_30px_hsl(var(--primary)/0.15)] transition-all duration-300 h-full"
+      className="glass-card flex flex-col h-full hover:scale-[1.03] transition-all duration-300 shadow-sm hover:shadow-[0_0_25px_rgba(124,58,237,0.2)] bg-card border border-border overflow-hidden"
     >
-      <h3 className="text-lg font-semibold text-foreground font-display mb-2">
-        {proj.name}
-      </h3>
-      <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-1">
-        {proj.description}
-      </p>
+      <div className="flex flex-col h-full p-4 md:p-5">
 
-      <div className="flex flex-wrap gap-2 mb-6">
-        {proj.tech.map((t) => (
-          <span
-            key={t}
-            className="px-2.5 py-1 text-[10px] font-medium uppercase tracking-wider rounded-md bg-secondary/80 text-muted-foreground group-hover:text-primary transition-colors"
-          >
-            {t}
-          </span>
-        ))}
-      </div>
+        {/* Image */}
+        <div className="w-full h-32 md:h-40 rounded-xl overflow-hidden mb-4 border border-border/50">
+          <img
+            src={proj.image}
+            alt={proj.name}
+            className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+          />
+        </div>
 
-      <div className="flex items-center gap-4 pt-2">
-        {proj.live && (
-          <a
-            href={proj.live}
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline transition-all"
-            target="_blank"
+        {/* Title */}
+        <h3 className="text-lg md:text-xl font-bold text-foreground mb-2">
+          {proj.name}
+        </h3>
+
+        {/* Tech */}
+        <div className="flex flex-wrap gap-2 mb-3">
+          {proj.tech.map((t) => (
+            <span
+              key={t}
+              className="px-2 py-0.5 text-[10px] font-bold uppercase text-highlight bg-highlight/10 border border-highlight/20 rounded"
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+
+        {/* Description */}
+        <p className="text-sm text-muted-foreground mb-6 flex-1">
+          {proj.description}
+        </p>
+
+        {/* Dynamic Buttons */}
+        {links.length > 0 && (
+          <div
+            className={`grid gap-2 mt-auto ${links.length === 1
+              ? "grid-cols-1"
+              : links.length === 2
+                ? "grid-cols-2"
+                : "grid-cols-2 lg:grid-cols-3"
+              }`}
           >
-            <ExternalLink size={14} /> View Project
-          </a>
+            {links.map((link, idx) => {
+              const Icon = link.icon;
+              return (
+                <a
+                  key={idx}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`w-full py-2 px-3 text-xs font-bold text-center rounded border shadow-sm flex items-center justify-center gap-1.5 transition-all duration-200
+                    ${link.primary
+                      ? "text-white bg-primary hover:bg-primary/90 border-primary/20"
+                      : "text-foreground bg-secondary hover:bg-secondary/70 border-border"
+                    }`}
+                >
+                  <Icon size={14} /> {link.label}
+                </a>
+              );
+            })}
+          </div>
         )}
       </div>
     </motion.div>
@@ -128,11 +160,13 @@ const Projects = () => {
 
   return (
     <section id="projects" className="section-padding">
-      <div className="max-w-5xl mx-auto" ref={ref}>
+      <div className="max-w-6xl mx-auto" ref={ref}>
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
+          className="mb-10"
         >
           <h2 className="section-title">Featured Projects</h2>
           <p className="section-subtitle">
@@ -140,7 +174,7 @@ const Projects = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {projects.map((proj, i) => (
             <ProjectCard
               key={proj.name}

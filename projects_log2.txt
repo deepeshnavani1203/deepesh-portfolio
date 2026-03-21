@@ -1,0 +1,404 @@
+﻿commit 6742140d0300bda4822c072fe843e1a73a38e73a
+Author: Deepesh <deepeshnavani@gmail.com>
+Date:   Sat Mar 21 18:49:15 2026 +0530
+
+    one proj removed
+
+diff --git a/src/components/Projects.tsx b/src/components/Projects.tsx
+index b28564c..3274802 100644
+--- a/src/components/Projects.tsx
++++ b/src/components/Projects.tsx
+@@ -47,13 +47,6 @@ const projects = [
+     tech: ["React Native", "CSS - Style Sheet", "Firebase"],
+     live: null,
+   },
+-  {
+-    name: "Loan App",
+-    description:
+-      "An Android-based loan app with PAN and Aadhaar-based KYC verification and automated eligibility workflows, reducing manual review time by 50%. Built with secure backend services for EMI calculation, approval processing, and repayment tracking with industry-standard encryption.",
+-    tech: ["React Native", "CSS - Style Sheet", "Firebase"],
+-    live: null,
+-  },
+   {
+     name: "TermiTalk",
+     description:
+
+commit d2bc6bf5f9cb62fafea4818e28164b558cff3c78
+Author: Deepesh <deepeshnavani@gmail.com>
+Date:   Sun Mar 1 23:02:44 2026 +0530
+
+    updated the content for experiecne and also for projects
+
+diff --git a/src/components/Projects.tsx b/src/components/Projects.tsx
+index 66947f0..b28564c 100644
+--- a/src/components/Projects.tsx
++++ b/src/components/Projects.tsx
+@@ -21,7 +21,7 @@ const projects = [
+   {
+     name: "AI Multiverse",
+     description:
+-      "AI Multiverse is a web platform that integrates multiple AI-powered tools into a single interface, enabling users to perform diverse intelligent tasks such as text generation, analysis, or automation workflows. The application focuses on providing a seamless and responsive UI for interacting with different AI capabilities efficiently.",
++      "A collaborative AI storytelling platform supporting 5+ concurrent users with voice-based narrative generation powered by Gemini API and Edge TTS in under 3 seconds. Built to handle 20+ concurrent API requests with optimized React state management delivering under 100ms UI response time.",
+     tech: [
+       "React",
+       "Python",
+@@ -36,35 +36,35 @@ const projects = [
+   {
+     name: "Crickifyy - v1",
+     description:
+-      "A cricket-focused web platform that provides users with an engaging interface to explore match-related information and cricket insights. Built with a modern UI approach, the application ensures smooth navigation and an interactive user experience for cricket enthusiasts.",
++      "A real-time multiplayer Hand Cricket game with single-player AI mode and live matches under 50ms latency using WebSocket-based room generation with unique match codes. Features custom scoring algorithms and turn-based game logic with zero game-state desync issues.",
+     tech: ["React", "Tailwind CSS", "Python", "FastAPI", "WebSockets"],
+     live: "https://crickifyy.vercel.app",
+   },
+   {
+     name: "QR Attend",
+     description:
+-      "A smart attendance management system that utilizes QR code technology to automate student or employee attendance tracking. Users can scan dynamically generated QR codes to mark their presence, ensuring a contactless, efficient, and real-time attendance recording process with reduced chances of manual errors.",
++      "An Android-based attendance management system using real-time QR authentication to automate attendance verification, reducing manual processing effort by 40%. The system features secure QR validation workflows with backend processing and database integration ΓÇö formally published as a peer-reviewed research paper.",
+     tech: ["React Native", "CSS - Style Sheet", "Firebase"],
+     live: null,
+   },
+   {
+     name: "Loan App",
+     description:
+-      "A machine learning-based web application designed to predict loan approval eligibility based on user-provided financial and personal data. The system analyzes parameters such as income, credit history, employment status, and loan amount to determine approval likelihood, enabling data-driven decision-making through an intuitive user interface.",
++      "An Android-based loan app with PAN and Aadhaar-based KYC verification and automated eligibility workflows, reducing manual review time by 50%. Built with secure backend services for EMI calculation, approval processing, and repayment tracking with industry-standard encryption.",
+     tech: ["React Native", "CSS - Style Sheet", "Firebase"],
+     live: null,
+   },
+   {
+     name: "TermiTalk",
+     description:
+-      "A real-time LAN-based chat application developed using Python socket programming that enables multiple computers to communicate seamlessly over a local network without requiring internet connectivity. The system allows users to connect using IP addresses, join or create private chat rooms, exchange messages, share files, and manage participants with administrative controls such as muting or removing users from ongoing conversations.",
++      "A secure LAN-based chat application supporting 10+ concurrent users with private rooms, admin controls, and peer-to-peer file sharing ΓÇö all without internet connectivity. Optimized multi-threaded server architecture delivers under 20ms message delivery time with zero unauthorized file transfers.",
+     tech: ["Python", "Socket Programming"],
+     live: null,
+   },
+   {
+     name: "StrideX",
+     description:
+-      "A responsive e-commerce footwear website developed to showcase and manage a collection of shoes with an intuitive browsing experience. The platform features structured product listings, modern UI components, and seamless navigation to enhance product discovery across different devices.",
++      "A full-stack e-commerce platform with product catalog, cart management, and secure checkout supporting 10+ product categories and 15+ REST API endpoints. Features Razorpay payment integration, MongoDB data storage, and JWT-based authentication with sub-second response time.",
+     tech: [
+       "React",
+       "Tailwind CSS",
+
+commit 7d37a7130173b0747233c3625eec0e3b085a2dac
+Author: Deepesh <deepeshnavani@gmail.com>
+Date:   Wed Feb 25 20:01:51 2026 +0530
+
+    Final Changes Made
+
+diff --git a/src/components/Projects.tsx b/src/components/Projects.tsx
+index fca8e85..66947f0 100644
+--- a/src/components/Projects.tsx
++++ b/src/components/Projects.tsx
+@@ -122,7 +122,7 @@ const ProjectCard = ({
+             className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline transition-all"
+             target="_blank"
+           >
+-            <ExternalLink size={14} /> Live Demo
++            <ExternalLink size={14} /> View Project
+           </a>
+         )}
+       </div>
+
+commit 8f52f247ae47f34923a8d30e1f1985731489e249
+Author: Deepesh <deepeshnavani@gmail.com>
+Date:   Wed Feb 25 19:12:06 2026 +0530
+
+    mail working
+
+diff --git a/src/components/Projects.tsx b/src/components/Projects.tsx
+index 31766b9..fca8e85 100644
+--- a/src/components/Projects.tsx
++++ b/src/components/Projects.tsx
+@@ -21,43 +21,57 @@ const projects = [
+   {
+     name: "AI Multiverse",
+     description:
+-      "An AI-driven narrative generation platform that enables users to create multi-character conversational storylines through dynamic dialogue inputs and voice synthesis. The system integrates advanced speech generation models to transform scripted interactions into immersive audio-based storytelling experiences. Designed to simulate character-driven conversations, it leverages large language model APIs and real-time text-to-speech processing for enhanced user engagement.",
+-    tech: ["React", "Python", "Gemini API", "gTTS", "Edge TTS", "NLP", "Tailwind CSS"],
++      "AI Multiverse is a web platform that integrates multiple AI-powered tools into a single interface, enabling users to perform diverse intelligent tasks such as text generation, analysis, or automation workflows. The application focuses on providing a seamless and responsive UI for interacting with different AI capabilities efficiently.",
++    tech: [
++      "React",
++      "Python",
++      "Gemini API",
++      "gTTS",
++      "Edge TTS",
++      "NLP",
++      "Tailwind CSS",
++    ],
+     live: null,
+   },
+   {
+     name: "Crickifyy - v1",
+     description:
+-      "A real-time multiplayer Hand Cricket engine built to deliver interactive gameplay using socket-based communication for live score synchronization and event-driven match logic. The platform ensures seamless turn-based interactions between players by utilizing asynchronous backend processing and low-latency WebSocket connections for consistent match state updates.",
++      "A cricket-focused web platform that provides users with an engaging interface to explore match-related information and cricket insights. Built with a modern UI approach, the application ensures smooth navigation and an interactive user experience for cricket enthusiasts.",
+     tech: ["React", "Tailwind CSS", "Python", "FastAPI", "WebSockets"],
+     live: "https://crickifyy.vercel.app",
+   },
+   {
+     name: "QR Attend",
+     description:
+-      "A secure Android-based attendance management system that utilizes QR authentication mechanisms to streamline employee presence tracking. The application incorporates role-based access control and in-app communication features to facilitate efficient coordination between administrators and registered users within an organizational environment.",
++      "A smart attendance management system that utilizes QR code technology to automate student or employee attendance tracking. Users can scan dynamically generated QR codes to mark their presence, ensuring a contactless, efficient, and real-time attendance recording process with reduced chances of manual errors.",
+     tech: ["React Native", "CSS - Style Sheet", "Firebase"],
+     live: null,
+   },
+   {
+     name: "Loan App",
+     description:
+-      "A mobile-based digital loan processing system developed to automate application workflows through identity verification using Aadhaar and PAN credentials. The platform evaluates user eligibility and dynamically manages approval or rejection pipelines based on document validation and predefined lending parameters.",
++      "A machine learning-based web application designed to predict loan approval eligibility based on user-provided financial and personal data. The system analyzes parameters such as income, credit history, employment status, and loan amount to determine approval likelihood, enabling data-driven decision-making through an intuitive user interface.",
+     tech: ["React Native", "CSS - Style Sheet", "Firebase"],
+     live: null,
+   },
+   {
+     name: "TermiTalk",
+     description:
+-      "A terminal-based multi-user communication server developed in Python that facilitates real-time messaging across multiple chat rooms over local network infrastructure. The system supports peer-level file sharing and administrative moderation commands such as user muting, removal, and access control to maintain structured communication within active sessions. Designed to operate without internet connectivity, it enables secure and efficient intra-network communication through socket-based message routing.",
++      "A real-time LAN-based chat application developed using Python socket programming that enables multiple computers to communicate seamlessly over a local network without requiring internet connectivity. The system allows users to connect using IP addresses, join or create private chat rooms, exchange messages, share files, and manage participants with administrative controls such as muting or removing users from ongoing conversations.",
+     tech: ["Python", "Socket Programming"],
+     live: null,
+   },
+   {
+     name: "StrideX",
+     description:
+-      "A full-stack e-commerce platform engineered to facilitate online footwear retail with integrated user authentication and secure payment processing. The system supports Google OAuth-based login and Razorpay-enabled checkout workflows to ensure seamless transaction handling and order lifecycle management.",
+-    tech: ["React", "Tailwind CSS", "Node.js", "MongoDB", "Razorpay", "Google Auth"],
++      "A responsive e-commerce footwear website developed to showcase and manage a collection of shoes with an intuitive browsing experience. The platform features structured product listings, modern UI components, and seamless navigation to enhance product discovery across different devices.",
++    tech: [
++      "React",
++      "Tailwind CSS",
++      "Node.js",
++      "MongoDB",
++      "Razorpay",
++    ],
+     live: null,
+   },
+ ];
+@@ -128,7 +142,9 @@ const Projects = () => {
+           transition={{ duration: 0.6 }}
+         >
+           <h2 className="section-title">Featured Projects</h2>
+-          <p className="section-subtitle">Real-world applications and experiments.</p>
++          <p className="section-subtitle">
++            Real-world applications and experiments.
++          </p>
+         </motion.div>
+ 
+         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+
+commit 86603ae7ba77ead83ee5b76c339e80a9ad5765b7
+Author: Deepesh <deepeshnavani@gmail.com>
+Date:   Tue Feb 24 23:16:37 2026 +0530
+
+    Almost done with portfolio
+
+diff --git a/src/components/Projects.tsx b/src/components/Projects.tsx
+index 8e3bfc0..31766b9 100644
+--- a/src/components/Projects.tsx
++++ b/src/components/Projects.tsx
+@@ -17,69 +17,48 @@ import {
+ } from "lucide-react";
+ import type { LucideIcon } from "lucide-react";
+ 
+-const techIconMap: Record<string, LucideIcon> = {
+-  React: Layers,
+-  "Node.js": Server,
+-  PostgreSQL: Database,
+-  WebSocket: Zap,
+-  AWS: Cloud,
+-  "Next.js": Globe,
+-  Supabase: Box,
+-  Tailwind: Layers,
+-  OpenAI: Brain,
+-  Python: Terminal,
+-  TensorFlow: Brain,
+-  MongoDB: Database,
+-  TypeScript: Layers,
+-  Express: Server,
+-  Redis: Flame,
+-  Docker: Box,
+-};
+-
+ const projects = [
+   {
+-    name: "CloudSync Dashboard",
++    name: "AI Multiverse",
++    description:
++      "An AI-driven narrative generation platform that enables users to create multi-character conversational storylines through dynamic dialogue inputs and voice synthesis. The system integrates advanced speech generation models to transform scripted interactions into immersive audio-based storytelling experiences. Designed to simulate character-driven conversations, it leverages large language model APIs and real-time text-to-speech processing for enhanced user engagement.",
++    tech: ["React", "Python", "Gemini API", "gTTS", "Edge TTS", "NLP", "Tailwind CSS"],
++    live: null,
++  },
++  {
++    name: "Crickifyy - v1",
+     description:
+-      "Real-time analytics dashboard for cloud infrastructure monitoring.",
+-    problem: "Teams lacked visibility into multi-cloud resource usage.",
+-    solution:
+-      "Built a unified dashboard with real-time data streaming and alerting.",
+-    result: "Reduced incident response time by 35% across 200+ servers.",
+-    tech: ["React", "Node.js", "PostgreSQL", "WebSocket", "AWS"],
+-    live: "#",
+-    github: "#",
++      "A real-time multiplayer Hand Cricket engine built to deliver interactive gameplay using socket-based communication for live score synchronization and event-driven match logic. The platform ensures seamless turn-based interactions between players by utilizing asynchronous backend processing and low-latency WebSocket connections for consistent match state updates.",
++    tech: ["React", "Tailwind CSS", "Python", "FastAPI", "WebSockets"],
++    live: "https://crickifyy.vercel.app",
+   },
+   {
+-    name: "DevConnect",
+-    description: "Developer networking platform with skill-based matching.",
+-    problem: "Finding collaborators for side projects was fragmented.",
+-    solution: "Created a matchmaking algorithm based on skills and interests.",
+-    result: "10K+ developers onboarded in the first 3 months.",
+-    tech: ["Next.js", "Supabase", "Tailwind", "OpenAI"],
+-    live: "#",
+-    github: "#",
++    name: "QR Attend",
++    description:
++      "A secure Android-based attendance management system that utilizes QR authentication mechanisms to streamline employee presence tracking. The application incorporates role-based access control and in-app communication features to facilitate efficient coordination between administrators and registered users within an organizational environment.",
++    tech: ["React Native", "CSS - Style Sheet", "Firebase"],
++    live: null,
+   },
+   {
+-    name: "FinTrack",
+-    description: "Personal finance tracker with AI-powered insights.",
+-    problem: "Existing finance apps lacked actionable insights.",
+-    solution:
+-      "Integrated ML models to predict spending patterns and suggest savings.",
+-    result: "Users saved an average of 15% more per month.",
+-    tech: ["React", "Python", "TensorFlow", "MongoDB"],
+-    live: "#",
+-    github: "#",
++    name: "Loan App",
++    description:
++      "A mobile-based digital loan processing system developed to automate application workflows through identity verification using Aadhaar and PAN credentials. The platform evaluates user eligibility and dynamically manages approval or rejection pipelines based on document validation and predefined lending parameters.",
++    tech: ["React Native", "CSS - Style Sheet", "Firebase"],
++    live: null,
+   },
+   {
+-    name: "EduFlow",
+-    description: "Learning management system for coding bootcamps.",
+-    problem: "Bootcamps needed a lightweight, customizable LMS.",
+-    solution:
+-      "Built a modular LMS with live code execution and progress tracking.",
+-    result: "Adopted by 5 bootcamps, serving 2000+ students.",
+-    tech: ["TypeScript", "Express", "Redis", "Docker"],
+-    live: "#",
+-    github: "#",
++    name: "TermiTalk",
++    description:
++      "A terminal-based multi-user communication server developed in Python that facilitates real-time messaging across multiple chat rooms over local network infrastructure. The system supports peer-level file sharing and administrative moderation commands such as user muting, removal, and access control to maintain structured communication within active sessions. Designed to operate without internet connectivity, it enables secure and efficient intra-network communication through socket-based message routing.",
++    tech: ["Python", "Socket Programming"],
++    live: null,
++  },
++  {
++    name: "StrideX",
++    description:
++      "A full-stack e-commerce platform engineered to facilitate online footwear retail with integrated user authentication and secure payment processing. The system supports Google OAuth-based login and Razorpay-enabled checkout workflows to ensure seamless transaction handling and order lifecycle management.",
++    tech: ["React", "Tailwind CSS", "Node.js", "MongoDB", "Razorpay", "Google Auth"],
++    live: null,
+   },
+ ];
+ 
+@@ -97,60 +76,41 @@ const ProjectCard = ({
+   return (
+     <motion.div
+       initial={{ opacity: 0, y: 25 }}
+-      animate={isVisible ? { opacity: 1, y: 0 } : {}}
++      whileInView={{ opacity: 1, y: 0 }}
++      viewport={{ once: true }}
++      whileHover={{ y: -5, rotateX: 2, rotateY: 2 }}
+       transition={{ duration: 0.5, delay: i * 0.1 }}
+       onMouseMove={onMouseMove}
+-      className="spotlight-card glass-card glow-border p-6 flex flex-col group hover:shadow-[0_0_30px_hsl(270_80%_60%/0.08)] transition-shadow duration-300"
++      className="spotlight-card glass-card glow-border p-6 flex flex-col group hover:shadow-[0_0_30px_hsl(var(--primary)/0.15)] transition-all duration-300 h-full"
+     >
+-      <h3 className="text-lg font-semibold text-foreground font-display mb-1">
++      <h3 className="text-lg font-semibold text-foreground font-display mb-2">
+         {proj.name}
+       </h3>
+-      <p className="text-sm text-muted-foreground mb-4">{proj.description}</p>
++      <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-1">
++        {proj.description}
++      </p>
+ 
+-      <div className="space-y-2 text-sm mb-5 flex-1">
+-        <p>
+-          <span className="font-medium text-foreground">Problem:</span>{" "}
+-          <span className="text-muted-foreground">{proj.problem}</span>
+-        </p>
+-        <p>
+-          <span className="font-medium text-foreground">Solution:</span>{" "}
+-          <span className="text-muted-foreground">{proj.solution}</span>
+-        </p>
+-        <p>
+-          <span className="font-medium text-foreground">Result:</span>{" "}
+-          <span className="text-muted-foreground">{proj.result}</span>
+-        </p>
++      <div className="flex flex-wrap gap-2 mb-6">
++        {proj.tech.map((t) => (
++          <span
++            key={t}
++            className="px-2.5 py-1 text-[10px] font-medium uppercase tracking-wider rounded-md bg-secondary/80 text-muted-foreground group-hover:text-primary transition-colors"
++          >
++            {t}
++          </span>
++        ))}
+       </div>
+ 
+-      <div className="flex flex-wrap gap-2 mb-5">
+-        {proj.tech.map((t) => {
+-          const Icon = techIconMap[t] || Layers;
+-          return (
+-            <motion.span
+-              key={t}
+-              className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs rounded-lg bg-secondary/80 text-muted-foreground group-hover:text-foreground transition-colors"
+-              whileHover={{ y: -2 }}
+-            >
+-              <Icon size={12} />
+-              {t}
+-            </motion.span>
+-          );
+-        })}
+-      </div>
+-
+-      <div className="flex items-center gap-4 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+-        <a
+-          href={proj.live}
+-          className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline"
+-        >
+-          <ExternalLink size={14} /> Live Demo
+-        </a>
+-        <a
+-          href={proj.github}
+-          className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
+-        >
+-          <Github size={14} /> GitHub
+-        </a>
++      <div className="flex items-center gap-4 pt-2">
++        {proj.live && (
++          <a
++            href={proj.live}
++            className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline transition-all"
++            target="_blank"
++          >
++            <ExternalLink size={14} /> Live Demo
++          </a>
++        )}
+       </div>
+     </motion.div>
+   );
+@@ -168,7 +128,7 @@ const Projects = () => {
+           transition={{ duration: 0.6 }}
+         >
+           <h2 className="section-title">Featured Projects</h2>
+-          <p className="section-subtitle">A selection of things I've built.</p>
++          <p className="section-subtitle">Real-world applications and experiments.</p>
+         </motion.div>
+ 
+         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">

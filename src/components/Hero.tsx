@@ -94,10 +94,6 @@ const Hero = ({ onComplete }: HeroProps) => {
                   className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-primary text-primary-foreground font-medium text-sm hover:shadow-lg hover:shadow-primary/25 transition-all duration-300"
                 >
                   View Projects
-                  <ArrowRight
-                    size={16}
-                    className="group-hover:translate-x-0.5 transition-transform"
-                  />
                 </a>
                 <a
                   href="#contact"
