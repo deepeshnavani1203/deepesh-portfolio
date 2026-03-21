@@ -48,13 +48,6 @@ const projects = [
     live: null,
   },
   {
-    name: "Loan App",
-    description:
-      "An Android-based loan app with PAN and Aadhaar-based KYC verification and automated eligibility workflows, reducing manual review time by 50%. Built with secure backend services for EMI calculation, approval processing, and repayment tracking with industry-standard encryption.",
-    tech: ["React Native", "CSS - Style Sheet", "Firebase"],
-    live: null,
-  },
-  {
     name: "TermiTalk",
     description:
       "A secure LAN-based chat application supporting 10+ concurrent users with private rooms, admin controls, and peer-to-peer file sharing — all without internet connectivity. Optimized multi-threaded server architecture delivers under 20ms message delivery time with zero unauthorized file transfers.",
