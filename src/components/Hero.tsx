@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Github, Linkedin, ArrowRight, Code, ChevronDown } from "lucide-react";
 import { useTypewriter } from "@/hooks/useTypewriter";
 import { motion, AnimatePresence } from "framer-motion";
-import profileImg from "@/assets/profile.jpg";
+import profileImg from "@/assets/profile-cropped.jpg";
 import { useTheme } from "@/hooks/useTheme";
 
 interface HeroProps {
