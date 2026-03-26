@@ -18,7 +18,7 @@ const projects = [
     name: "Crickify",
     description:
       "Crickify is a real-time multiplayer Hand Cricket game built using WebSockets, supporting both single-player and live multiplayer modes. It achieves under 50ms latency with unique room-based matchmaking and ensures zero game-state desynchronization through robust turn-based game logic.",
-    tech: ["React", "Tailwind CSS", "Python", "FastAPI", "Sockets"],
+    tech: ["React", "Tailwind CSS", "Python", "Sockets"],
     live: "https://crickifyy.vercel.app",
     github: "https://github.com/deepeshnavani1203/Crickify.git",
     paper: null,
