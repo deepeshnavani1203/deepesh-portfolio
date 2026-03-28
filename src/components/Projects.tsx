@@ -7,23 +7,37 @@ const projects = [
     name: "AI Multiverse",
     description:
       "AI Multiverse is a collaborative AI storytelling platform that enables real-time multi-user interaction with voice-based narrative generation. It supports 5+ concurrent users, processes 20+ asynchronous API requests, and delivers AI-generated stories in under 3 seconds with optimized frontend performance achieving under 100ms UI response time.",
-    tech: ["React", "Python", "Gemini API", "gTTS", "Edge TTS", "Tailwind CSS"],
+    tech: [
+      "React",
+      "Gemini API",
+      "Edge TTS",
+      "Tailwind CSS",
+      "FastAPI",
+      "Cloudinary",
+      "Supabase",
+    ],
     live: null,
     github: null,
     paper: null,
-    image:
-      "/docs/ai-multiverse.jpg",
+    image: "/docs/ai-multiverse.jpg",
   },
   {
     name: "Crickify",
     description:
       "Crickify is a real-time multiplayer Hand Cricket game built using WebSockets, supporting both single-player and live multiplayer modes. It achieves under 50ms latency with unique room-based matchmaking and ensures zero game-state desynchronization through robust turn-based game logic.",
-    tech: ["React", "Tailwind CSS", "Python", "Sockets"],
+    tech: [
+      "React",
+      "Tailwind CSS",
+      "Python",
+      "Node.js",
+      "Express.js",
+      "Framer Motion",
+      "Socket.IO",
+    ],
     live: "https://crickifyy.vercel.app",
     github: "https://github.com/deepeshnavani1203/Crickify.git",
     paper: null,
-    image:
-      "/docs/crickify-logo.png",
+    image: "/docs/crickify-logo.png",
   },
   {
     name: "QR Attend",
@@ -33,30 +47,41 @@ const projects = [
     live: null,
     github: null,
     paper: "https://ijrpr.com/uploads/V5ISSUE3/IJRPR23651.pdf",
-    image:
-      "/docs/qrattend-logo.jpeg",
+    image: "/docs/qrattend-logo.jpeg",
   },
   {
     name: "TermiTalk",
     description:
       "TermiTalk is a secure LAN-based chat application enabling real-time messaging without internet connectivity. It supports 10+ concurrent users with private rooms, admin controls, and file sharing, while maintaining under 20ms message delivery latency through an optimized multi-threaded server architecture.",
-    tech: ["Python", "Socket Programming"],
+    tech: [
+      "Python",
+      "Socket Programming",
+      "Multi-Threading",
+      "tkinter",
+      "queues",
+    ],
     live: null,
     github: "https://github.com/deepeshnavani1203/TermiTalk.git",
     paper: null,
-    image:
-      "/docs/termitalk-logo.jpg",
+    image: "/docs/termitalk-logo.jpg",
   },
   {
     name: "StrideX",
     description:
       "StrideX is a full-stack e-commerce platform supporting 10+ product categories with a secure checkout system powered by Razorpay. I built and integrated 15+ RESTful APIs for authentication, product management, and order processing, achieving sub-second response times using MongoDB and optimized backend architecture with JWT-based authentication.",
-    tech: ["React", "Tailwind CSS", "Node.js", "MongoDB"],
+    tech: [
+      "React",
+      "Tailwind CSS",
+      "Node.js",
+      "Express.js",
+      "jwt",
+      "MongoDB",
+      "Mongoose",
+    ],
     live: "https://stride-x-flax.vercel.app/",
     github: "https://github.com/deepeshnavani1203/StrideX.git",
     paper: null,
-    image:
-      "/docs/stridex-logo.png",
+    image: "/docs/stridex-logo.png",
   },
 ];
 
@@ -88,7 +113,6 @@ const ProjectCard = ({ proj, i, isVisible }) => {
       className="glass-card flex flex-col h-full hover:scale-[1.03] transition-all duration-300 shadow-sm hover:shadow-[0_0_25px_rgba(124,58,237,0.2)] bg-card border border-border overflow-hidden"
     >
       <div className="flex flex-col h-full p-4 md:p-5">
-
         {/* Image */}
         <div className="w-full h-32 md:h-40 rounded-xl overflow-hidden mb-4 border border-border/50">
           <img
@@ -123,12 +147,13 @@ const ProjectCard = ({ proj, i, isVisible }) => {
         {/* Dynamic Buttons */}
         {links.length > 0 && (
           <div
-            className={`grid gap-2 mt-auto ${links.length === 1
-              ? "grid-cols-1"
-              : links.length === 2
-                ? "grid-cols-2"
-                : "grid-cols-2 lg:grid-cols-3"
-              }`}
+            className={`grid gap-2 mt-auto ${
+              links.length === 1
+                ? "grid-cols-1"
+                : links.length === 2
+                  ? "grid-cols-2"
+                  : "grid-cols-2 lg:grid-cols-3"
+            }`}
           >
             {links.map((link, idx) => {
               const Icon = link.icon;
@@ -139,9 +164,10 @@ const ProjectCard = ({ proj, i, isVisible }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`w-full py-2 px-3 text-xs font-bold text-center rounded border shadow-sm flex items-center justify-center gap-1.5 transition-all duration-200
-                    ${link.primary
-                      ? "text-white bg-primary hover:bg-primary/90 border-primary/20"
-                      : "text-foreground bg-secondary hover:bg-secondary/70 border-border"
+                    ${
+                      link.primary
+                        ? "text-white bg-primary hover:bg-primary/90 border-primary/20"
+                        : "text-foreground bg-secondary hover:bg-secondary/70 border-border"
                     }`}
                 >
                   <Icon size={14} /> {link.label}
@@ -161,7 +187,6 @@ const Projects = () => {
   return (
     <section id="projects" className="section-padding">
       <div className="max-w-6xl mx-auto" ref={ref}>
-
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
