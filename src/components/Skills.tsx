@@ -1,12 +1,47 @@
 import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import {
-  SiReact, SiNextdotjs, SiNodedotjs, SiExpress, SiPython, SiMongodb, SiPostgresql, SiSupabase,
-  SiGit, SiGithub, SiPostman, SiFigma, SiTailwindcss, SiHtml5, SiCss3, SiAmazonwebservices,
-  SiVercel, SiHuggingface, SiFastapi, SiAndroid, SiC, SiCplusplus, SiJavascript,
-  SiMysql, SiFirebase, SiGooglecloud, SiRender, SiNetlify, SiCloudinary
+  SiReact,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiExpress,
+  SiPython,
+  SiMongodb,
+  SiPostgresql,
+  SiSupabase,
+  SiGit,
+  SiGithub,
+  SiPostman,
+  SiFigma,
+  SiTailwindcss,
+  SiHtml5,
+  SiCss3,
+  SiAmazonwebservices,
+  SiVercel,
+  SiHuggingface,
+  SiFastapi,
+  SiAndroid,
+  SiC,
+  SiCplusplus,
+  SiJavascript,
+  SiMysql,
+  SiFirebase,
+  SiGooglecloud,
+  SiRender,
+  SiNetlify,
+  SiCloudinary,
+  SiRailway,
+  SiAwsamplify,
 } from "react-icons/si";
-import { Brain, Volume2, Terminal, Coffee, Database, Server, Cpu } from "lucide-react";
+import {
+  Brain,
+  Volume2,
+  Terminal,
+  Coffee,
+  Database,
+  Server,
+  Cpu,
+} from "lucide-react";
 
 const categories = [
   {
@@ -29,7 +64,7 @@ const categories = [
       { name: "React Native", icon: SiReact, color: "#61DAFB" },
       { name: "HTML5", icon: SiHtml5, color: "#E34F26" },
       { name: "CSS3", icon: SiCss3, color: "#1572B6" },
-      { name: "Tailwind", icon: SiTailwindcss, color: "#06B6D4" },
+      { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
     ],
   },
 
@@ -41,26 +76,30 @@ const categories = [
       { name: "REST APIs", icon: Terminal, color: "#F87171" },
       { name: "FastAPI", icon: SiFastapi, color: "#009688" },
       { name: "JWT Auth", icon: Server, color: "#F59E0B" },
+      { name: "Socket.IO", icon: Server, color: "#F59E0B" },
     ],
   },
 
   {
     title: "AI / ML",
     skills: [
-      { name: "Gemini", icon: Brain, color: "#8B5CF6" },
+      { name: "Gemini API", icon: Brain, color: "#8B5CF6" },
       { name: "Hugging Face", icon: SiHuggingface, color: "#FFD21E" },
-      { name: "edgeTTS", icon: Volume2, color: "#A78BFA" },
-      { name: "gTTS", icon: Volume2, color: "#A78BFA" },
+      {
+        name: "Text-to-Speech (edgeTTS, gTTS)",
+        icon: Volume2,
+        color: "#A78BFA",
+      },
     ],
   },
 
   {
     title: "Databases",
     skills: [
+      { name: "MySQL", icon: SiMysql, color: "#4479A1" },
       { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
       { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
       { name: "Supabase", icon: SiSupabase, color: "#3ECF8E" },
-      { name: "MySQL", icon: SiMysql, color: "#4479A1" },
       { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
       { name: "SQL Server", icon: Database, color: "#CC2927" },
     ],
@@ -77,6 +116,7 @@ const categories = [
       { name: "GCP", icon: SiGooglecloud, color: "#4285F4" },
       { name: "Vercel", icon: SiVercel, color: "#AAAAAA" },
       { name: "Render", icon: SiRender, color: "#46E3B7" },
+      { name: "Railway", icon: SiRailway, color: "#0B0D0E" },
       { name: "Netlify", icon: SiNetlify, color: "#00C7B7" },
       { name: "Cloudinary", icon: SiCloudinary, color: "#3448C5" },
       { name: "Android Studio", icon: SiAndroid, color: "#3DDC84" },
