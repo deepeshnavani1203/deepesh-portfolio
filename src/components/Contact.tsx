@@ -75,67 +75,69 @@ const Contact = () => {
           <input type="hidden" name="_template" value="table" />
           <input type="hidden" name="_captcha" value="false" />
 
-          <div>
-            <label
-              htmlFor="name"
-              className="block text-sm font-medium text-foreground mb-1.5"
-            >
-              Name
-            </label>
-            <input
-              id="name"
-              name="name"
-              type="text"
-              maxLength={100}
-              required
-              value={form.name}
-              onChange={(e) => setForm({ ...form, name: e.target.value })}
-              className="w-full px-4 py-3 rounded-xl bg-secondary/40 border border-border text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/30 transition-all font-sans"
-              placeholder="E.g. Deepesh Navani"
-            />
-          </div>
-          <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-foreground mb-1.5"
-            >
-              Email
-            </label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              maxLength={255}
-              required
-              value={form.email}
-              onChange={(e) => setForm({ ...form, email: e.target.value })}
-              className="w-full px-4 py-3 rounded-xl bg-secondary/40 border border-border text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/30 transition-all font-sans"
-              placeholder="you@example.com"
-            />
-          </div>
-          <div>
-            <label
-              htmlFor="message"
-              className="block text-sm font-medium text-foreground mb-1.5"
-            >
-              Message
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              rows={5}
-              maxLength={1000}
-              required
-              value={form.message}
-              onChange={(e) => setForm({ ...form, message: e.target.value })}
-              className="w-full px-4 py-3 rounded-xl bg-secondary/40 border border-border text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/30 transition-all resize-none font-sans"
-              placeholder="How can I help you? Feel free to share your ideas or queries..."
-            />
+          <div className="futuristic-card p-8 border border-white/5">
+            <div>
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-foreground mb-1.5"
+              >
+                Name
+              </label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                maxLength={100}
+                required
+                value={form.name}
+                onChange={(e) => setForm({ ...form, name: e.target.value })}
+                className="w-full px-4 py-3 rounded-xl bg-secondary/40 border border-border text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/30 transition-all font-sans"
+                placeholder="E.g. Deepesh Navani"
+              />
+            </div>
+            <div className="mt-5">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-foreground mb-1.5"
+              >
+                Email
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                maxLength={255}
+                required
+                value={form.email}
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                className="w-full px-4 py-3 rounded-xl bg-secondary/40 border border-border text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/30 transition-all font-sans"
+                placeholder="you@example.com"
+              />
+            </div>
+            <div className="mt-5">
+              <label
+                htmlFor="message"
+                className="block text-sm font-medium text-foreground mb-1.5"
+              >
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows={5}
+                maxLength={1000}
+                required
+                value={form.message}
+                onChange={(e) => setForm({ ...form, message: e.target.value })}
+                className="w-full px-4 py-3 rounded-xl bg-secondary/40 border border-border text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/30 transition-all resize-none font-sans"
+                placeholder="How can I help you? Feel free to share your ideas or queries..."
+              />
+            </div>
           </div>
           <button
             type="submit"
             disabled={sending}
-            className="w-full py-3 rounded-xl bg-primary text-primary-foreground font-medium text-sm hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 disabled:opacity-50"
+            className="w-full py-3 rounded-xl bg-primary streak-hover text-primary-foreground font-medium text-sm hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 disabled:opacity-50"
           >
             {sending ? "Sending..." : "Send Message"}
           </button>

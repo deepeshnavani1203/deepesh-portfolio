@@ -7,7 +7,7 @@ const experiences = [
   {
     role: "Web Developer",
     company: "Odyssey",
-    duration: "2024 - Present",
+    duration: "June 2024 - Present",
     description:
       "Developed and maintained a responsive vacation home listing website using HTML, CSS, and JavaScript, reducing average page load time by 40% through asset optimization and efficient layout structuring. Enhanced on-page SEO via semantic HTML and structured metadata, improving search engine indexing and organic visibility.",
     tech: [
@@ -76,13 +76,11 @@ const ExperienceItem = ({
       className="relative pl-12 group cursor-pointer"
       onClick={() => setIsOpen(!isOpen)}
     >
-      {/* Glowing dot */}
-      <div className="absolute left-2.5 top-1.5 w-3 h-3 rounded-full bg-primary shadow-[0_0_10px_hsl(var(--primary)/0.5)] border-2 border-background z-10" />
 
-      <div className="glass-card glow-border p-6 group-hover:shadow-[0_0_20px_hsl(var(--primary)/0.08)] transition-all duration-300">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-2">
+      <div className="futuristic-card p-6 group-hover:shadow-[0_0_30px_hsl(var(--primary)/0.1)] transition-all duration-300 border border-white/5">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3 gap-2">
           <div className="flex items-center gap-3">
-            <h3 className="font-semibold text-foreground font-display text-base uppercase tracking-tight">
+            <h3 className="font-bold text-white font-display text-lg tracking-tight">
               {exp.role}
             </h3>
             <motion.div
@@ -145,8 +143,10 @@ const Experience = () => {
           <p className="section-subtitle">My professional journey so far.</p>
         </motion.div>
 
-        <div className="mt-12 relative">
-          <div className="absolute left-4 top-2 bottom-6 w-px bg-gradient-to-b from-primary/40 via-primary/20 to-transparent" />
+        <div className="mt-16 relative">
+          <div className="timeline-v2">
+            <div className="timeline-v2-streak" />
+          </div>
 
           <div className="space-y-10">
             {experiences.map((exp, i) => (

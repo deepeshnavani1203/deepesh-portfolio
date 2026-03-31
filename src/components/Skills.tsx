@@ -162,7 +162,7 @@ const Skills = () => {
                     <motion.div
                       key={skill.name}
                       whileHover={{ scale: 1.07, y: -3 }}
-                      className="glass-card flex items-center gap-2 py-2 px-3 transition-all duration-200 group cursor-default bg-card/40 hover:shadow-lg hover:shadow-primary/20"
+                      className="futuristic-card flex items-center gap-2 py-2 px-3 transition-all duration-200 group cursor-default"
                     >
                       <div style={{ color: skill.color }}>
                         <Icon size={16} />

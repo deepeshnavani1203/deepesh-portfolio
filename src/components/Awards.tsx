@@ -42,7 +42,7 @@ const Awards = () => {
                   initial={{ opacity: 0, y: 15 }}
                   animate={isVisible ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.4, delay: i * 0.1 }}
-                  className="glass-card glow-border p-5 flex items-start gap-4 hover:shadow-[0_0_20px_hsl(var(--primary)/0.1)] transition-all duration-300"
+                  className="futuristic-card p-5 flex items-start gap-4 hover:shadow-[0_0_20px_hsl(var(--primary)/0.1)] transition-all duration-300 border border-white/5"
                 >
                   <Award size={20} className="text-primary mt-0.5 flex-shrink-0" />
                   <div>
@@ -58,7 +58,7 @@ const Awards = () => {
                   initial={{ opacity: 0, y: 15 }}
                   animate={isVisible ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.4, delay: (awards.length + i) * 0.1 }}
-                  className="glass-card glow-border p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:shadow-[0_0_20px_hsl(var(--primary)/0.1)] transition-all duration-300"
+                  className="futuristic-card p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:shadow-[0_0_20px_hsl(var(--primary)/0.1)] transition-all duration-300 border border-white/5"
                 >
                   <div className="flex items-start gap-4">
                     <BadgeCheck size={20} className="text-primary mt-0.5 flex-shrink-0" />
@@ -72,7 +72,7 @@ const Awards = () => {
                       href={c.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary text-foreground text-sm font-medium hover:bg-secondary/80 transition-colors border border-border w-fit"
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary streak-hover text-foreground text-sm font-medium hover:bg-secondary/80 transition-colors border border-border w-fit"
                     >
                       <Download size={16} />
                       Download

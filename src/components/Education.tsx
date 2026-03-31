@@ -30,8 +30,10 @@ const Education = () => {
           <p className="section-subtitle">My academic background.</p>
         </motion.div>
 
-        <div className="mt-12 relative">
-          <div className="absolute left-4 top-2 bottom-2 w-px bg-gradient-to-b from-primary/40 via-primary/20 to-transparent" />
+        <div className="mt-16 relative">
+          <div className="timeline-v2">
+            <div className="timeline-v2-streak" />
+          </div>
 
           <div className="space-y-8">
             {education.map((edu, i) => (
@@ -42,11 +44,10 @@ const Education = () => {
                 transition={{ duration: 0.5, delay: i * 0.12 }}
                 className="relative pl-12 group"
               >
-                <div className="absolute left-2.5 top-1.5 w-3 h-3 rounded-full bg-primary shadow-[0_0_8px_hsl(270_80%_60%/0.4)] border-2 border-background" />
 
-                <div className="glass-card glow-border p-5 group-hover:shadow-lg group-hover:shadow-primary/5 transition-shadow duration-300">
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-1">
-                    <h3 className="font-semibold text-foreground font-display text-base">
+                <div className="futuristic-card p-6 group-hover:shadow-[0_0_30px_hsl(var(--primary)/0.1)] transition-all duration-300 border border-white/5">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                    <h3 className="font-bold text-white font-display text-lg">
                       {edu.degree}
                     </h3>
                     <span className="text-xs text-muted-foreground mt-1 sm:mt-0 font-mono">

@@ -22,7 +22,7 @@ const Publication = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.4 }}
-            className="flex items-start gap-4 glass-card p-5 hover:shadow-[0_0_25px_hsl(var(--primary)/0.1)] transition-all duration-300"
+            className="futuristic-card p-5 flex items-start gap-4 hover:shadow-[0_0_25px_hsl(var(--primary)/0.1)] transition-all duration-300 border border-white/5"
           >
             <BookOpen size={20} className="text-primary mt-0.5 flex-shrink-0" />
             <div className="flex-1 flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -40,7 +40,7 @@ const Publication = () => {
                   href="https://ijrpr.com/uploads/V5ISSUE3/IJRPR23651.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary text-foreground text-sm font-medium hover:bg-secondary/80 transition-colors border border-border w-fit"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary streak-hover text-foreground text-sm font-medium hover:bg-secondary/80 transition-colors border border-border w-fit"
                 >
                   <Download size={14} />
                   Download

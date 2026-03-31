@@ -28,7 +28,7 @@ const Community = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="flex items-start gap-4 glass-card p-5"
+              className="flex items-start gap-4 futuristic-card p-5 border border-white/5"
             >
               <a.icon size={20} className="text-primary mt-0.5 flex-shrink-0" />
               <div>
