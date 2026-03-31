@@ -12,7 +12,7 @@ const projects = [
       "Gemini API",
       "Edge TTS",
       "Tailwind CSS",
-      "FastAPI",
+      "Node.js",
       "Cloudinary",
       "Supabase",
     ],
