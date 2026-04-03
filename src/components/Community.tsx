@@ -3,7 +3,11 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Mic, Users } from "lucide-react";
 
 const activities = [
-  { icon: Mic, title: "4-Day Workshop on React & Next.js at VES Polytechnic", desc: "Conducted a 4-day hands-on workshop on React and Next.js, covering modern frontend development and scalable web application design." },
+  {
+    icon: Mic,
+    title: "4-Day Workshop on React & Next.js at VES Polytechnic",
+    desc: "Conducted a 4-day hands-on workshop on React and Next.js, covering modern frontend development and scalable web application design.",
+  },
 ];
 
 const Community = () => {
@@ -28,11 +32,13 @@ const Community = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="flex items-start gap-4 futuristic-card p-5 border border-white/5"
+              className="flex items-start gap-4 futuristic-card p-5 dark:border-white/5 border-black/10 border"
             >
               <a.icon size={20} className="text-primary mt-0.5 flex-shrink-0" />
               <div>
-                <h3 className="font-semibold text-foreground font-sans text-sm">{a.title}</h3>
+                <h3 className="font-semibold text-foreground font-sans text-sm">
+                  {a.title}
+                </h3>
                 <p className="text-sm text-muted-foreground">{a.desc}</p>
               </div>
             </motion.div>

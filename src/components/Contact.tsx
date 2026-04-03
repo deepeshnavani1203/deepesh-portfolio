@@ -75,7 +75,7 @@ const Contact = () => {
           <input type="hidden" name="_template" value="table" />
           <input type="hidden" name="_captcha" value="false" />
 
-          <div className="futuristic-card p-8 border border-white/5">
+          <div className="futuristic-card p-8 dark:border-white/5 border-black/10 border">
             <div>
               <label
                 htmlFor="name"
@@ -137,7 +137,7 @@ const Contact = () => {
           <button
             type="submit"
             disabled={sending}
-            className="w-full py-3 rounded-xl bg-primary streak-hover text-primary-foreground font-medium text-sm hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 disabled:opacity-50"
+            className="w-full py-3 rounded-xl bg-primary streak-hover text-primary-foreground font-medium text-sm hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 disabled:opacity-50 dark:border-0 border border-primary/70"
           >
             {sending ? "Sending..." : "Send Message"}
           </button>

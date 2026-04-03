@@ -34,7 +34,7 @@ const Hero = ({ onComplete }: HeroProps) => {
           transition={{ duration: 1.2, ease: "easeOut" }}
           className="mb-14 relative"
         >
-          <div className="w-32 h-32 md:w-36 md:h-36 rounded-full overflow-hidden shadow-[0_0_30px_rgba(59,130,246,0.2)] ring-1 ring-primary/30 relative z-10">
+          <div className="w-32 h-32 md:w-36 md:h-36 rounded-full overflow-hidden shadow-[0_0_30px_rgba(59,130,246,0.2)] dark:ring-1 ring-2 ring-primary/30 dark:ring-primary/30 relative z-10 dark:border-0 border border-black/20">
             <img
               src={profileImg}
               alt="Deepesh - Full Stack Developer"
@@ -91,13 +91,13 @@ const Hero = ({ onComplete }: HeroProps) => {
               >
                 <a
                   href="#projects"
-                  className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-primary text-primary-foreground font-medium text-sm hover:shadow-lg hover:shadow-primary/25 transition-all duration-300"
+                  className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-primary text-primary-foreground font-medium text-sm hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 dark:border-0 border border-primary/70"
                 >
                   View Projects
                 </a>
                 <a
                   href="#contact"
-                  className="px-7 py-3.5 rounded-xl border border-divider text-foreground font-medium text-sm hover:bg-secondary/60 transition-colors duration-300 backdrop-blur-sm"
+                  className="px-7 py-3.5 rounded-xl border border-black/15 dark:border-white/10 text-foreground font-medium text-sm hover:bg-secondary/60 transition-colors duration-300 backdrop-blur-sm"
                 >
                   Contact Me
                 </a>

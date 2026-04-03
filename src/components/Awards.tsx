@@ -3,7 +3,11 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Award, BadgeCheck, Download } from "lucide-react";
 
 const awards = [
-  { title: "Invictus ' 25 Finalist", org: "App Development", year: "2024 - 2025" },
+  {
+    title: "Invictus ' 25 Finalist",
+    org: "App Development",
+    year: "2024 - 2025",
+  },
 ];
 
 const certifications = [
@@ -11,7 +15,7 @@ const certifications = [
     name: "Internship at Insys Techologies",
     issuer: "Insys Technologies",
     year: "2023",
-    link: "/docs/Insys_technologies.pdf"
+    link: "/docs/Insys_technologies.pdf",
   },
   // { name: "React & nest.js Workshop at VES Ploytechnic", issuer: "VES Polytechnic", year: "2024" },
 ];
@@ -28,13 +32,14 @@ const Awards = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="section-title">Awards & Certifications</h2>
-          <p className="section-subtitle">Recognition and professional milestones.</p>
+          <p className="section-subtitle">
+            Recognition and professional milestones.
+          </p>
         </motion.div>
 
         <div className="mt-12 space-y-8">
           {/* Unified Container for Awards & Certs */}
           <div className="space-y-6">
-
             <div className="grid gap-4">
               {awards.map((a, i) => (
                 <motion.div
@@ -42,12 +47,19 @@ const Awards = () => {
                   initial={{ opacity: 0, y: 15 }}
                   animate={isVisible ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.4, delay: i * 0.1 }}
-                  className="futuristic-card p-5 flex items-start gap-4 hover:shadow-[0_0_20px_hsl(var(--primary)/0.1)] transition-all duration-300 border border-white/5"
+                  className="futuristic-card p-5 flex items-start gap-4 hover:shadow-[0_0_20px_hsl(var(--primary)/0.1)] transition-all duration-300 dark:border-white/5 border-black/10 border"
                 >
-                  <Award size={20} className="text-primary mt-0.5 flex-shrink-0" />
+                  <Award
+                    size={20}
+                    className="text-primary mt-0.5 flex-shrink-0"
+                  />
                   <div>
-                    <h4 className="font-semibold text-foreground text-sm uppercase tracking-tight">{a.title}</h4>
-                    <p className="text-sm text-muted-foreground mt-1">{a.org} · {a.year}</p>
+                    <h4 className="font-semibold text-foreground text-sm uppercase tracking-tight">
+                      {a.title}
+                    </h4>
+                    <p className="text-sm text-muted-foreground mt-1">
+                      {a.org} · {a.year}
+                    </p>
                   </div>
                 </motion.div>
               ))}
@@ -57,14 +69,24 @@ const Awards = () => {
                   key={`cert-${i}`}
                   initial={{ opacity: 0, y: 15 }}
                   animate={isVisible ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.4, delay: (awards.length + i) * 0.1 }}
-                  className="futuristic-card p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:shadow-[0_0_20px_hsl(var(--primary)/0.1)] transition-all duration-300 border border-white/5"
+                  transition={{
+                    duration: 0.4,
+                    delay: (awards.length + i) * 0.1,
+                  }}
+                  className="futuristic-card p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:shadow-[0_0_20px_hsl(var(--primary)/0.1)] transition-all duration-300 dark:border-white/5 border-black/10 border"
                 >
                   <div className="flex items-start gap-4">
-                    <BadgeCheck size={20} className="text-primary mt-0.5 flex-shrink-0" />
+                    <BadgeCheck
+                      size={20}
+                      className="text-primary mt-0.5 flex-shrink-0"
+                    />
                     <div>
-                      <h4 className="font-semibold text-foreground text-sm uppercase tracking-tight">{c.name}</h4>
-                      <p className="text-sm text-muted-foreground mt-1">{c.issuer} · {c.year}</p>
+                      <h4 className="font-semibold text-foreground text-sm uppercase tracking-tight">
+                        {c.name}
+                      </h4>
+                      <p className="text-sm text-muted-foreground mt-1">
+                        {c.issuer} · {c.year}
+                      </p>
                     </div>
                   </div>
                   {c.link && (

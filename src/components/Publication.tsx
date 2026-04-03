@@ -14,7 +14,9 @@ const Publication = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="section-title">Publication</h2>
-          <p className="section-subtitle">Academic and research contributions.</p>
+          <p className="section-subtitle">
+            Academic and research contributions.
+          </p>
         </motion.div>
 
         <div className="mt-10 space-y-4">
@@ -22,7 +24,7 @@ const Publication = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.4 }}
-            className="futuristic-card p-5 flex items-start gap-4 hover:shadow-[0_0_25px_hsl(var(--primary)/0.1)] transition-all duration-300 border border-white/5"
+            className="futuristic-card p-5 flex items-start gap-4 hover:shadow-[0_0_25px_hsl(var(--primary)/0.1)] transition-all duration-300 dark:border-white/5 border-black/10 border"
           >
             <BookOpen size={20} className="text-primary mt-0.5 flex-shrink-0" />
             <div className="flex-1 flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -31,7 +33,8 @@ const Publication = () => {
                   QR Attend
                 </h3>
                 <p className="text-sm text-muted-foreground mt-1">
-                  An Android-based attendance management system designed for employee tracking through QR code authentication.
+                  An Android-based attendance management system designed for
+                  employee tracking through QR code authentication.
                 </p>
               </div>
 

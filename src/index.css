@@ -189,32 +189,40 @@
   .futuristic-card::after {
     content: '';
     position: absolute;
-    inset: -2px;
+    inset: -1px;
     border-radius: inherit;
-    padding: 2px;
+    padding: 1.5px;
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
     z-index: -1;
-    opacity: 0.25;
+    opacity: 0.45;
     transition: opacity 0.6s ease;
-    filter: blur(0.5px);
+    filter: blur(0.3px);
   }
 
   .futuristic-card:hover::before,
   .futuristic-card:hover::after {
-    opacity: 0.6;
+    opacity: 0.8;
   }
 
   .futuristic-card::before {
+    background: conic-gradient(from var(--angle), transparent 70%, hsl(180 100% 45%) 90%, transparent 100%);
+    animation: rotate-clockwise 4s linear infinite;
+  }
+
+  .dark .futuristic-card::before {
     background: conic-gradient(from var(--angle), transparent 70%, hsl(var(--primary)) 90%, transparent 100%);
-    animation: rotate-clockwise 8s linear infinite;
   }
 
   .futuristic-card::after {
+    background: conic-gradient(from var(--angle), transparent 70%, hsl(180 100% 45%) 90%, transparent 100%);
+    animation: rotate-counter-clockwise 4s linear infinite;
+  }
+
+  .dark .futuristic-card::after {
     background: conic-gradient(from var(--angle), transparent 70%, hsl(var(--primary)) 90%, transparent 100%);
-    animation: rotate-counter-clockwise 8s linear infinite;
   }
 
   @keyframes rotate-clockwise {
@@ -233,8 +241,12 @@
   }
 
   .timeline-v2-streak {
-    @apply absolute -top-[150px] left-0 w-full h-[150px] bg-gradient-to-b from-transparent via-primary/50 to-transparent;
-    animation: timelineFlow 8s linear infinite;
+    @apply absolute -top-[150px] left-0 w-full h-[150px] bg-gradient-to-b from-transparent via-teal-400 to-transparent opacity-60;
+    animation: timelineFlow 6s linear infinite;
+  }
+
+  .dark .timeline-v2-streak {
+    @apply via-primary/60;
   }
 
   @keyframes timelineFlow {

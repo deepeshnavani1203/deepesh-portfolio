@@ -110,7 +110,7 @@ const ProjectCard = ({ proj, i, isVisible }) => {
       initial={{ opacity: 0, y: 30 }}
       animate={isVisible ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: i * 0.1 }}
-      className="futuristic-card flex flex-col h-full hover:scale-[1.03] transition-all duration-300 shadow-sm hover:shadow-[0_0_30px_rgba(59,130,246,0.15)] border border-white/5"
+      className="futuristic-card flex flex-col h-full hover:scale-[1.03] transition-all duration-300 shadow-sm hover:shadow-[0_0_30px_rgba(59,130,246,0.15)] dark:border-white/5 border-black/10 border"
     >
       <div className="flex flex-col h-full p-4 md:p-5">
         {/* Image */}
@@ -147,12 +147,13 @@ const ProjectCard = ({ proj, i, isVisible }) => {
         {/* Dynamic Buttons */}
         {links.length > 0 && (
           <div
-            className={`grid gap-2 mt-auto ${links.length === 1
+            className={`grid gap-2 mt-auto ${
+              links.length === 1
                 ? "grid-cols-1"
                 : links.length === 2
                   ? "grid-cols-2"
                   : "grid-cols-2 lg:grid-cols-3"
-              }`}
+            }`}
           >
             {links.map((link, idx) => {
               const Icon = link.icon;
@@ -163,9 +164,10 @@ const ProjectCard = ({ proj, i, isVisible }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`w-full py-2 px-3 text-xs font-bold text-center rounded border shadow-sm flex items-center justify-center gap-1.5 transition-all duration-200
-                    ${link.primary
-                      ? "text-white bg-primary hover:bg-primary/90 border-primary/20"
-                      : "text-foreground bg-secondary hover:bg-secondary/70 border-border"
+                    ${
+                      link.primary
+                        ? "dark:text-white text-black bg-primary hover:bg-primary/90 border-primary/20"
+                        : "text-foreground bg-secondary hover:bg-secondary/70 border-border"
                     }`}
                 >
                   <Icon size={14} /> {link.label}

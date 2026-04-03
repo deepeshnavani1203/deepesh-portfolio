@@ -70,17 +70,16 @@ const ExperienceItem = ({
 
   return (
     <motion.div
-      initial={{ opacity: 0, x: -20 }}
-      animate={isVisible ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.5, delay: i * 0.12 }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={isVisible ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.8, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
       className="relative pl-12 group cursor-pointer"
       onClick={() => setIsOpen(!isOpen)}
     >
-
-      <div className="futuristic-card p-6 group-hover:shadow-[0_0_30px_hsl(var(--primary)/0.1)] transition-all duration-300 border border-white/5">
+      <div className="futuristic-card p-6 group-hover:shadow-[0_0_30px_hsl(var(--primary)/0.1)] transition-all duration-300 dark:border-white/5 border-black/10 border">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3 gap-2">
           <div className="flex items-center gap-3">
-            <h3 className="font-bold text-white font-display text-lg tracking-tight">
+            <h3 className="font-bold dark:text-white text-black font-display text-lg tracking-tight">
               {exp.role}
             </h3>
             <motion.div
@@ -91,7 +90,7 @@ const ExperienceItem = ({
               <ChevronDown size={18} />
             </motion.div>
           </div>
-          <span className="text-[10px] text-muted-foreground font-mono bg-secondary/50 px-2 py-0.5 rounded-full border border-divider w-fit">
+          <span className="text-[10px] text-muted-foreground font-mono bg-secondary/50 px-2 py-0.5 rounded-full border border-black/5 dark:border-white/5 w-fit">
             {exp.duration}
           </span>
         </div>
@@ -103,7 +102,7 @@ const ExperienceItem = ({
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
+              transition={{ duration: 0.35, ease: [0.23, 1, 0.32, 1] }}
               className="overflow-hidden"
             >
               <p className="text-sm text-muted-foreground leading-relaxed mt-4 mb-4">
@@ -114,7 +113,7 @@ const ExperienceItem = ({
                 {exp.tech.map((t) => (
                   <span
                     key={t}
-                    className="px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider rounded-md bg-secondary/40 text-muted-foreground border border-white/5"
+                    className="px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider rounded-md bg-secondary/40 text-muted-foreground dark:border-white/5 border-black/10 border"
                   >
                     {t}
                   </span>
