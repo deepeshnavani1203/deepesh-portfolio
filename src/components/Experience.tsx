@@ -7,7 +7,7 @@ const experiences = [
   {
     role: "Web Developer",
     company: "Odyssey",
-    duration: "June 2024 - Present",
+    duration: "March 2026 - Present",
     description:
       "Developed and maintained a responsive vacation home listing website using HTML, CSS, and JavaScript, reducing average page load time by 40% through asset optimization and efficient layout structuring. Enhanced on-page SEO via semantic HTML and structured metadata, improving search engine indexing and organic visibility.",
     tech: [
