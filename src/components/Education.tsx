@@ -7,7 +7,7 @@ const education = [
     degree: "B.Tech in Computer Engineering",
     institution: "VES Institute of Technology",
     duration: "2024 - 2027",
-    score: "SGPA 9.2",
+    score: "CGPA 9.2",
   },
   {
     degree: "Diploma in Computer Engineering",
