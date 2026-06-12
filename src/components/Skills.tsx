@@ -84,7 +84,6 @@ const categories = [
     title: "AI / ML",
     skills: [
       { name: "Gemini API", icon: Brain, color: "#8B5CF6" },
-      { name: "Hugging Face", icon: SiHuggingface, color: "#FFD21E" },
       {
         name: "Text-to-Speech (edgeTTS, gTTS)",
         icon: Volume2,
