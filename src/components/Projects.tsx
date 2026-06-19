@@ -4,27 +4,27 @@ import { ExternalLink, Github, FileText } from "lucide-react";
 
 const projects = [
   {
-    name: "AI Multiverse",
+    name: "HireSense",
     description:
-      "AI Multiverse is a collaborative AI storytelling platform that enables real-time multi-user interaction with voice-based narrative generation. It supports 5+ concurrent users, processes 20+ asynchronous API requests, and delivers AI-generated stories in under 3 seconds with optimized frontend performance achieving under 100ms UI response time.",
+      "HireSense is an AI-powered job-readiness platform offering resume analysis, interview prep, profile generation, career guidance, and ATS scoring. It features a Gemini-powered conversational assistant, an ATS analyzer providing actionable feedback, and a mock interview module with speech recognition.",
     tech: [
       "React",
-      "Gemini API",
-      "Edge TTS",
-      "Tailwind CSS",
       "Node.js",
-      "Cloudinary",
-      "Supabase",
+      "MongoDB",
+      "Gemini API",
+      "NLP",
+      "LLMs",
+      "Speech Recognition",
     ],
     live: null,
-    github: null,
+    github: "https://github.com/deepeshnavani1203/HireSense.git",
     paper: null,
-    image: "/docs/ai-multiverse.jpg",
+    image: "/docs/hiresense.png",
   },
   {
     name: "Crickify",
     description:
-      "Crickify is a real-time multiplayer Hand Cricket game built using WebSockets, supporting both single-player and live multiplayer modes. It achieves under 50ms latency with unique room-based matchmaking and ensures zero game-state desynchronization through robust turn-based game logic.",
+      "Crickify is a real-time multiplayer Hand Cricket game offering single-player and multiplayer modes with under 50ms latency. It features a Socket.IO-powered room matchmaking framework supporting 20+ concurrent matches with automatic reconnection and state synchronization.",
     tech: [
       "React",
       "Tailwind CSS",
@@ -42,7 +42,7 @@ const projects = [
   {
     name: "QR Attend",
     description:
-      "QR Attend is an Android-based attendance management system that automates attendance verification using real-time QR authentication. The system supports 100+ daily entries, reduces manual effort by 40%, and was published as a peer-reviewed research paper with secure backend validation and Firebase integration.",
+      "QR Attend is an Android-based attendance tracking system utilizing QR codes for real-time validation. It automates check-in workflows, reduces manual attendance marking effort by 40%, and features secure Firebase integration as published in our research paper.",
     tech: ["React Native", "Firebase"],
     live: null,
     github: null,
@@ -52,7 +52,7 @@ const projects = [
   {
     name: "TermiTalk",
     description:
-      "TermiTalk is a secure LAN-based chat application enabling real-time messaging without internet connectivity. It supports 10+ concurrent users with private rooms, admin controls, and file sharing, while maintaining under 20ms message delivery latency through an optimized multi-threaded server architecture.",
+      "TermiTalk is a multi-threaded real-time chat system with direct messaging, private rooms, and file transfer capabilities. It supports 10+ concurrent users with 99% message delivery reliability and features admin controls with reduced transmission delays.",
     tech: [
       "Python",
       "Socket Programming",
@@ -68,7 +68,7 @@ const projects = [
   {
     name: "StrideX",
     description:
-      "StrideX is a full-stack e-commerce platform supporting 10+ product categories with a secure checkout system powered by Razorpay. I built and integrated 15+ RESTful APIs for authentication, product management, and order processing, achieving sub-second response times using MongoDB and optimized backend architecture with JWT-based authentication.",
+      "StrideX is a full-stack e-commerce platform with a product catalog, cart management, and Razorpay-integrated checkout. It features 15+ RESTful API endpoints for authentication, order management, and secure transactions processing in under 2 seconds.",
     tech: [
       "React",
       "Tailwind CSS",
