@@ -53,9 +53,9 @@ const Contact = () => {
     <section id="contact" className="section-padding">
       <div className="max-w-xl mx-auto" ref={ref}>
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 25 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <h2 className="section-title">Get In Touch</h2>
           <p className="section-subtitle">Want to connect? Let's talk.</p>
@@ -64,7 +64,7 @@ const Contact = () => {
         <motion.form
           initial={{ opacity: 0, y: 25 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           action="https://formsubmit.co/deepeshnavani@gmail.com"
           method="POST"
           onSubmit={handleSubmit}

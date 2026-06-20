@@ -130,9 +130,9 @@ const Skills = () => {
     <section id="skills" className="section-padding">
       <div className="max-w-5xl mx-auto" ref={ref}>
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 25 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="mb-8"
         >
           <h2 className="section-title">Technical Arsenal</h2>
@@ -145,10 +145,10 @@ const Skills = () => {
           {categories.map((cat, ci) => (
             <motion.div
               key={cat.title}
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: ci * 0.1 }}
+              transition={{ duration: 0.7, delay: ci * 0.08, ease: [0.16, 1, 0.3, 1] }}
             >
               <h3 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3 pb-1.5 border-b border-border/50">
                 {cat.title}
@@ -160,8 +160,9 @@ const Skills = () => {
                   return (
                     <motion.div
                       key={skill.name}
-                      whileHover={{ scale: 1.07, y: -3 }}
-                      className="futuristic-card flex items-center gap-2 py-2 px-3 transition-all duration-200 group cursor-default"
+                      whileHover={{ scale: 1.06, y: -3 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                      className="futuristic-card flex items-center gap-2 py-2 px-3 group cursor-default"
                     >
                       <div style={{ color: skill.color }}>
                         <Icon size={16} />

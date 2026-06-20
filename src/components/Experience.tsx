@@ -72,7 +72,13 @@ const ExperienceItem = ({
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={isVisible ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.8, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+      whileHover={{ x: 6 }}
+      transition={{
+        type: "spring",
+        stiffness: 300,
+        damping: 20,
+        opacity: { duration: 0.8, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }
+      }}
       className="relative pl-12 group cursor-pointer"
       onClick={() => setIsOpen(!isOpen)}
     >
@@ -134,9 +140,9 @@ const Experience = () => {
     <section id="experience" className="section-padding">
       <div className="max-w-3xl mx-auto" ref={ref}>
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 25 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <h2 className="section-title">Experience</h2>
           <p className="section-subtitle">My professional journey so far.</p>

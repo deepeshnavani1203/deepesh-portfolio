@@ -115,20 +115,20 @@ const Header = () => {
                       {theme === "dark" ? (
                         <motion.div
                           key="sun"
-                          initial={{ opacity: 0, rotate: -45 }}
-                          animate={{ opacity: 1, rotate: 0 }}
-                          exit={{ opacity: 0, rotate: 45 }}
-                          transition={{ duration: 0.2 }}
+                          initial={{ opacity: 0, rotate: -60, scale: 0.7 }}
+                          animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                          exit={{ opacity: 0, rotate: 60, scale: 0.7 }}
+                          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                         >
                           <Sun size={18} />
                         </motion.div>
                       ) : (
                         <motion.div
                           key="moon"
-                          initial={{ opacity: 0, rotate: 45 }}
-                          animate={{ opacity: 1, rotate: 0 }}
-                          exit={{ opacity: 0, rotate: -45 }}
-                          transition={{ duration: 0.2 }}
+                          initial={{ opacity: 0, rotate: 60, scale: 0.7 }}
+                          animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                          exit={{ opacity: 0, rotate: -60, scale: 0.7 }}
+                          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                         >
                           <Moon size={18} />
                         </motion.div>

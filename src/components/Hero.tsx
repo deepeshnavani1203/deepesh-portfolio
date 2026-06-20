@@ -29,9 +29,9 @@ const Hero = ({ onComplete }: HeroProps) => {
       <div className="max-w-4xl mx-auto w-full flex flex-col items-center text-center relative z-10 min-h-[320px]">
         {/* Profile Image */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
+          transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
           className="mb-14 relative"
         >
           <div className="w-32 h-32 md:w-36 md:h-36 rounded-full overflow-hidden shadow-[0_0_30px_rgba(59,130,246,0.2)] dark:ring-1 ring-2 ring-primary/30 dark:ring-primary/30 relative z-10 dark:border-0 border border-black/20">
@@ -73,7 +73,7 @@ const Hero = ({ onComplete }: HeroProps) => {
                   hidden: { opacity: 0, y: 15 },
                   visible: { opacity: 1, y: 0 },
                 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
+                transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
                 className="mt-4 text-lg md:text-xl text-muted-foreground max-w-lg"
               >
                 Full Stack & Mobile Developer building intelligent, scalable
@@ -86,7 +86,7 @@ const Hero = ({ onComplete }: HeroProps) => {
                   hidden: { opacity: 0, y: 15 },
                   visible: { opacity: 1, y: 0 },
                 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
+                transition={{ duration: 1.0, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
                 className="mt-10 flex flex-wrap items-center justify-center gap-4"
               >
                 <a

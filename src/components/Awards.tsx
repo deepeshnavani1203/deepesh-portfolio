@@ -27,9 +27,9 @@ const Awards = () => {
     <section id="awards" className="section-padding">
       <div className="max-w-3xl mx-auto" ref={ref}>
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 25 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <h2 className="section-title">Awards & Certifications</h2>
           <p className="section-subtitle">
@@ -44,10 +44,16 @@ const Awards = () => {
               {awards.map((a, i) => (
                 <motion.div
                   key={`award-${i}`}
-                  initial={{ opacity: 0, y: 15 }}
+                  initial={{ opacity: 0, y: 20 }}
                   animate={isVisible ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.4, delay: i * 0.1 }}
-                  className="futuristic-card p-5 flex items-start gap-4 hover:shadow-[0_0_20px_hsl(var(--primary)/0.1)] transition-all duration-300 dark:border-white/5 border-black/10 border"
+                  whileHover={{ y: -4, scale: 1.01 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 400,
+                    damping: 25,
+                    opacity: { duration: 0.8, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }
+                  }}
+                  className="futuristic-card p-5 flex items-start gap-4 hover:shadow-[0_0_20px_hsl(var(--primary)/0.1)] dark:border-white/5 border-black/10 border"
                 >
                   <Award
                     size={20}
@@ -67,13 +73,20 @@ const Awards = () => {
               {certifications.map((c, i) => (
                 <motion.div
                   key={`cert-${i}`}
-                  initial={{ opacity: 0, y: 15 }}
+                  initial={{ opacity: 0, y: 20 }}
                   animate={isVisible ? { opacity: 1, y: 0 } : {}}
+                  whileHover={{ y: -4, scale: 1.01 }}
                   transition={{
-                    duration: 0.4,
-                    delay: (awards.length + i) * 0.1,
+                    type: "spring",
+                    stiffness: 400,
+                    damping: 25,
+                    opacity: {
+                      duration: 0.8,
+                      delay: (awards.length + i) * 0.08,
+                      ease: [0.16, 1, 0.3, 1],
+                    }
                   }}
-                  className="futuristic-card p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:shadow-[0_0_20px_hsl(var(--primary)/0.1)] transition-all duration-300 dark:border-white/5 border-black/10 border"
+                  className="futuristic-card p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:shadow-[0_0_20px_hsl(var(--primary)/0.1)] dark:border-white/5 border-black/10 border"
                 >
                   <div className="flex items-start gap-4">
                     <BadgeCheck

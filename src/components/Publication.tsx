@@ -9,9 +9,9 @@ const Publication = () => {
     <section id="publication" className="section-padding">
       <div className="max-w-3xl mx-auto" ref={ref}>
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 25 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <h2 className="section-title">Publication</h2>
           <p className="section-subtitle">
@@ -23,8 +23,14 @@ const Publication = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.4 }}
-            className="futuristic-card p-5 flex items-start gap-4 hover:shadow-[0_0_25px_hsl(var(--primary)/0.1)] transition-all duration-300 dark:border-white/5 border-black/10 border"
+            whileHover={{ y: -4, scale: 1.01 }}
+            transition={{
+              type: "spring",
+              stiffness: 400,
+              damping: 25,
+              opacity: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+            }}
+            className="futuristic-card p-5 flex items-start gap-4 hover:shadow-[0_0_25px_hsl(var(--primary)/0.1)] dark:border-white/5 border-black/10 border"
           >
             <BookOpen size={20} className="text-primary mt-0.5 flex-shrink-0" />
             <div className="flex-1 flex flex-col md:flex-row md:items-center justify-between gap-4">

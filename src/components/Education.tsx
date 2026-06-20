@@ -24,9 +24,9 @@ const Education = () => {
     <section id="education" className="section-padding">
       <div className="max-w-3xl mx-auto" ref={ref}>
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 25 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <h2 className="section-title">Education</h2>
           <p className="section-subtitle">My academic background.</p>
@@ -43,10 +43,12 @@ const Education = () => {
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 animate={isVisible ? { opacity: 1, y: 0 } : {}}
+                whileHover={{ x: 6 }}
                 transition={{
-                  duration: 0.8,
-                  delay: i * 0.1,
-                  ease: [0.16, 1, 0.3, 1],
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 20,
+                  opacity: { duration: 0.8, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }
                 }}
                 className="relative pl-12 group"
               >

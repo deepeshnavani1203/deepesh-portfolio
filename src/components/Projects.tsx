@@ -109,8 +109,14 @@ const ProjectCard = ({ proj, i, isVisible }) => {
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       animate={isVisible ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay: i * 0.1 }}
-      className="futuristic-card flex flex-col h-full hover:scale-[1.03] transition-all duration-300 shadow-sm hover:shadow-[0_0_30px_rgba(59,130,246,0.15)] dark:border-white/5 border-black/10 border"
+      whileHover={{ y: -6, scale: 1.02 }}
+      transition={{
+        type: "spring",
+        stiffness: 300,
+        damping: 20,
+        opacity: { duration: 0.8, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }
+      }}
+      className="futuristic-card flex flex-col h-full shadow-sm hover:shadow-[0_0_30px_rgba(59,130,246,0.15)] dark:border-white/5 border-black/10 border"
     >
       <div className="flex flex-col h-full p-4 md:p-5">
         {/* Image */}
@@ -188,9 +194,9 @@ const Projects = () => {
     <section id="projects" className="section-padding">
       <div className="max-w-6xl mx-auto" ref={ref}>
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 25 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="mb-10"
         >
           <h2 className="section-title">Featured Projects</h2>

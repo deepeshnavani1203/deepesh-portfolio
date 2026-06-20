@@ -16,9 +16,9 @@ const About = () => {
     <section id="about" className="section-padding">
       <div className="max-w-3xl mx-auto" ref={ref}>
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 25 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <h2 className="section-title">About Me</h2>
           <p className="text-muted-foreground leading-relaxed text-base md:text-lg mt-6">
