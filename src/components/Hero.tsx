@@ -10,7 +10,7 @@ interface HeroProps {
 }
 
 const Hero = ({ onComplete }: HeroProps) => {
-  const { displayed, done } = useTypewriter("Hi, I'm Deepesh", 110, 500);
+  const { displayed, done } = useTypewriter("Hi, I'm Deepesh", 110, 2100);
   const { theme } = useTheme();
 
   useEffect(() => {
@@ -27,21 +27,67 @@ const Hero = ({ onComplete }: HeroProps) => {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] rounded-full blur-3xl pointer-events-none opacity-50 transition-colors duration-500 bg-primary/5 dark:bg-black" />
 
       <div className="max-w-4xl mx-auto w-full flex flex-col items-center text-center relative z-10 min-h-[320px]">
-        {/* Profile Image */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.85 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-14 relative"
-        >
-          <div className="w-32 h-32 md:w-36 md:h-36 rounded-full overflow-hidden shadow-[0_0_30px_rgba(59,130,246,0.2)] dark:ring-1 ring-2 ring-primary/30 dark:ring-primary/30 relative z-10 dark:border-0 border border-black/20">
+        {/* Profile Image Container with Scanning/Unrolling Animation */}
+        <div className="mb-14 relative w-32 h-32 md:w-36 md:h-36 overflow-visible">
+          {/* 1. Glowing outer shadow / aura */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1.15 }}
+            transition={{ duration: 1.5, delay: 0.5, ease: "easeInOut" }}
+            className="absolute inset-0 rounded-full bg-primary/20 blur-xl pointer-events-none"
+          />
+
+          {/* 2. Outer border ring */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute inset-0 rounded-full ring-2 ring-primary/30 dark:ring-primary/30 z-20 pointer-events-none"
+          />
+
+          {/* 3. Scanning Laser Line (moves from top to bottom matching reveal percentages) */}
+          <motion.div
+            initial={{ top: "0%", opacity: 0 }}
+            animate={{ 
+              top: ["0%", "30%", "50%", "80%", "100%"], 
+              opacity: [0, 1, 1, 1, 0] 
+            }}
+            transition={{ 
+              duration: 1.5, 
+              delay: 0.5, 
+              times: [0, 0.25, 0.5, 0.75, 1], 
+              ease: "easeInOut" 
+            }}
+            className="absolute left-[-4px] right-[-4px] h-[2px] bg-primary shadow-[0_0_12px_hsl(var(--primary))] z-30 rounded-full"
+          />
+
+          {/* 4. The actual Profile Image (revealing/unrolling from top to bottom) */}
+          <motion.div
+            initial={{ clipPath: "inset(0% 0% 100% 0%)" }}
+            animate={{
+              clipPath: [
+                "inset(0% 0% 100% 0%)", // 0% revealed
+                "inset(0% 0% 70% 0%)",  // 30% revealed
+                "inset(0% 0% 50% 0%)",  // 50% revealed
+                "inset(0% 0% 20% 0%)",  // 80% revealed
+                "inset(0% 0% 0% 0%)"    // 100% revealed
+              ]
+            }}
+            transition={{ 
+              duration: 1.5, 
+              delay: 0.5, 
+              times: [0, 0.25, 0.5, 0.75, 1], 
+              ease: "easeInOut" 
+            }}
+            className="w-full h-full rounded-full overflow-hidden z-10 relative dark:border-0 border border-black/20"
+          >
             <img
               src={profileImg}
               alt="Deepesh - Full Stack Developer"
               className="w-full h-full object-cover"
             />
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
 
         {/* Text Content */}
         <div className="h-[64px] flex items-center justify-center">
