@@ -1,16 +1,8 @@
 import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { useSpotlight } from "@/hooks/useSpotlight";
-
-const values = [
-  { title: "Craftsmanship", desc: "Every line of code is intentional. I care deeply about quality and maintainability." },
-  { title: "Continuous Growth", desc: "I'm always exploring new tools, patterns, and ideas to stay ahead of the curve." },
-  { title: "Impact", desc: "I build products that matter — solving real problems for real people." },
-];
 
 const About = () => {
   const { ref, isVisible } = useScrollReveal();
-  const { onMouseMove } = useSpotlight();
 
   return (
     <section id="about" className="section-padding">
@@ -21,15 +13,17 @@ const About = () => {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <h2 className="section-title">About Me</h2>
+
           <p className="text-muted-foreground leading-relaxed text-base md:text-lg mt-6">
-            I'm a Full Stack Developer passionate about building clean, performant, and user-centric 
-            digital products. With experience spanning frontend frameworks, backend services, and cloud 
-            infrastructure, I enjoy turning complex problems into simple, elegant solutions. I thrive at 
-            the intersection of design and engineering — where thoughtful architecture meets delightful 
-            user experience.
+            I'm a Full Stack Developer from Mumbai, building web and mobile applications with{" "}
+            <span className="text-foreground font-medium">React.js, Next.js, React Native,</span> and{" "}
+            <span className="text-foreground font-medium">Node.js</span> — working across both SQL and NoSQL databases.
+            Lately I've been diving into <span className="text-foreground font-medium">AI/ML</span>, building real
+            solutions with <span className="text-foreground font-medium">RAG pipelines and LLMs</span>, and sharpening
+            problem-solving through DSA. I care about clean, maintainable code and creating products that solve real
+            problems for real people.
           </p>
         </motion.div>
-
       </div>
     </section>
   );

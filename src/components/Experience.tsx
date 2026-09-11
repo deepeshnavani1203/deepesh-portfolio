@@ -6,53 +6,46 @@ import { ChevronDown } from "lucide-react";
 const experiences = [
   {
     role: "Web Developer",
-    company: "Odyssey",
-    duration: "March 2026 - Present",
+    company: "Odyssey Homes",
+    duration: "March 2026 – Present",
     description:
-      "Developed and maintained a responsive vacation home listing website using HTML, CSS, and JavaScript, reducing average page load time by 40% through asset optimization and efficient layout structuring. Enhanced on-page SEO via semantic HTML and structured metadata, improving search engine indexing and organic visibility.",
-    tech: [
-      "React",
-      "Tailwind CSS",
-      "JavaScript",
-      "Node.js",
-      "Express.js",
-      "Framer Motion",
-      "MongoDB",
-    ],
+      "Built a luxury real estate portal showcasing 50+ properties — villas, farmhouses, and twin houses — with dedicated listing pages, enquiry forms, and dynamic content. Developed 3 core modules (property listing, enquiry handling, and content management) using React.js, Node.js, Express.js, and MongoDB. Built RESTful API endpoints for property browsing and enquiry submission, and improved page load performance through code splitting, image compression, and lazy loading.",
+    tech: ["React.js", "Node.js", "Express.js", "MongoDB", "Tailwind CSS", "REST APIs"],
   },
   {
     role: "Full Stack Developer",
-    company: "AIBI, Airoli",
-    duration: "June 2024- September 2025",
+    company: "AIBI, Mumbai",
+    duration: "July 2024 – September 2025",
     description:
-      "Built and deployed scalable full-stack web and mobile applications using React.js, React Native, Node.js, and Supabase, managing datasets of 1,000+ records and reducing manual workflow effort by 30%. Integrated Gemini API and text-to-speech tools for AI-driven features while implementing JWT-based authentication with role-based access control. Optimized backend API performance and database queries, improving scalability and reducing response time by 35%.",
+      "Built and maintained multiple web and mobile applications using React.js, React Native, Node.js, and Supabase, following structured SDLC workflows. Managed 1,000+ structured records through reliable REST APIs. Secured application access using 2 layers of protection — JWT-based authentication and role-based authorization. Integrated 2 AI services — Gemini API and text-to-speech — to power intelligent features across products.",
     tech: [
+      "React.js",
       "React Native",
-      "React",
-      "Gemini API",
-      "Edge TTS",
-      "Tailwind CSS",
-      "FastAPI",
       "Node.js",
       "Express.js",
-      "Cloudinary",
       "Supabase",
+      "Gemini API",
+      "gTTS",
+      "FastAPI",
+      "JWT Auth",
+      "Cloudinary",
+      "Tailwind CSS",
     ],
   },
   {
-    role: "Full Stack Developer",
-    company: "Sinjan Solutions Private Ltd, Vikhroli",
-    duration: "December 2023 -May 2024",
+    role: "Mobile Application Developer",
+    company: "Sinjan Solutions Pvt. Ltd., Mumbai",
+    duration: "December 2023 – May 2024",
     description:
-      "Built a QR-code-based attendance management system using React Native and Firebase with real-time data synchronization, reducing manual processing effort by 40%. Strengthened authentication workflows and improved application stability through optimized API communication.",
+      "Developed a QR attendance tracker with React Native and Firebase monitoring live attendance for 100+ users. Reduced verification effort by 40% through process automation and streamlined validation. Identified and fixed 3+ critical authentication bugs related to duplicate entries and expired QR validation, improving app reliability.",
     tech: ["React Native", "Firebase"],
   },
   {
     role: "Web Developer Intern",
-    company: "Insys Technologies",
-    duration: "7 June 2023 - 22 July 2023",
+    company: "Insys Technologies, India",
+    duration: "June 2023 – July 2023",
     description:
-      "Developed web components and features during internship. Specialized in building responsive user interfaces and integrating frontend with backend services using PHP and MySQL. Gained experience in full-cycle web development and debugging.",
+      "Built responsive, cross-device-compatible web applications using HTML, CSS, JavaScript, PHP, and MySQL. Developed a course management system with modules for course owners to manage content and for students to track their enrolled courses. Optimized MySQL database queries through proper indexing and query structuring, improving data retrieval performance during testing.",
     tech: ["HTML", "CSS", "JavaScript", "PHP", "MySQL", "AJAX"],
   },
 ];
@@ -68,16 +61,21 @@ const ExperienceItem = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
+  // Alternate left/right entrance per item
+  const xDir = i % 2 === 0 ? -30 : 30;
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={isVisible ? { opacity: 1, y: 0 } : {}}
+      initial={{ opacity: 0, x: xDir, y: 10 }}
+      animate={isVisible ? { opacity: 1, x: 0, y: 0 } : {}}
       whileHover={{ x: 6 }}
       transition={{
         type: "spring",
-        stiffness: 300,
-        damping: 20,
-        opacity: { duration: 0.8, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }
+        stiffness: 280,
+        damping: 22,
+        opacity: { duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] },
+        x: { duration: 0.5, delay: i * 0.1 },
+        y: { duration: 0.5, delay: i * 0.1 },
       }}
       className="relative pl-12 group cursor-pointer"
       onClick={() => setIsOpen(!isOpen)}
