@@ -17,7 +17,7 @@ interface Message {
 
 // ── Constants ────────────────────────────────────────────────────────────────
 
-const API_URL = `${import.meta.env.VITE_AI_API_URL ?? "http://127.0.0.1:8000"}/chat`;
+const API_URL = `${import.meta.env.VITE_AI_API_URL ?? "https://deepesh-portfolio-zy8n.onrender.com"}/chat`;
 
 const WELCOME_MESSAGE: Message = {
   id: 0,
@@ -48,7 +48,12 @@ const TypingDots = () => (
         key={i}
         className="w-1.5 h-1.5 rounded-full bg-muted-foreground/60 block"
         animate={{ opacity: [0.3, 1, 0.3], y: [0, -3, 0] }}
-        transition={{ duration: 1, repeat: Infinity, delay: i * 0.18, ease: "easeInOut" }}
+        transition={{
+          duration: 1,
+          repeat: Infinity,
+          delay: i * 0.18,
+          ease: "easeInOut",
+        }}
       />
     ))}
   </div>
@@ -70,9 +75,10 @@ const Bubble = ({ msg }: BubbleProps) => {
       <div
         className={`
           max-w-[82%] px-3.5 py-2.5 rounded-2xl text-sm leading-relaxed break-words
-          ${isUser
-            ? "bg-primary text-primary-foreground rounded-br-sm"
-            : "bg-card border border-border text-foreground rounded-bl-sm"
+          ${
+            isUser
+              ? "bg-primary text-primary-foreground rounded-br-sm"
+              : "bg-card border border-border text-foreground rounded-bl-sm"
           }
         `}
       >
@@ -131,7 +137,11 @@ const AIChatbot = () => {
       const data = await res.json();
       const answer: string = data.answer ?? "Sorry, I didn't get a response.";
 
-      const aiMsg: Message = { id: nextId(), role: "assistant", content: answer };
+      const aiMsg: Message = {
+        id: nextId(),
+        role: "assistant",
+        content: answer,
+      };
       setMessages((prev) => [...prev, aiMsg]);
 
       // Update history for context

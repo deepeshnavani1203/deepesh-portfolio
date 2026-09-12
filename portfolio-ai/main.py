@@ -781,6 +781,7 @@ app.add_middleware(
         "http://127.0.0.1:3000",
         "http://localhost:8080",
         "http://127.0.0.1:8080",
+        "https://deepeshnavani.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
