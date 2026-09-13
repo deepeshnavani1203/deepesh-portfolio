@@ -4,19 +4,38 @@ import { ExternalLink, Github, FileText } from "lucide-react";
 
 const projects = [
   {
+    name: "RevAI",
+    description:
+      "RevAI is an AI-powered video revision assistant that transforms educational playlists into a searchable knowledge base. It implements a RAG pipeline using Whisper, embeddings, and Qdrant vector database for semantic retrieval, and delivers context-aware answers with video timestamps so users can jump directly to the relevant lecture segment.",
+    tech: [
+      "React.js",
+      "FastAPI",
+      "Python",
+      "yt-dlp",
+      "Whisper",
+      "RAG",
+      "Groq API",
+      "Qdrant",
+    ],
+    live: "https://github.com/deepeshnavani1203/RevAI.git",
+    github: "https://github.com/deepeshnavani1203/RevAI.git",
+    paper: null,
+    image: "/docs/revai.jpeg",
+  },
+  {
     name: "HireSense",
     description:
       "HireSense is an AI-powered job-readiness platform offering resume analysis, interview prep, profile generation, career guidance, and ATS scoring. It features a Gemini-powered conversational assistant, an ATS analyzer providing actionable feedback, and a mock interview module with speech recognition.",
     tech: [
-      "React",
+      "React.js",
+      "Tainwind CSS",
       "Node.js",
+      "Express.js",
       "MongoDB",
       "Gemini API",
-      "NLP",
-      "LLMs",
-      "Speech Recognition",
+      "gTTS",
     ],
-    live: null,
+    live: "https://hire-sense-xi.vercel.app",
     github: "https://github.com/deepeshnavani1203/HireSense.git",
     paper: null,
     image: "/docs/hiresense.png",
@@ -26,7 +45,7 @@ const projects = [
     description:
       "Crickify is a real-time multiplayer Hand Cricket game offering single-player and multiplayer modes with under 50ms latency. It features a Socket.IO-powered room matchmaking framework supporting 20+ concurrent matches with automatic reconnection and state synchronization.",
     tech: [
-      "React",
+      "React.js",
       "Tailwind CSS",
       "Python",
       "Node.js",
@@ -50,33 +69,17 @@ const projects = [
     image: "/docs/qrattend-logo.jpeg",
   },
   {
-    name: "TermiTalk",
-    description:
-      "TermiTalk is a multi-threaded real-time chat system with direct messaging, private rooms, and file transfer capabilities. It supports 10+ concurrent users with 99% message delivery reliability and features admin controls with reduced transmission delays.",
-    tech: [
-      "Python",
-      "Socket Programming",
-      "Multi-Threading",
-      "tkinter",
-      "queues",
-    ],
-    live: null,
-    github: "https://github.com/deepeshnavani1203/TermiTalk.git",
-    paper: null,
-    image: "/docs/termitalk-logo.jpg",
-  },
-  {
     name: "StrideX",
     description:
       "StrideX is a full-stack e-commerce platform with a product catalog, cart management, and Razorpay-integrated checkout. It features 15+ RESTful API endpoints for authentication, order management, and secure transactions processing in under 2 seconds.",
     tech: [
-      "React",
+      "Next.js",
       "Tailwind CSS",
       "Node.js",
       "Express.js",
-      "jwt",
+      "JWT",
       "MongoDB",
-      "Mongoose",
+      "Razorpay",
     ],
     live: "https://stride-x-flax.vercel.app/",
     github: "https://github.com/deepeshnavani1203/StrideX.git",
@@ -95,7 +98,7 @@ const ProjectCard = ({ proj, i, isVisible }) => {
     },
     proj.github && {
       href: proj.github,
-      label: "Source",
+      label: "GitHub",
       icon: Github,
     },
     proj.paper && {
@@ -114,9 +117,9 @@ const ProjectCard = ({ proj, i, isVisible }) => {
         type: "spring",
         stiffness: 300,
         damping: 20,
-        opacity: { duration: 0.8, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }
+        opacity: { duration: 0.8, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] },
       }}
-      className="futuristic-card flex flex-col h-full shadow-sm hover:shadow-[0_0_30px_rgba(59,130,246,0.15)] dark:border-white/5 border-black/10 border"
+      className="futuristic-card flex flex-col h-full shadow-md hover:shadow-[0_0_30px_rgba(59,130,246,0.2)] border dark:border-white/10 border-black/10 dark:bg-white/[0.07] bg-white"
     >
       <div className="flex flex-col h-full p-4 md:p-5">
         {/* Image */}
@@ -150,18 +153,37 @@ const ProjectCard = ({ proj, i, isVisible }) => {
           {proj.description}
         </p>
 
-        {/* Dynamic Buttons */}
-        {links.length > 0 && (
-          <div
-            className={`grid gap-2 mt-auto ${
-              links.length === 1
+        {/* Buttons — always render grid, show placeholder if no links */}
+        <div
+          className={`grid gap-2 mt-auto ${
+            links.length === 0
+              ? "grid-cols-2"
+              : links.length === 1
                 ? "grid-cols-1"
                 : links.length === 2
                   ? "grid-cols-2"
                   : "grid-cols-2 lg:grid-cols-3"
-            }`}
-          >
-            {links.map((link, idx) => {
+          }`}
+        >
+          {links.length === 0 ? (
+            <>
+              <a
+                href="#"
+                className="w-full py-2 px-3 text-xs font-bold text-center rounded border shadow-sm flex items-center justify-center gap-1.5 opacity-40 cursor-not-allowed pointer-events-none
+                  dark:text-white text-black bg-primary border-primary/20"
+              >
+                <ExternalLink size={14} /> View
+              </a>
+              <a
+                href="#"
+                className="w-full py-2 px-3 text-xs font-bold text-center rounded border shadow-sm flex items-center justify-center gap-1.5 opacity-40 cursor-not-allowed pointer-events-none
+                  text-foreground bg-secondary border-border"
+              >
+                <Github size={14} /> GitHub
+              </a>
+            </>
+          ) : (
+            links.map((link, idx) => {
               const Icon = link.icon;
               return (
                 <a
@@ -179,9 +201,9 @@ const ProjectCard = ({ proj, i, isVisible }) => {
                   <Icon size={14} /> {link.label}
                 </a>
               );
-            })}
-          </div>
-        )}
+            })
+          )}
+        </div>
       </div>
     </motion.div>
   );
