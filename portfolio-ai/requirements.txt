@@ -1,5 +1,7 @@
-fastapi
-uvicorn
 groq
 python-dotenv
 pypdf
+fastapi
+uvicorn
+qdrant-client
+sentence-transformers
