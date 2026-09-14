@@ -1,10 +1,8 @@
---extra-index-url https://download.pytorch.org/whl/cpu
-
 groq
 python-dotenv
 pypdf
 fastapi
 uvicorn
 qdrant-client
-sentence-transformers
-torch==2.7.1+cpu
+scikit-learn
+numpy

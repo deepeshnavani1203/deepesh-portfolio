@@ -18,7 +18,7 @@ from qdrant_client.models import (
     PointStruct,
 )
 
-from sentence_transformers import SentenceTransformer
+from sklearn.feature_extraction.text import HashingVectorizer
 
 # ============================================================
 # 1. LOAD ENVIRONMENT VARIABLES
@@ -63,16 +63,20 @@ COLLECTION_NAME = "deepesh_portfolio"
 
 
 # ============================================================
-# 4. EMBEDDING MODEL
+# 4. LIGHTWEIGHT EMBEDDING MODEL
 # ============================================================
 
-print("Loading embedding model...")
+print("Loading lightweight embedding model...")
 
-embedding_model = SentenceTransformer("all-MiniLM-L6-v2")
+embedding_model = HashingVectorizer(
+    n_features=384,
+    norm="l2",
+    alternate_sign=False,
+)
 
 VECTOR_SIZE = 384
 
-print("Embedding model loaded successfully.")
+print("Lightweight embedding model loaded successfully.")
 
 
 # ============================================================
@@ -232,6 +236,7 @@ def create_chunks(text, source_name):
             current_chunk = ""
 
         else:
+
             current_chunk = paragraph
 
     # Store remaining chunk.
@@ -274,7 +279,7 @@ def load_pdf_chunks():
 
         if not text:
 
-            print(f"Warning: No text could be " f"extracted from {pdf_file.name}")
+            print(f"Warning: No text could be extracted from {pdf_file.name}")
 
             continue
 
@@ -282,7 +287,7 @@ def load_pdf_chunks():
 
         all_chunks.extend(document_chunks)
 
-        print(f"Created {len(document_chunks)} " f"chunks from {pdf_file.name}")
+        print(f"Created {len(document_chunks)} chunks from {pdf_file.name}")
 
     if not all_chunks:
 
@@ -306,7 +311,7 @@ def create_collection_if_needed():
 
     if COLLECTION_NAME not in collection_names:
 
-        print(f"Creating Qdrant collection: " f"{COLLECTION_NAME}")
+        print(f"Creating Qdrant collection: {COLLECTION_NAME}")
 
         qdrant.create_collection(
             collection_name=COLLECTION_NAME,
@@ -320,7 +325,7 @@ def create_collection_if_needed():
 
     else:
 
-        print(f"Qdrant collection " f"'{COLLECTION_NAME}' already exists.")
+        print(f"Qdrant collection '{COLLECTION_NAME}' already exists.")
 
 
 # ============================================================
@@ -336,11 +341,7 @@ def index_documents():
 
     texts = [chunk["text"] for chunk in chunks]
 
-    embeddings = embedding_model.encode(
-        texts,
-        normalize_embeddings=True,
-        show_progress_bar=True,
-    )
+    embeddings = embedding_model.transform(texts).toarray()
 
     points = []
 
@@ -367,7 +368,7 @@ def index_documents():
             )
         )
 
-    print(f"Uploading {len(points)} " f"vectors to Qdrant...")
+    print(f"Uploading {len(points)} vectors to Qdrant...")
 
     qdrant.upsert(
         collection_name=COLLECTION_NAME,
@@ -397,7 +398,7 @@ if existing_points == 0:
 
 else:
 
-    print(f"Qdrant already contains " f"{existing_points} vectors.")
+    print(f"Qdrant already contains {existing_points} vectors.")
 
     print("Skipping document indexing.")
 
@@ -454,14 +455,14 @@ def retrieve_relevant_chunks(query, history=None):
 
     history = history or []
 
-    retrieval_query = build_retrieval_query(query, history)
+    retrieval_query = build_retrieval_query(
+        query,
+        history,
+    )
 
     print(f"Retrieval query: {retrieval_query}")
 
-    query_embedding = embedding_model.encode(
-        retrieval_query,
-        normalize_embeddings=True,
-    )
+    query_embedding = embedding_model.transform([retrieval_query]).toarray()[0]
 
     search_results = qdrant.query_points(
         collection_name=COLLECTION_NAME,
@@ -486,7 +487,10 @@ def retrieve_relevant_chunks(query, history=None):
 
         text = payload.get("text", "")
 
-        source = payload.get("source", "Unknown")
+        source = payload.get(
+            "source",
+            "Unknown",
+        )
 
         if not text:
             continue
@@ -504,9 +508,9 @@ def retrieve_relevant_chunks(query, history=None):
 
     context = "\n".join(context_parts)
 
-    print(f"Retrieved " f"{len(context_parts)} chunks.")
+    print(f"Retrieved {len(context_parts)} chunks.")
 
-    print(f"Context size: " f"{len(context)} characters.")
+    print(f"Context size: {len(context)} characters.")
 
     return context
 
@@ -949,7 +953,10 @@ def chat(request: ChatRequest):
     # Semantic retrieval from Qdrant
     # --------------------------------------------------------
 
-    relevant_context = retrieve_relevant_chunks(user_message, request.history)
+    relevant_context = retrieve_relevant_chunks(
+        user_message,
+        request.history,
+    )
 
     # --------------------------------------------------------
     # System message
