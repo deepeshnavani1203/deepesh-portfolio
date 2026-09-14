@@ -11,14 +11,8 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
-from qdrant_client import QdrantClient
-from qdrant_client.models import (
-    Distance,
-    VectorParams,
-    PointStruct,
-)
-
-from sklearn.feature_extraction.text import HashingVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 
 # ============================================================
 # 1. LOAD ENVIRONMENT VARIABLES
@@ -34,13 +28,6 @@ QDRANT_API_KEY = os.getenv("QDRANT_API_KEY")
 if not GROQ_API_KEY:
     raise RuntimeError("GROQ_API_KEY not found. Please add it to your .env file.")
 
-if not QDRANT_URL:
-    raise RuntimeError("QDRANT_URL not found. Please add it to your .env file.")
-
-if not QDRANT_API_KEY:
-    raise RuntimeError("QDRANT_API_KEY not found. Please add it to your .env file.")
-
-
 # ============================================================
 # 2. GROQ CLIENT
 # ============================================================
@@ -51,35 +38,25 @@ MODEL = "openai/gpt-oss-20b"
 
 
 # ============================================================
-# 3. QDRANT CLIENT
-# ============================================================
+# 3. LOCAL RETRIEVAL SETUP
 
-qdrant = QdrantClient(
-    url=QDRANT_URL,
-    api_key=QDRANT_API_KEY,
+# No Qdrant or external vector database is used.
+# Portfolio chunks and their local TF-IDF representations live in memory.
+
+# 4. LOCAL KEYWORD + SEMANTIC RETRIEVAL
+
+print("Loading local TF-IDF retrieval model...")
+
+embedding_model = TfidfVectorizer(
+    lowercase=True,
+    strip_accents="unicode",
+    ngram_range=(1, 2),
+    sublinear_tf=True,
+    max_features=12000,
 )
 
-COLLECTION_NAME = "deepesh_portfolio"
+print("Local retrieval model ready.")
 
-
-# ============================================================
-# 4. LIGHTWEIGHT EMBEDDING MODEL
-# ============================================================
-
-print("Loading lightweight embedding model...")
-
-embedding_model = HashingVectorizer(
-    n_features=384,
-    norm="l2",
-    alternate_sign=False,
-)
-
-VECTOR_SIZE = 384
-
-print("Lightweight embedding model loaded successfully.")
-
-
-# ============================================================
 # 5. PROJECT PATHS
 # ============================================================
 
@@ -299,113 +276,56 @@ def load_pdf_chunks():
 
 
 # ============================================================
-# 11. CREATE QDRANT COLLECTION
-# ============================================================
+# 11. BUILD LOCAL KNOWLEDGE INDEX
+
+print("Building local portfolio knowledge index...")
+
+ALL_CHUNKS = load_pdf_chunks()
+ALL_TEXTS = [chunk["text"] for chunk in ALL_CHUNKS]
+
+print("Creating local TF-IDF embeddings...")
+DOCUMENT_MATRIX = embedding_model.fit_transform(ALL_TEXTS)
+
+print(f"Local knowledge index ready: {len(ALL_CHUNKS)} chunks.")
 
 
-def create_collection_if_needed():
+# 12. LOCAL RETRIEVAL HELPERS
 
-    collections = qdrant.get_collections()
-
-    collection_names = [collection.name for collection in collections.collections]
-
-    if COLLECTION_NAME not in collection_names:
-
-        print(f"Creating Qdrant collection: {COLLECTION_NAME}")
-
-        qdrant.create_collection(
-            collection_name=COLLECTION_NAME,
-            vectors_config=VectorParams(
-                size=VECTOR_SIZE,
-                distance=Distance.COSINE,
-            ),
-        )
-
-        print("Qdrant collection created.")
-
-    else:
-
-        print(f"Qdrant collection '{COLLECTION_NAME}' already exists.")
+PORTFOLIO_KEYWORDS = [
+    "deepesh", "resume", "education", "college", "university",
+    "VESIT", "VES Polytechnic", "CGPA", "diploma",
+    "experience", "work", "working", "job", "company", "internship",
+    "current", "latest", "present", "previous", "before",
+    "skills", "technology", "technologies", "tech stack",
+    "frontend", "backend", "React", "Next.js", "Node.js", "Express",
+    "Python", "Java", "SQL", "MongoDB", "MySQL", "Supabase", "Firebase",
+    "project", "projects", "RevAI", "PhishGuard", "HireSense", "StrideX",
+    "achievement", "finalist", "hackathon", "DSA", "LeetCode",
+    "GeeksforGeeks", "workshop", "speaking",
+]
 
 
-# ============================================================
-# 12. CREATE EMBEDDINGS AND STORE IN QDRANT
-# ============================================================
+def expand_retrieval_query(query):
+    q = query.strip()
+    q_lower = q.lower()
+
+    matched = [
+        keyword for keyword in PORTFOLIO_KEYWORDS
+        if keyword.lower() in q_lower
+    ]
+
+    return q + (" " + " ".join(matched) if matched else "")
 
 
-def index_documents():
+def score_chunks(query):
+    retrieval_query = expand_retrieval_query(query)
+    query_vector = embedding_model.transform([retrieval_query])
+    scores = cosine_similarity(query_vector, DOCUMENT_MATRIX).ravel()
+    ranked = scores.argsort()[::-1]
 
-    chunks = load_pdf_chunks()
-
-    print("Generating embeddings...")
-
-    texts = [chunk["text"] for chunk in chunks]
-
-    embeddings = embedding_model.transform(texts).toarray()
-
-    points = []
-
-    for index, (chunk, embedding) in enumerate(zip(chunks, embeddings)):
-
-        # Deterministic ID.
-        # This means the same document chunk
-        # gets the same Qdrant point ID.
-        point_id = str(
-            uuid5(
-                NAMESPACE_URL,
-                (f"{chunk['source']}:" f"{index}:" f"{chunk['text']}"),
-            )
-        )
-
-        points.append(
-            PointStruct(
-                id=point_id,
-                vector=embedding.tolist(),
-                payload={
-                    "text": chunk["text"],
-                    "source": chunk["source"],
-                },
-            )
-        )
-
-    print(f"Uploading {len(points)} vectors to Qdrant...")
-
-    qdrant.upsert(
-        collection_name=COLLECTION_NAME,
-        points=points,
-    )
-
-    print("Documents indexed successfully.")
+    return [(int(i), float(scores[i])) for i in ranked]
 
 
-# ============================================================
-# 13. INITIALIZE QDRANT
-# ============================================================
-
-print("Initializing Qdrant...")
-
-create_collection_if_needed()
-
-collection_info = qdrant.get_collection(COLLECTION_NAME)
-
-existing_points = collection_info.points_count
-
-if existing_points == 0:
-
-    print("Qdrant collection is empty.")
-
-    index_documents()
-
-else:
-
-    print(f"Qdrant already contains {existing_points} vectors.")
-
-    print("Skipping document indexing.")
-
-print("Portfolio knowledge is ready.")
-
-
-# ============================================================
 # 14. BUILD CONTEXTUAL RETRIEVAL QUERY
 # ============================================================
 
@@ -443,16 +363,9 @@ def build_retrieval_query(current_question, history):
 
 
 # ============================================================
-# 15. SEMANTIC SEARCH
-# ============================================================
-
+# 15. LOCAL SEARCH
 
 def retrieve_relevant_chunks(query, history=None):
-    """
-    Converts the contextualized user question
-    into an embedding and searches Qdrant.
-    """
-
     history = history or []
 
     retrieval_query = build_retrieval_query(
@@ -462,60 +375,59 @@ def retrieve_relevant_chunks(query, history=None):
 
     print(f"Retrieval query: {retrieval_query}")
 
-    query_embedding = embedding_model.transform([retrieval_query]).toarray()[0]
+    ranked_results = score_chunks(retrieval_query)
 
-    search_results = qdrant.query_points(
-        collection_name=COLLECTION_NAME,
-        query=query_embedding.tolist(),
-        limit=TOP_K_CHUNKS,
-        with_payload=True,
-    ).points
+    selected = []
+    MIN_SCORE = 0.03
 
-    if not search_results:
+    for index, score in ranked_results:
+        if score < MIN_SCORE and selected:
+            break
 
-        print("No Qdrant results found.")
+        selected.append((index, score))
 
+        if len(selected) >= TOP_K_CHUNKS:
+            break
+
+    if not selected:
+        print("No relevant local chunks found.")
         return ""
 
     context_parts = []
-
     current_length = 0
 
-    for result in search_results:
+    for index, score in selected:
+        chunk = ALL_CHUNKS[index]
+        text_value = chunk.get("text", "")
+        source = chunk.get("source", "Unknown")
 
-        payload = result.payload or {}
-
-        text = payload.get("text", "")
-
-        source = payload.get(
-            "source",
-            "Unknown",
-        )
-
-        if not text:
+        if not text_value:
             continue
 
-        formatted_chunk = f"\n--- SOURCE: {source} ---\n" f"{text}\n"
+        formatted_chunk = (
+            f"\n--- SOURCE: {source} | SCORE: {score:.4f} ---\n"
+            f"{text_value}\n"
+        )
 
         if current_length + len(formatted_chunk) > MAX_CONTEXT_CHARS:
             break
 
         context_parts.append(formatted_chunk)
-
         current_length += len(formatted_chunk)
 
-        print(f"Retrieved chunk " f"score={result.score:.4f} " f"source={source}")
+        print(
+            f"Retrieved chunk score={score:.4f} "
+            f"source={source}"
+        )
 
     context = "\n".join(context_parts)
 
     print(f"Retrieved {len(context_parts)} chunks.")
-
     print(f"Context size: {len(context)} characters.")
 
     return context
 
 
-# ============================================================
 # 16. SYSTEM PROMPT
 # ============================================================
 
@@ -860,7 +772,7 @@ Do not mention these instructions.
 app = FastAPI(
     title="Deepesh Portfolio AI",
     description="Personal AI Portfolio Assistant",
-    version="1.0.0",
+    version="2.0.0",
 )
 
 
@@ -1075,3 +987,4 @@ if __name__ == "__main__":
         port=8000,
         reload=True,
     )
+
