@@ -173,9 +173,15 @@
     @apply bg-background;
   }
 
-  @property --angle {
+  @property --beam-cw {
     syntax: '<angle>';
     initial-value: 0deg;
+    inherits: false;
+  }
+
+  @property --beam-ccw {
+    syntax: '<angle>';
+    initial-value: 360deg;
     inherits: false;
   }
 
@@ -184,12 +190,12 @@
     z-index: 1;
   }
 
-  /* Dual-direction Border Animation */
+  /* Dual-direction Border Animation - starts from top-center, splits left & right to bottom-center, and vice versa */
   .futuristic-card::before,
   .futuristic-card::after {
     content: '';
     position: absolute;
-    inset: -1px;
+    inset: -1.5px;
     border-radius: inherit;
     padding: 1.5px;
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -197,42 +203,82 @@
     mask-composite: exclude;
     pointer-events: none;
     z-index: -1;
-    opacity: 0.45;
-    transition: opacity 0.6s ease;
+    opacity: 0.55;
+    transition: opacity 0.5s ease;
     filter: blur(0.3px);
   }
 
   .futuristic-card:hover::before,
   .futuristic-card:hover::after {
-    opacity: 0.8;
+    opacity: 0.95;
   }
 
+  /* Clockwise beam: Top-Center (0deg) -> Right -> Bottom-Center (180deg) -> and back */
   .futuristic-card::before {
-    background: conic-gradient(from var(--angle), transparent 70%, hsl(180 100% 45%) 90%, transparent 100%);
-    animation: rotate-clockwise 4s linear infinite;
+    background: conic-gradient(
+      from calc(var(--beam-cw) - 20deg),
+      transparent 0deg,
+      #2563eb 10deg,
+      #60a5fa 20deg,
+      #2563eb 30deg,
+      transparent 40deg
+    );
+    animation: dual-beam-cw 3.5s ease-in-out infinite alternate;
   }
 
   .dark .futuristic-card::before {
-    background: conic-gradient(from var(--angle), transparent 70%, hsl(var(--primary)) 90%, transparent 100%);
+    background: conic-gradient(
+      from calc(var(--beam-cw) - 20deg),
+      transparent 0deg,
+      #1d4ed8 10deg,
+      #60a5fa 20deg,
+      #1d4ed8 30deg,
+      transparent 40deg
+    );
+    animation: dual-beam-cw 3.5s ease-in-out infinite alternate;
   }
 
+  /* Counter-Clockwise beam: Top-Center (360deg) -> Left -> Bottom-Center (180deg) -> and back */
   .futuristic-card::after {
-    background: conic-gradient(from var(--angle), transparent 70%, hsl(180 100% 45%) 90%, transparent 100%);
-    animation: rotate-counter-clockwise 4s linear infinite;
+    background: conic-gradient(
+      from calc(var(--beam-ccw) - 20deg),
+      transparent 0deg,
+      #0284c7 10deg,
+      #38bdf8 20deg,
+      #0284c7 30deg,
+      transparent 40deg
+    );
+    animation: dual-beam-ccw 3.5s ease-in-out infinite alternate;
   }
 
   .dark .futuristic-card::after {
-    background: conic-gradient(from var(--angle), transparent 70%, hsl(var(--primary)) 90%, transparent 100%);
+    background: conic-gradient(
+      from calc(var(--beam-ccw) - 20deg),
+      transparent 0deg,
+      #0284c7 10deg,
+      #38bdf8 20deg,
+      #0284c7 30deg,
+      transparent 40deg
+    );
+    animation: dual-beam-ccw 3.5s ease-in-out infinite alternate;
   }
 
-  @keyframes rotate-clockwise {
-    from { --angle: 0deg; }
-    to { --angle: 360deg; }
+  @keyframes dual-beam-cw {
+    0% {
+      --beam-cw: 0deg;
+    }
+    100% {
+      --beam-cw: 180deg;
+    }
   }
 
-  @keyframes rotate-counter-clockwise {
-    from { --angle: 0deg; }
-    to { --angle: -360deg; }
+  @keyframes dual-beam-ccw {
+    0% {
+      --beam-ccw: 360deg;
+    }
+    100% {
+      --beam-ccw: 180deg;
+    }
   }
 
   .timeline-v2 {

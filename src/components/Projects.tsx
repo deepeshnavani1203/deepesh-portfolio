@@ -2,16 +2,25 @@ import { motion } from "framer-motion";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { ExternalLink, Github, FileText } from "lucide-react";
 
-const projects = [
+interface Project {
+  name: string;
+  description: string;
+  tech: string[];
+  live?: string | null;
+  github?: string | null;
+  paper?: string | null;
+  image: string;
+}
+
+const projects: Project[] = [
   {
     name: "RevAI",
     description:
-      "RevAI is an AI-powered video revision assistant that transforms educational playlists into a searchable knowledge base. It implements a RAG pipeline using Whisper, embeddings, and Qdrant vector database for semantic retrieval, and delivers context-aware answers with video timestamps so users can jump directly to the relevant lecture segment.",
+      "AI-powered video revision assistant that converts lecture playlists into a searchable semantic knowledge base. Built with Whisper, Qdrant vector search, and Groq LLMs with exact video timestamp navigation so students can jump directly to relevant segments.",
     tech: [
       "React.js",
       "FastAPI",
       "Python",
-      "yt-dlp",
       "Whisper",
       "RAG",
       "Groq API",
@@ -19,16 +28,15 @@ const projects = [
     ],
     live: "https://rev-ai-alpha.vercel.app",
     github: "https://github.com/deepeshnavani1203/RevAI.git",
-    paper: null,
     image: "/docs/revai.jpeg",
   },
   {
     name: "HireSense",
     description:
-      "HireSense is an AI-powered job-readiness platform offering resume analysis, interview prep, profile generation, career guidance, and ATS scoring. It features a Gemini-powered conversational assistant, an ATS analyzer providing actionable feedback, and a mock interview module with speech recognition.",
+      "AI-driven job readiness platform providing intelligent resume scoring, Gemini-powered conversational interview coaching, actionable ATS diagnostics, and speech-recognition mock interviews.",
     tech: [
       "React.js",
-      "Tainwind CSS",
+      "Tailwind CSS",
       "Node.js",
       "Express.js",
       "MongoDB",
@@ -37,172 +45,172 @@ const projects = [
     ],
     live: "https://hire-sense-xi.vercel.app",
     github: "https://github.com/deepeshnavani1203/HireSense.git",
-    paper: null,
     image: "/docs/hiresense.png",
   },
   {
     name: "Crickify",
     description:
-      "Crickify is a real-time multiplayer Hand Cricket game offering single-player and multiplayer modes with under 50ms latency. It features a Socket.IO-powered room matchmaking framework supporting 20+ concurrent matches with automatic reconnection and state synchronization.",
+      "Fast-paced real-time multiplayer Hand Cricket game with sub-50ms latency. Engineered with Socket.IO matchmaking, automatic room reconnection, and synchronized gameplay states.",
     tech: [
       "React.js",
       "Tailwind CSS",
-      "Python",
       "Node.js",
       "Express.js",
-      "Framer Motion",
       "Socket.IO",
+      "Framer Motion",
+      "Python",
     ],
     live: "https://crickifyy.vercel.app",
     github: "https://github.com/deepeshnavani1203/Crickify.git",
-    paper: null,
     image: "/docs/crickify-logo.png",
-  },
-  {
-    name: "QR Attend",
-    description:
-      "QR Attend is an Android-based attendance tracking system utilizing QR codes for real-time validation. It automates check-in workflows, reduces manual attendance marking effort by 40%, and features secure Firebase integration as published in our research paper.",
-    tech: ["React Native", "Firebase"],
-    live: null,
-    github: null,
-    paper: "https://ijrpr.com/uploads/V5ISSUE3/IJRPR23651.pdf",
-    image: "/docs/qrattend-logo.jpeg",
   },
   {
     name: "StrideX",
     description:
-      "StrideX is a full-stack e-commerce platform with a product catalog, cart management, and Razorpay-integrated checkout. It features 15+ RESTful API endpoints for authentication, order management, and secure transactions processing in under 2 seconds.",
+      "Modern full-stack e-commerce experience featuring product catalog filtering, cart state management, secure JWT authentication, and Razorpay payment gateway integration for real-time transactions.",
     tech: [
       "Next.js",
       "Tailwind CSS",
       "Node.js",
       "Express.js",
-      "JWT",
       "MongoDB",
+      "JWT",
       "Razorpay",
     ],
     live: "https://stride-x-flax.vercel.app",
     github: "https://github.com/deepeshnavani1203/StrideX.git",
-    paper: null,
     image: "/docs/stridex-logo.png",
+  },
+  {
+    name: "QR Attend",
+    description:
+      "Android attendance tracking platform utilizing dynamic QR code verification to automate check-ins and reduce attendance logging effort by 40%. Features Firebase authentication and real-time logging, published in the peer-reviewed IJRPR journal.",
+    tech: ["React Native", "Firebase", "Android", "QR Auth", "Research"],
+    paper: "https://ijrpr.com/uploads/V5ISSUE3/IJRPR23651.pdf",
+    image: "/docs/qrattend-logo.jpeg",
   },
 ];
 
-const ProjectCard = ({ proj, i, isVisible }) => {
-  const links = [
-    proj.live && {
-      href: proj.live,
-      label: "View",
-      icon: ExternalLink,
-      primary: true,
-    },
-    proj.github && {
-      href: proj.github,
-      label: "GitHub",
-      icon: Github,
-    },
-    proj.paper && {
-      href: proj.paper,
-      label: "Paper",
-      icon: FileText,
-    },
-  ].filter(Boolean);
-
+const ProjectCard = ({ proj, i, isVisible }: { proj: Project; i: number; isVisible: boolean }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       animate={isVisible ? { opacity: 1, y: 0 } : {}}
-      whileHover={{ y: -6, scale: 1.02 }}
+      whileHover={{ y: -6, scale: 1.015 }}
       transition={{
         type: "spring",
-        stiffness: 300,
-        damping: 20,
-        opacity: { duration: 0.8, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] },
+        stiffness: 320,
+        damping: 24,
+        opacity: { duration: 0.6, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] },
       }}
-      className="futuristic-card flex flex-col h-full shadow-md hover:shadow-[0_0_30px_rgba(59,130,246,0.2)] border dark:border-white/10 border-black/10 dark:bg-white/[0.07] bg-white"
+      className="
+        futuristic-card group flex flex-col h-full rounded-2xl overflow-hidden
+        border border-border/70 dark:border-white/10
+        bg-card/75 dark:bg-card/40 backdrop-blur-xl
+        hover:border-primary/50 hover:shadow-[0_12px_40px_rgba(59,130,246,0.22)]
+        transition-all duration-300
+      "
     >
-      <div className="flex flex-col h-full p-4 md:p-5">
-        {/* Image */}
-        <div className="w-full h-32 md:h-40 rounded-xl overflow-hidden mb-4 border border-border/50">
-          <img
-            src={proj.image}
-            alt={proj.name}
-            className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-          />
-        </div>
+      {/* ── Edge-to-Edge Pristine Media Header (No text or badge overlays) ── */}
+      <div className="relative w-full h-48 sm:h-52 overflow-hidden bg-muted/40 dark:bg-black/50 border-b border-border/50 flex items-center justify-center">
+        <img
+          src={proj.image}
+          alt={proj.name}
+          className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+          loading="lazy"
+        />
+        {/* Subtle cinematic gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/15 to-transparent pointer-events-none" />
+      </div>
 
+      {/* ── Content Body ────────────────────────────────────────────── */}
+      <div className="flex-1 flex flex-col p-5">
         {/* Title */}
-        <h3 className="text-lg md:text-xl font-bold text-foreground mb-2">
+        <h3 className="text-xl font-bold font-display text-foreground group-hover:text-primary transition-colors mb-2.5">
           {proj.name}
         </h3>
 
-        {/* Tech */}
-        <div className="flex flex-wrap gap-2 mb-3">
+        {/* Tech Stack Pills */}
+        <div className="flex flex-wrap gap-1.5 mb-3.5">
           {proj.tech.map((t) => (
             <span
               key={t}
-              className="px-2 py-0.5 text-[10px] font-bold uppercase text-highlight bg-highlight/10 border border-highlight/20 rounded"
+              className="px-2.5 py-0.5 text-[11px] font-medium rounded-md bg-secondary/80 text-foreground/85 border border-border/70 hover:border-primary/40 hover:text-foreground transition-colors"
             >
               {t}
             </span>
           ))}
         </div>
 
-        {/* Description */}
-        <p className="text-sm text-muted-foreground mb-6 flex-1">
+        {/* Full Unabridged Description (No truncation) */}
+        <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-1">
           {proj.description}
         </p>
 
-        {/* Buttons — always render grid, show placeholder if no links */}
-        <div
-          className={`grid gap-2 mt-auto ${
-            links.length === 0
-              ? "grid-cols-2"
-              : links.length === 1
-                ? "grid-cols-1"
-                : links.length === 2
-                  ? "grid-cols-2"
-                  : "grid-cols-2 lg:grid-cols-3"
-          }`}
-        >
-          {links.length === 0 ? (
-            <>
+        {/* ── Action Buttons ──────────────────────────────────────────── */}
+        <div className="mt-auto pt-4 border-t border-border/40">
+          <div className="flex items-center gap-2.5">
+            {/* Live Demo Link */}
+            {proj.live && (
               <a
-                href="#"
-                className="w-full py-2 px-3 text-xs font-bold text-center rounded border shadow-sm flex items-center justify-center gap-1.5 opacity-40 cursor-not-allowed pointer-events-none
-                  dark:text-white text-black bg-primary border-primary/20"
+                href={proj.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Visit live site of ${proj.name}`}
+                className="
+                  flex-1 py-2.5 px-3.5 rounded-xl
+                  bg-primary text-primary-foreground font-semibold text-xs
+                  flex items-center justify-center gap-1.5
+                  shadow-md shadow-primary/20 hover:shadow-primary/35 hover:brightness-105
+                  active:scale-[0.98] transition-all duration-200
+                "
               >
-                <ExternalLink size={14} /> View
+                <ExternalLink size={14} />
+                <span>Live Demo</span>
               </a>
+            )}
+
+            {/* GitHub Link */}
+            {proj.github && (
               <a
-                href="#"
-                className="w-full py-2 px-3 text-xs font-bold text-center rounded border shadow-sm flex items-center justify-center gap-1.5 opacity-40 cursor-not-allowed pointer-events-none
-                  text-foreground bg-secondary border-border"
+                href={proj.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`View source code of ${proj.name} on GitHub`}
+                className={`
+                  ${proj.live ? "flex-1" : "w-full"}
+                  py-2.5 px-3.5 rounded-xl
+                  bg-secondary hover:bg-secondary/80 text-foreground
+                  border border-border/80 hover:border-foreground/20
+                  font-semibold text-xs flex items-center justify-center gap-1.5
+                  active:scale-[0.98] transition-all duration-200
+                `}
               >
-                <Github size={14} /> GitHub
+                <Github size={14} />
+                <span>GitHub</span>
               </a>
-            </>
-          ) : (
-            links.map((link, idx) => {
-              const Icon = link.icon;
-              return (
-                <a
-                  key={idx}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`w-full py-2 px-3 text-xs font-bold text-center rounded border shadow-sm flex items-center justify-center gap-1.5 transition-all duration-200
-                    ${
-                      link.primary
-                        ? "dark:text-white text-black bg-primary hover:bg-primary/90 border-primary/20"
-                        : "text-foreground bg-secondary hover:bg-secondary/70 border-border"
-                    }`}
-                >
-                  <Icon size={14} /> {link.label}
-                </a>
-              );
-            })
-          )}
+            )}
+
+            {/* Research Paper Link */}
+            {proj.paper && (
+              <a
+                href={proj.paper}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Read research paper for ${proj.name}`}
+                className="
+                  w-full py-2.5 px-4 rounded-xl
+                  bg-primary/15 hover:bg-primary/25 text-primary
+                  border border-primary/35 hover:border-primary/60
+                  font-semibold text-xs flex items-center justify-center gap-2
+                  shadow-sm active:scale-[0.98] transition-all duration-200
+                "
+              >
+                <FileText size={14} />
+                <span>Read Research Paper (IJRPR)</span>
+              </a>
+            )}
+          </div>
         </div>
       </div>
     </motion.div>
@@ -219,7 +227,7 @@ const Projects = () => {
           initial={{ opacity: 0, y: 25 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-10"
+          className="mb-10 text-center md:text-left"
         >
           <h2 className="section-title">Featured Projects</h2>
           <p className="section-subtitle">
@@ -227,7 +235,7 @@ const Projects = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7">
           {projects.map((proj, i) => (
             <ProjectCard
               key={proj.name}

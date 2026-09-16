@@ -18,7 +18,8 @@ interface Message {
 // ── Constants ─────────────────────────────────────────────────────────────────
 
 const API_URL = `${
-  import.meta.env.VITE_AI_API_URL ?? "https://deepesh-portfolio-zy8n.onrender.com"
+  import.meta.env.VITE_AI_API_URL ??
+  "https://deepesh-portfolio-zy8n.onrender.com"
 }/chat`;
 
 const WELCOME_MESSAGE: Message = {
@@ -29,11 +30,11 @@ const WELCOME_MESSAGE: Message = {
 };
 
 const SUGGESTIONS = [
-  "Tell me about Deepesh",
-  "What are his skills?",
-  "Tell me about his projects",
-  "His work experience",
-  "What technologies does he use?",
+  { label: "Tell me about Deepesh" },
+  { label: "What are his core skills?" },
+  { label: "Tell me about his projects" },
+  { label: "His work experience" },
+  { label: "What technologies does he use?" },
 ];
 
 let msgId = 1;
@@ -64,7 +65,11 @@ const panelVariants = {
 
 const childVariants = {
   hidden: { opacity: 0, y: 10 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.28, ease: "easeOut" as const } },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.28, ease: "easeOut" as const },
+  },
 };
 
 // ── Typing Dots ───────────────────────────────────────────────────────────────
@@ -76,7 +81,12 @@ const TypingDots = () => (
         key={i}
         className="w-[5px] h-[5px] rounded-full bg-muted-foreground/60 block"
         animate={{ opacity: [0.25, 1, 0.25], y: [0, -3.5, 0] }}
-        transition={{ duration: 1.1, repeat: Infinity, delay: i * 0.18, ease: "easeInOut" }}
+        transition={{
+          duration: 1.1,
+          repeat: Infinity,
+          delay: i * 0.18,
+          ease: "easeInOut",
+        }}
       />
     ))}
   </div>
@@ -90,7 +100,11 @@ const Bubble = ({ msg, index }: { msg: Message; index: number }) => {
     <motion.div
       initial={{ opacity: 0, y: 12, scale: 0.95 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 0.24, delay: index === 0 ? 0 : 0, ease: [0.23, 1, 0.32, 1] }}
+      transition={{
+        duration: 0.24,
+        delay: index === 0 ? 0 : 0,
+        ease: [0.23, 1, 0.32, 1],
+      }}
       className={`flex w-full items-end gap-2 ${isUser ? "justify-end" : "justify-start"}`}
     >
       {/* Bot avatar — only on AI messages */}
@@ -102,11 +116,11 @@ const Bubble = ({ msg, index }: { msg: Message; index: number }) => {
 
       <div
         className={`
-          relative max-w-[76%] px-3.5 py-2.5 text-[13px] leading-relaxed break-words
+          relative max-w-[80%] px-4 py-2.5 text-[13px] leading-relaxed break-words shadow-sm
           ${
             isUser
-              ? "bg-primary text-primary-foreground rounded-[18px] rounded-br-[4px]"
-              : "bg-card border border-border/60 text-foreground rounded-[18px] rounded-bl-[4px]"
+              ? "bg-gradient-to-r from-blue-600 via-primary to-blue-500 text-white font-medium rounded-2xl rounded-br-[3px] shadow-blue-500/20"
+              : "bg-card border border-border/70 text-foreground rounded-2xl rounded-bl-[3px]"
           }
         `}
       >
@@ -160,7 +174,11 @@ const AIChatbot = () => {
       const data = await res.json();
       const answer: string = data.answer ?? "Sorry, I didn't get a response.";
 
-      const aiMsg: Message = { id: nextId(), role: "assistant", content: answer };
+      const aiMsg: Message = {
+        id: nextId(),
+        role: "assistant",
+        content: answer,
+      };
       setMessages((prev) => [...prev, aiMsg]);
       setHistory((prev) => [
         ...prev,
@@ -173,7 +191,8 @@ const AIChatbot = () => {
         {
           id: nextId(),
           role: "assistant",
-          content: "Sorry, I'm unable to connect right now. Please try again in a moment.",
+          content:
+            "Sorry, I'm unable to connect right now. Please try again in a moment.",
         },
       ]);
     } finally {
@@ -190,31 +209,80 @@ const AIChatbot = () => {
 
   return (
     <>
-      {/* ── Floating Button ──────────────────────────────────────────────── */}
+      {/* ── Floating Animated Circular Button ───────────────────────────── */}
       <AnimatePresence>
         {!isOpen && (
-          <motion.button
-            key="fab"
-            initial={{ opacity: 0, scale: 0.6, y: 8 }}
+          <motion.div
+            key="fab-container"
+            className="fixed bottom-6 right-6 z-50 flex items-center gap-3 group"
+            initial={{ opacity: 0, scale: 0.6, y: 12 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.6, y: 8 }}
-            transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-            onClick={() => setIsOpen(true)}
-            aria-label="Open AI chat assistant"
-            whileHover={{ scale: 1.06 }}
-            whileTap={{ scale: 0.91 }}
-            className="
-              fixed bottom-6 right-6 z-50
-              flex items-center gap-2
-              pl-4 pr-5 py-3 rounded-full
-              bg-primary text-primary-foreground
-              shadow-lg shadow-primary/25
-              focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2
-            "
+            exit={{ opacity: 0, scale: 0.6, y: 12 }}
+            transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
           >
-            <Bot size={17} />
-            <span className="text-sm font-semibold tracking-wide">Ask AI</span>
-          </motion.button>
+            {/* Tooltip on hover */}
+            <motion.div
+              initial={{ opacity: 0, x: 8 }}
+              whileHover={{ opacity: 1, x: 0 }}
+              className="
+                hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full
+                bg-card/90 backdrop-blur-md border border-border/80 text-foreground
+                text-xs font-semibold shadow-lg shadow-black/20 pointer-events-none
+                opacity-0 group-hover:opacity-100 transition-all duration-200
+              "
+            >
+              <Sparkles size={12} className="text-primary animate-pulse" />
+              <span>Ask Deepesh AI</span>
+            </motion.div>
+
+            {/* Circular Floating Button */}
+            <motion.button
+              onClick={() => setIsOpen(true)}
+              aria-label="Open AI chat assistant"
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.92 }}
+              className="
+                relative w-14 h-14 sm:w-[60px] sm:h-[60px] rounded-full
+                flex items-center justify-center
+                shadow-[0_6px_25px_rgba(0,102,255,0.45)] hover:shadow-[0_8px_32px_rgba(0,102,255,0.65)]
+                transition-shadow duration-300
+                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
+              "
+            >
+              {/* Outer soft ambient glow pulse */}
+              <div className="absolute -inset-1 rounded-full bg-blue-500/30 blur-md animate-pulse pointer-events-none" />
+
+              {/* Main Circular Base (overflow-hidden to clip rotating inner shape) */}
+              <div className="relative w-full h-full rounded-full overflow-hidden bg-[#0066FF] border border-white/25 flex items-center justify-center shadow-inner">
+                {/* Continuous rotating inner circle/orbital shape */}
+                <motion.div
+                  className="absolute inset-0 w-full h-full pointer-events-none"
+                  animate={{ rotate: 360 }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 3.5,
+                    ease: "linear",
+                  }}
+                >
+                  {/* Moving inner circle / crescent creating the fluid continuous motion */}
+                  <div className="absolute -top-1.5 -left-1.5 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#0047b8] opacity-85 blur-[0.5px]" />
+                  <div className="absolute top-1 left-1 w-6 h-6 rounded-full bg-[#003da6] opacity-60 blur-sm" />
+                </motion.div>
+
+                {/* Subtle glass reflection overlay */}
+                <div className="absolute inset-0 rounded-full bg-gradient-to-b from-white/20 via-transparent to-black/10 pointer-events-none" />
+
+                {/* White Chat Bubble Icon matching reference */}
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="relative z-10 w-6 h-6 sm:w-7 sm:h-7 text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)] transition-transform duration-200 group-hover:scale-105"
+                >
+                  <path d="M4 4.5A2.5 2.5 0 0 0 1.5 7v7A2.5 2.5 0 0 0 4 16.5h10.2l3.4 3.06A.75.75 0 0 0 19 19v-2.5h.5A2.5 2.5 0 0 0 22 14V7a2.5 2.5 0 0 0-2.5-2.5H4z" />
+                </svg>
+              </div>
+            </motion.button>
+          </motion.div>
         )}
       </AnimatePresence>
 
@@ -268,7 +336,11 @@ const AIChatbot = () => {
                   <motion.span
                     className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 border-2 border-card"
                     animate={{ scale: [1, 1.3, 1] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
                   />
                 </div>
 
@@ -323,22 +395,22 @@ const AIChatbot = () => {
                   >
                     {SUGGESTIONS.map((s, i) => (
                       <motion.button
-                        key={s}
+                        key={s.label}
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.3 + i * 0.05 }}
-                        onClick={() => sendMessage(s)}
+                        onClick={() => sendMessage(s.label)}
                         className="
                           text-[11px] font-medium px-3 py-1.5
-                          rounded-full border border-border/60
-                          bg-secondary/30 text-muted-foreground
-                          hover:bg-primary/10 hover:border-primary/40 hover:text-foreground
-                          active:scale-95
-                          transition-all duration-150
+                          rounded-full border border-border/70
+                          bg-secondary/50 hover:bg-primary/15 hover:border-primary/40
+                          text-muted-foreground hover:text-foreground
+                          flex items-center gap-1.5 shadow-sm
+                          active:scale-95 transition-all duration-150
                           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary
                         "
                       >
-                        {s}
+                        <span>{s.label}</span>
                       </motion.button>
                     ))}
                   </motion.div>
@@ -368,21 +440,25 @@ const AIChatbot = () => {
               <div ref={bottomRef} />
             </motion.div>
 
-            {/* ── Input ──────────────────────────────────────────────────── */}
+            {/* ── Question Input Area ────────────────────────────────────── */}
             <motion.div
               variants={childVariants}
-              className="px-3 pb-4 pt-2.5 border-t border-border/50 bg-card/40 backdrop-blur-sm flex-shrink-0"
+              className="p-3 sm:p-3.5 border-t border-border/60 bg-gradient-to-b from-card/60 via-card/90 to-card backdrop-blur-xl flex-shrink-0"
             >
               <div
                 className="
-                  flex items-center gap-2
-                  bg-background border border-border/60
-                  rounded-2xl px-4 py-2.5
-                  focus-within:border-primary/50
-                  focus-within:shadow-[0_0_0_3px_hsl(var(--primary)/0.1)]
-                  transition-all duration-200
+                  relative flex items-center gap-2.5
+                  bg-background/95 dark:bg-black/40 border border-border/80
+                  rounded-2xl px-3 py-2
+                  focus-within:border-primary/80 focus-within:ring-2 focus-within:ring-primary/20
+                  shadow-sm transition-all duration-200
                 "
               >
+                {/* Leading Sparkle Indicator */}
+                <div className="w-7 h-7 rounded-xl bg-primary/10 border border-primary/25 flex items-center justify-center flex-shrink-0">
+                  <Sparkles size={13} className="text-primary" />
+                </div>
+
                 <input
                   ref={inputRef}
                   type="text"
@@ -390,33 +466,58 @@ const AIChatbot = () => {
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKeyDown}
                   disabled={isLoading}
-                  placeholder="Ask something about Deepesh..."
-                  aria-label="Chat input"
+                  placeholder="Ask a question about Deepesh..."
+                  aria-label="Ask a question about Deepesh"
                   className="
-                    flex-1 bg-transparent text-sm text-foreground
-                    placeholder:text-muted-foreground/45
+                    flex-1 bg-transparent text-[13px] text-foreground
+                    placeholder:text-muted-foreground/50
                     outline-none border-none min-w-0
                     disabled:opacity-50
                   "
                 />
+
+                {/* Clear Button */}
+                {input.trim().length > 0 && !isLoading && (
+                  <button
+                    type="button"
+                    onClick={() => setInput("")}
+                    className="text-muted-foreground hover:text-foreground p-1 rounded-full hover:bg-secondary transition-colors"
+                    aria-label="Clear input"
+                  >
+                    <X size={13} />
+                  </button>
+                )}
+
+                {/* Keyboard Helper Badge */}
+                <span className="hidden sm:inline-block text-[10px] text-muted-foreground/50 font-mono px-1.5 py-0.5 rounded bg-secondary/80 border border-border/60 select-none">
+                  ↵
+                </span>
+
+                {/* Send Button */}
                 <motion.button
                   onClick={() => sendMessage(input)}
                   disabled={isLoading || !input.trim()}
                   aria-label="Send message"
-                  whileTap={!isLoading && !!input.trim() ? { scale: 0.85 } : {}}
+                  whileHover={
+                    !isLoading && !!input.trim() ? { scale: 1.06 } : {}
+                  }
+                  whileTap={!isLoading && !!input.trim() ? { scale: 0.9 } : {}}
                   className="
                     w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0
-                    bg-primary text-primary-foreground
+                    bg-gradient-to-tr from-blue-600 to-primary text-white
                     disabled:opacity-30 disabled:cursor-not-allowed
-                    hover:opacity-90 active:scale-90
+                    shadow-md shadow-primary/25 hover:shadow-primary/40
                     transition-all duration-150
                     focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary
                   "
                 >
                   {isLoading ? (
-                    <Loader2 size={14} className="animate-spin" />
+                    <Loader2 size={14} className="animate-spin text-white" />
                   ) : (
-                    <Send size={13} />
+                    <Send
+                      size={13}
+                      className="text-white translate-x-[0.5px]"
+                    />
                   )}
                 </motion.button>
               </div>

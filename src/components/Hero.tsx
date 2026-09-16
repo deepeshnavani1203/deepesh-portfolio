@@ -27,7 +27,7 @@ const Hero = ({ onComplete }: HeroProps) => {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] rounded-full blur-3xl pointer-events-none opacity-50 transition-colors duration-500 bg-primary/5 dark:bg-black" />
 
       <div className="max-w-4xl mx-auto w-full flex flex-col items-center text-center relative z-10 min-h-[320px]">
-        {/* Profile Image Container with Scanning/Unrolling Animation */}
+        {/* Profile Image Container with Smooth Scanning Loading Animation */}
         <div className="mb-14 relative w-32 h-32 md:w-36 md:h-36 overflow-visible">
           {/* 1. Glowing outer shadow / aura */}
           <motion.div
@@ -45,39 +45,40 @@ const Hero = ({ onComplete }: HeroProps) => {
             className="absolute inset-0 rounded-full ring-2 ring-primary/30 dark:ring-primary/30 z-20 pointer-events-none"
           />
 
-          {/* 3. Scanning Laser Line (moves from top to bottom matching reveal percentages) */}
+          {/* 3. Scanning Laser Line (Smooth sweep top to bottom) */}
           <motion.div
-            initial={{ top: "0%", opacity: 0 }}
-            animate={{ 
-              top: ["0%", "30%", "50%", "80%", "100%"], 
-              opacity: [0, 1, 1, 1, 0] 
-            }}
-            transition={{ 
-              duration: 1.5, 
-              delay: 0.5, 
-              times: [0, 0.25, 0.5, 0.75, 1], 
-              ease: "easeInOut" 
-            }}
-            className="absolute left-[-4px] right-[-4px] h-[2px] bg-primary shadow-[0_0_12px_hsl(var(--primary))] z-30 rounded-full"
-          />
-
-          {/* 4. The actual Profile Image (revealing/unrolling from top to bottom) */}
-          <motion.div
-            initial={{ clipPath: "inset(0% 0% 100% 0%)" }}
+            initial={{ top: "-5%", opacity: 0 }}
             animate={{
-              clipPath: [
-                "inset(0% 0% 100% 0%)", // 0% revealed
-                "inset(0% 0% 70% 0%)",  // 30% revealed
-                "inset(0% 0% 50% 0%)",  // 50% revealed
-                "inset(0% 0% 20% 0%)",  // 80% revealed
-                "inset(0% 0% 0% 0%)"    // 100% revealed
-              ]
+              top: ["-5%", "105%"],
+              opacity: [0, 1, 1, 0],
             }}
-            transition={{ 
-              duration: 1.5, 
-              delay: 0.5, 
-              times: [0, 0.25, 0.5, 0.75, 1], 
-              ease: "easeInOut" 
+            transition={{
+              duration: 1.8,
+              delay: 0.4,
+              ease: [0.25, 1, 0.5, 1],
+            }}
+            className="absolute left-[-6px] right-[-6px] z-30 pointer-events-none"
+          >
+            <div className="h-[2.5px] w-full bg-gradient-to-r from-transparent via-cyan-400 to-transparent shadow-[0_0_12px_#38bdf8,0_0_24px_#2563eb] rounded-full" />
+            <div className="h-5 w-full bg-gradient-to-b from-cyan-400/20 to-transparent -translate-y-[2px]" />
+          </motion.div>
+
+          {/* 4. Profile Image with Smooth Wipe Reveal */}
+          <motion.div
+            initial={{
+              clipPath: "inset(0% 0% 100% 0%)",
+              scale: 0.95,
+              filter: "brightness(1.5) contrast(1.1)",
+            }}
+            animate={{
+              clipPath: "inset(0% 0% 0% 0%)",
+              scale: 1,
+              filter: "brightness(1) contrast(1)",
+            }}
+            transition={{
+              duration: 1.8,
+              delay: 0.4,
+              ease: [0.25, 1, 0.5, 1],
             }}
             className="w-full h-full rounded-full overflow-hidden z-10 relative dark:border-0 border border-black/20"
           >
