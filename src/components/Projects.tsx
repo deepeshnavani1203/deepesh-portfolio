@@ -21,6 +21,7 @@ const projects: Project[] = [
       "React.js",
       "FastAPI",
       "Python",
+      "yt-dlp",
       "Whisper",
       "RAG",
       "Groq API",
